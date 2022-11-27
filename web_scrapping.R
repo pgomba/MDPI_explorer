@@ -4,13 +4,15 @@ library(tidyverse)
 
 #Create a list of publication paths
 
+journal<-"Plants"
+
 links<-list()
 for (i in 1:1000) {
-  temp<-read_html(paste0("https://www.mdpi.com/search?sort=pubdate&page_no=",i,"&page_count=10&year_from=1996&year_to=2022&journal=plants&view=default"))
+  temp<-read_html(paste0("https://www.mdpi.com/search?sort=pubdate&page_no=",i,"&page_count=10&year_from=1996&year_to=2022&journal=",journal,"&view=default"))
   extract<- temp%>%
     html_nodes(".title-link") %>% 
     html_attr("href")
-  Sys.sleep(5)
+  Sys.sleep(1)
   links<-append(extract,links)
 }
 
@@ -48,6 +50,6 @@ pub_table<-do.call(rbind, pubhistory)%>%
   mutate(Published=gsub("Published: ","",Published))%>%
   mutate(Published= lubridate::dmy(gsub(" ","/",Published)))%>%
   mutate(days=Published-Received)%>%
-  mutate(Special_issue=if_else(Special_issue=="","No","Yes"))
+  mutate(is_s_issue=if_else(Special_issue=="","No","Yes"))
 
-write.csv(put_table, "output/put_table.csv")
+write.csv(pub_table, paste0("output/",journal,"/pub_table.csv"))

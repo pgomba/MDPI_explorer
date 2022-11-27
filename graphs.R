@@ -3,7 +3,7 @@ library(scales)
 
 #Summary of dataset
 
-summary_graph<-ggplot(pub_table,aes(x=Published,y=0))+
+ggplot(pub_table,aes(x=Published,y=0))+
   geom_jitter(alpha=0.5,width = 0, height=2,colour="#779740")+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
@@ -51,10 +51,10 @@ ggsave ("average_graph.tiff",path="output/", dpi="retina")
 #Special issues proportion
 
 pub_table2<-pub_table%>%
-  group_by(month = lubridate::floor_date(Published,"month"),Special_issue)%>%
+  group_by(month = lubridate::floor_date(Published,"month"),is_s_issue)%>%
   summarise(n=n())
 
-ggplot(pub_table2, aes(x=month, y=n,fill=Special_issue))+
+ggplot(pub_table2, aes(x=month, y=n,fill=is_s_issue))+
   scale_fill_manual(values=c("red","#779740"))+
   geom_col()+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
