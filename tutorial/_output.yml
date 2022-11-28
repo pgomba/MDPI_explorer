@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">MDPI_explorer. Tutorial</a></li>
       after: |
-        <li><a href="https://pgomba.github.io/MDPI_explorer" target="blank">MDPI_explorer. Github repository</a></li>
+        <li><a href="https://github.com/pgomba/MDPI_explorer" target="blank">Github repository</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
