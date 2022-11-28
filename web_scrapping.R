@@ -4,10 +4,10 @@ library(tidyverse)
 
 #Create a list of publication paths
 
-journal<-"Plants"
+journal<-"Diversity"
 
 links<-list()
-for (i in 1:1000) {
+for (i in 1:300) {
   temp<-read_html(paste0("https://www.mdpi.com/search?sort=pubdate&page_no=",i,"&page_count=10&year_from=1996&year_to=2022&journal=",journal,"&view=default"))
   extract<- temp%>%
     html_nodes(".title-link") %>% 
@@ -21,6 +21,7 @@ for (i in 1:1000) {
 
 pubhistory<-list()  
 for (i in links) {
+  Sys.sleep(.5)
   paper<-read_html(paste0("https://www.mdpi.com",i))
   ex_paper<-paper%>%
     html_nodes(".pubhistory")%>%
