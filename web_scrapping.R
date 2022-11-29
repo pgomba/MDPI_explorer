@@ -1,28 +1,28 @@
 library(rvest)
 library(tidyverse)
 
-
 #Create a list of publication paths
+#Adapted from suggestion from twitter user @JorritGosens
 
-journal<-"Diversity"
+journal<-"sustainability"
 
-links<-list()
-for (i in 1:300) {
-  temp<-read_html(paste0("https://www.mdpi.com/search?sort=pubdate&page_no=",i,"&page_count=10&year_from=1996&year_to=2022&journal=",journal,"&view=default"))
-  extract<- temp%>%
-    html_nodes(".title-link") %>% 
-    html_attr("href")
-  Sys.sleep(1)
-  links<-append(extract,links)
-}
+sitemap<-read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,".xml"))
+
+papers<-sitemap%>%
+  html_nodes("loc")%>%
+  html_text2()
+
+    #Remove links that are not papers
+cleaner<- "guide|even|topi|soci|subm|conf|section|issue|about|announcements|awa|indexing|instructions|apc|history|detailed_instructions|edit|imprint|toc-alert|stats|most_cited"
+clean_papers<-papers[-grep(cleaner, papers)]
 
 #Create each publication url and extract editorial data, special issue information
 #and calculate day difference between submission and publication
 
 pubhistory<-list()  
-for (i in links) {
-  Sys.sleep(.5)
-  paper<-read_html(paste0("https://www.mdpi.com",i))
+for (i in clean_papers) {
+  Sys.sleep(1.5)
+  paper<-read_html(i)
   ex_paper<-paper%>%
     html_nodes(".pubhistory")%>%
     html_text2()
@@ -54,3 +54,26 @@ pub_table<-do.call(rbind, pubhistory)%>%
   mutate(is_s_issue=if_else(Special_issue=="","No","Yes"))
 
 write.csv(pub_table, paste0("output/",journal,"/pub_table.csv"))
+
+####test
+
+library(tidyverse)
+library(rvest)
+
+del<-read_html("https://www.mdpi.com/sitemap/sitemap.sustainability.xml")
+
+del2<-del%>%
+  html_nodes("loc")%>%
+  html_text2()
+
+cleaner<- "guide|even|topi|soci|subm|conf|section|issue|about|announcements|awa|indexing|instructions|apc|history|detailed_instructions|edit|imprint|toc-alert|stats|most_cited"
+new_del2<-del2[-grep(cleaner, del2)]
+
+library(here)
+library(XML)
+
+xml_file<-here("xml.mdpi.sustainability")
+download.file("https://www.mdpi.com/sitemap/sitemap.sustainability.xml",xml_file, method = "auto")
+xml_data<-xmlParse("xml.mdpi.sustainability")
+xml_df<-xmlToDataFrame(xml_data)
+

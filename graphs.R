@@ -4,7 +4,7 @@ library(scales)
 #Summary of dataset
 
 ggplot(pub_table,aes(x=Published,y=0))+
-  geom_jitter(alpha=0.5,width = 0, height=2,colour="#a8cbde")+ 
+  geom_jitter(alpha=0.5,width = 0, height=2,colour="#a0d15c")+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
   theme(text=element_text(size=20),
@@ -31,7 +31,7 @@ average_time_month<-pub_table%>%
 
 ggplot(average_time_month,aes(x=month, y=average))+
   geom_hline(yintercept = mean(as.numeric(pub_table$days)),color="white",linetype = "dashed")+
-  geom_point(alpha=1, colour="#a8cbde",size=2)+ 
+  geom_point(alpha=1, colour="#a0d15c",size=2)+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
   theme(text=element_text(size=20),
@@ -55,7 +55,7 @@ pub_table2<-pub_table%>%
   summarise(n=n())
 
 ggplot(pub_table2, aes(x=month, y=n,fill=is_s_issue))+
-  scale_fill_manual(values=c("red","#a8cbde"))+
+  scale_fill_manual(values=c("red","#a0d15c"))+
   geom_col()+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
