@@ -73,8 +73,8 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path=""><a href="#web-scrapping-mdpi-publications-with-r"><i class="fa fa-check"></i>Web scrapping MDPI publications with R</a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="#the-code"><i class="fa fa-check"></i><b>0.1</b> The code</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="#graphs"><i class="fa fa-check"></i><b>0.2</b> Graphs</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#the-code"><i class="fa fa-check"></i>The code</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#graphs"><i class="fa fa-check"></i>Graphs</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pgomba/MDPI_explorer" target="blank">Github repository</a></li>
@@ -101,8 +101,8 @@
 <div id="web-scrapping-mdpi-publications-with-r" class="section level1 unnumbered hasAnchor">
 <h1>Web scrapping MDPI publications with R<a href="#web-scrapping-mdpi-publications-with-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Inspired by 2021 <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a>’s blog (<a href="https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/">Is MDPI a predatory publisher?</a>), I wanted to have a look at some MDPI journal metrics using web scraping tools (<a href="https://rvest.tidyverse.org/">rvest</a>) via R, presenting factual data without judging if they are or not of predatory nature (I’ll leave that to the reader), enabling others to use the same code to explore metrics from other MDPI journals. The code and some journal data sets are available <a href="https://github.com/pgomba/MDPI_explorer">here (GitHub link)</a>. Originally, data and code were shared via Twitter, and you can follow the original discussion <a href="https://twitter.com/pagomba/status/1597157180394074115?s=20&amp;t=12SZ_JLeZkUK0WGF6lmM3A">here (Twitter link)</a>.</p>
-<div id="the-code" class="section level2 hasAnchor" number="0.1">
-<h2><span class="header-section-number">0.1</span> The code<a href="#the-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-code" class="section level2 unnumbered hasAnchor">
+<h2>The code<a href="#the-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The first step is to download the links from the journal web sitemap (thanks to twitter user <a href="https://twitter.com/JorritGosens">@JorritGosens</a> for helping make this part easier than I had planned). To do so, select a journal (use non-capital letters) and proceed to read the page and extract all the links available</p>
 <pre><code>
 library(tidyverse)
@@ -156,8 +156,8 @@ pub_table&lt;-do.call(rbind, pubhistory)%&gt;%
   mutate(days=Published-Received)%&gt;%
   mutate(is_s_issue=if_else(Special_issue==&quot;&quot;,&quot;No&quot;,&quot;Yes&quot;))</code></pre>
 </div>
-<div id="graphs" class="section level2 hasAnchor" number="0.2">
-<h2><span class="header-section-number">0.2</span> Graphs<a href="#graphs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="graphs" class="section level2 unnumbered hasAnchor">
+<h2>Graphs<a href="#graphs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The code for the graphs below is available in the GitHub repository linked at the beginning, and are just an example of what can be done with the data, but much more can be done (most published author, countries and institutions with more publications, abstract wordclouds, etc).</p>
 <p>Some key aspects to note are the reduction and homogenization of publication times, the increase in publications in recent years and the reliance in special issues. This has been noted before (see <a href="https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/">Is MDPI a predatory publisher?</a> blog).</p>
 <ul>

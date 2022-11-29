@@ -9,7 +9,7 @@ description: "MDPI_explorer. Tutorial"
 
 Inspired by 2021 [Paolo Crosetto](https://twitter.com/PaoloCrosetto)'s blog ([Is MDPI a predatory publisher?](https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/)), I wanted to have a look at some MDPI journal metrics using web scraping tools ([rvest](https://rvest.tidyverse.org/)) via R, presenting factual data without judging if they are or not of predatory nature (I'll leave that to the reader), enabling others to use the same code to explore metrics from other MDPI journals. The code and some journal data sets are available [here (GitHub link)](https://github.com/pgomba/MDPI_explorer). Originally, data and code were shared via Twitter, and you can follow the original discussion [here (Twitter link)](https://twitter.com/pagomba/status/1597157180394074115?s=20&t=12SZ_JLeZkUK0WGF6lmM3A).
 
-## The code
+## The code {.unnumbered}
 
 The first step is to download the links from the journal web sitemap (thanks to twitter user [\@JorritGosens](https://twitter.com/JorritGosens) for helping make this part easier than I had planned). To do so, select a journal (use non-capital letters) and proceed to read the page and extract all the links available
 
@@ -80,7 +80,7 @@ pub_table<-do.call(rbind, pubhistory)%>%
   mutate(is_s_issue=if_else(Special_issue=="","No","Yes"))
 ```
 
-## Graphs
+## Graphs {.unnumbered}
 
 The code for the graphs below is available in the GitHub repository linked at the beginning, and are just an example of what can be done with the data, but much more can be done (most published author, countries and institutions with more publications, abstract wordclouds, etc).
 
