@@ -4,7 +4,7 @@ library(tidyverse)
 #Create a list of publication paths
 #Adapted from suggestion from twitter user @JorritGosens
 
-journal<-"sustainability"
+journal<-"Sustainability"
 
 sitemap<-read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,".xml"))
 
@@ -41,7 +41,8 @@ pub_table<-do.call(rbind, pubhistory)%>%
   as_tibble()%>%
   separate(V1,sep=" - ",c("link","Publication","Special_issue"))%>%
   separate(Publication,sep="/",c("Received","Revised","Accepted","Published"))%>%
-  drop_na()%>% #remove papers accepted straight away
+  drop_na()%>%#remove papers accepted straight away
+  distinct()%>% #important, when tasks are performed in different days
   mutate(Received= gsub("Received: ","",Received))%>%
   mutate(Received= lubridate::dmy(gsub(" ","/",Received)))%>%
   mutate(Revised=gsub("Revised: ","",Revised))%>%
@@ -54,26 +55,4 @@ pub_table<-do.call(rbind, pubhistory)%>%
   mutate(is_s_issue=if_else(Special_issue=="","No","Yes"))
 
 write.csv(pub_table, paste0("output/",journal,"/pub_table.csv"))
-
-####test
-
-library(tidyverse)
-library(rvest)
-
-del<-read_html("https://www.mdpi.com/sitemap/sitemap.sustainability.xml")
-
-del2<-del%>%
-  html_nodes("loc")%>%
-  html_text2()
-
-cleaner<- "guide|even|topi|soci|subm|conf|section|issue|about|announcements|awa|indexing|instructions|apc|history|detailed_instructions|edit|imprint|toc-alert|stats|most_cited"
-new_del2<-del2[-grep(cleaner, del2)]
-
-library(here)
-library(XML)
-
-xml_file<-here("xml.mdpi.sustainability")
-download.file("https://www.mdpi.com/sitemap/sitemap.sustainability.xml",xml_file, method = "auto")
-xml_data<-xmlParse("xml.mdpi.sustainability")
-xml_df<-xmlToDataFrame(xml_data)
 

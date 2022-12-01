@@ -4,7 +4,7 @@ library(scales)
 #Summary of dataset
 
 ggplot(pub_table,aes(x=Published,y=0))+
-  geom_jitter(alpha=0.5,width = 0, height=2,colour="#a0d15c")+ 
+  geom_jitter(alpha=0.5,width = 0, height=2,colour="#daeaf5")+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
   theme(text=element_text(size=20),
@@ -19,7 +19,7 @@ ggplot(pub_table,aes(x=Published,y=0))+
         plot.background = element_rect(fill = "#272822"))+
   labs(x="Published", y="", title = paste0("MDPI ",journal," Dataset - Publications / Time"), caption = paste("Dataset including publications until:",format(max(pub_table$Published),format="%d-%m-%Y")))+
   scale_y_continuous(limits = c(-3,3))+
-  geom_text(label=paste("Number of publications:",nrow(pub_table)),x=min(pub_table$Published)+600,y=-2.5, colour="white", size=5)
+  geom_text(label=paste("Number of publications:",nrow(pub_table)),x=min(pub_table$Published)+900,y=-2.5, colour="white", size=5)
 
 ggsave ("summary_graph.png",path=paste0("output/",journal), dpi="retina")
 
@@ -31,7 +31,7 @@ average_time_month<-pub_table%>%
 
 ggplot(average_time_month,aes(x=month, y=average))+
   geom_hline(yintercept = mean(as.numeric(pub_table$days)),color="white",linetype = "dashed")+
-  geom_point(alpha=1, colour="#a0d15c",size=2)+ 
+  geom_point(alpha=1, colour="#daeaf5",size=2)+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
   theme(text=element_text(size=20),
@@ -44,7 +44,7 @@ ggplot(average_time_month,aes(x=month, y=average))+
         plot.background = element_rect(fill = "#272822"))+
   labs(x="Published", y="Days", title = paste0("MDPI ",journal,". Monthly average time between submission and publication"))+
   scale_y_continuous(limits = c(0,200), breaks = seq(0,200,50))+
-  geom_text(label=paste("All time average =",round(mean(as.numeric(pub_table$days)),1),"days"), x=min(pub_table$Received)+500, y=mean(as.numeric(pub_table$days))-10,color="white")
+  geom_text(label=paste("All time average =",round(mean(as.numeric(pub_table$days)),1),"days"), x=min(pub_table$Received)+1000, y=mean(as.numeric(pub_table$days))-20,color="white")
 
 ggsave ("average_graph.png",path=paste0("output/",journal), dpi="retina")
 
@@ -55,7 +55,7 @@ pub_table2<-pub_table%>%
   summarise(n=n())
 
 ggplot(pub_table2, aes(x=month, y=n,fill=is_s_issue))+
-  scale_fill_manual(values=c("red","#a0d15c"))+
+  scale_fill_manual(values=c("red","#daeaf5"))+
   geom_col()+ 
   scale_x_date(date_labels = "%Y",breaks = date_breaks("year"))+
   theme_classic()+
