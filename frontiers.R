@@ -26,6 +26,8 @@ pub_table<-do.call(rbind, articles)%>%
   separate(jrnal,c("journal","rest","other","next"), remove=FALSE)%>%
   select(V1, journal)
 
+write.csv(pub_table,"output/frontiers/frontiers.csv")
+
 ## Test for Frontiers in Plant science
 
 plants_frontiers<-pub_table%>%
