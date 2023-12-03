@@ -8,12 +8,25 @@
 
 journal_papers <- function(journal) {
 
-  sitemap<-read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,".xml"))
+  sitemap<-read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,".xml"))%>% #Here we obtain all links from the sitemap, but needs some cleaning
+    html_nodes("loc")%>%
+    html_text2()
+  sitemap2<- tryCatch(expr = {read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,"_0.xml"))%>% #Here we obtain all links from the sitemap, but needs some cleaning
+      html_nodes("loc")%>%
+      html_text2()},
+      error=function(e){
+        valid="Journal has only one sitemap"
+      })
+  
+  if(exists("valid")==TRUE){
+    sitemap<-sitemap
+  }else{
+    sitemap<-c(sitemap,sitemap2)
+  }
   
   links<-sitemap%>% #Here we obtain all links from the sitemap, but needs some cleaning
-    html_nodes("loc")%>%
-    html_text2()%>%
     as.data.frame()%>%
+    distinct()%>%
     mutate(slash_number=str_count(., "/"))%>% #count number of slashes in url for further cleaning
     filter(!grepl(journal,.))%>% #removing all links that include the name of the journal - these are not papers
     filter(!grepl("issue", .)) %>% #remove links for special issues - still not papers    

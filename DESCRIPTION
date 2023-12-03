@@ -14,5 +14,7 @@ Imports:
     rvest,
     dplyr,
     lubridate,
-    stringr
+    stringr,
+    scales,
+    tidyr
 RoxygenNote: 7.2.3

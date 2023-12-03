@@ -1,9 +1,9 @@
 project:
   type: website
-  output-dir: _docs
+  output-dir: docs
 
 website:
-  title: "MDPI_explorer_guide"
+  title: "MDPIexploreR"
   favicon: images/favicon.ico
   navbar:
     left:

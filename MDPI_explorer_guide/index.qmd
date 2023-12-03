@@ -1,173 +1,72 @@
 ---
-title: "MDPI_explorer - A guide"
+title: "MDPIexploreR - A guide"
 ---
 
-## Updating the original code {.unnumbered}
+## Background {.unnumbered}
 
-Inspired by 2021 [Paolo Crosetto](https://twitter.com/PaoloCrosetto)'s blog ([Is MDPI a predatory publisher?](https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/)), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with [Mark Hanson](https://fediscience.org/@MarkHanson), [Paolo Crosetto](https://twitter.com/PaoloCrosetto) and [Dan Brockington](https://twitter.com/danbrockington) exploring the current Strain on Scientific Publishing \[[Link to project](https://the-strain-on-scientific-publishing.github.io/website/)\] \[[Link to preprint](https://arxiv.org/abs/2309.15884)\]. The MDPI_explorer code has since aged, and an update is timely. The Github repository containing all necessary code can be found [here (GitHub link)](https://github.com/pgomba/MDPI_explorer), while the original twitter conversation can be found [here (Twitter link)](https://twitter.com/pagomba/status/1597157180394074115?s=20&t=12SZ_JLeZkUK0WGF6lmM3A).
+Inspired by 2021 [Paolo Crosetto](https://twitter.com/PaoloCrosetto)'s blog ([Is MDPI a predatory publisher?](https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/)), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with [Mark Hanson](https://fediscience.org/@MarkHanson), [Paolo Crosetto](https://twitter.com/PaoloCrosetto) and [Dan Brockington](https://twitter.com/danbrockington) exploring the current Strain on Scientific Publishing \[[Link to project](https://the-strain-on-scientific-publishing.github.io/website/)\] \[[Link to preprint](https://arxiv.org/abs/2309.15884)\]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed to a full R package, with 2 functions to obtain data, 4 to plot this data and a dataset to play with
+
+## Installing MDPIExploreR
+
+```{r eval=FALSE}
+devtools::install_github("pgomba/MDPI_explorer")
+```
 
 ::: callout-note
-Last code update: December 2023
+Last update: December 2023
 :::
 
-::: callout-important
-A previous version of the repository had a basic tutorial and code to explore data from Scientific Reports. On this new version I´v decided to keep it out and, instead, I encourage you to visit some of the blog/tutorials (see below) to build your specific journal/publisher scraping tools.
-:::
+## Data extracting functions {.unnumbered}
 
-## Extracting papers from journal {.unnumbered}
-
-The first step is to choose a MDPI journal. I´m going to build the example around "Agronomy", but should be easy to adapt the code to a different journal. To obtain all papers from a journal we first target the journal sitemap and then find all "loc" nodes. The result is a mix of papers and other journal websites. A bit of cleaning is required! \
-
-::: callout-note
-Kudos to twitter user [\@JorritGosens](https://twitter.com/JorritGosens) for pointing out that targeting sitemaps makes web scraping less tedious
-:::
-
-I´m fairly sure the code to do all of this can be improved. Happy to hear suggestions.
-
-```{r eval=FALSE}
-library(tidyverse)
-library(rvest)
-
-journal<-"agriculture" # Replace with name of your target journal
-
-sitemap<-read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,".xml"))
-
-links<-sitemap%>% #Here we obtain all links from the sitemap, but needs some cleaning
-  html_nodes("loc")%>%
-  html_text2()%>%
-  as.data.frame()%>%
-  mutate(slash_number=str_count(., "/"))%>% #count number of slashes in url for further cleaning
-  filter(!grepl(journal,.))%>% #removing all links that include the name of the journal - these are not papers
-  filter(!grepl("issue", .)) %>% #remove links for special issues - still not papers    
-  filter(slash_number>4) # paper url have more than 4 slashes
-
-papers_vector<-links$. #Creating a vector to be later used in the loop
-
-```
-
-## The loop
-
-Once we have a vector with paper urls (`papers_vector`) is just a matter of scraping them individually and obtaining our data of interest. In this case, we want to obtain editorial times, type (or not) of special issue and type of article (review, editorial, etc). All of this happens within a loop. Is important to be polite and allow some rest time between request or request (or be prepared to be kicked out of the server).
-
-Recently, I wrote three tutorials explaining the basics of text mining and web scraping scientific literature. I hope these help you if you need extra help:
-
-[Text mining PLOS articles using R](https://pgomba.github.io/pgb_website/posts/08_10_23/)
-
-[Text-mining a Taylor & Francis journal using R](https://pgomba.github.io/pgb_website/posts/11_10_23/)
-
-[Web-scraping a journal (Biology Open) using R](https://pgomba.github.io/pgb_website/posts/18_10_23/)
+`journal_papers()`: This function looks into the target journal sitemap and returns a vector containing all journal papers urls. To use it, it only requires a string with the name of the target journal:
 
 ```{r eval=FALSE}
 
-paper_data<-data.frame() #Empty data frame
-  
-count<-0
-for (i in papers_vector[1905:7160]) {
-  
-  paper<-read_html(i)
-  
-  ex_paper<-paper%>% #obtain editorial times
-    html_nodes(".pubhistory")%>%
-    html_text2()
-  
-  ex_paper2<-paper%>% #obtain type of issue
-    html_nodes(".belongsTo")%>%
-    html_text2()
-  
-  if (identical( ex_paper2,character(0))) {
-    ex_paper2<-"no"
-  } else {
-    ex_paper2<- ex_paper2}
-  
-  article_type<-paper%>% # Type of article
-    html_nodes(".articletype")%>%
-    html_text2()
-  
-  temp_df<-data.frame(i,ex_paper,ex_paper2,article_type)
-  
-  paper_data<-bind_rows(paper_data,temp_df) #add paper info to main table
-  
-  count<-count+1
-  print(count)
-  
-  Sys.sleep(1.5) #Be polite web scraping. Give the server some time to rest
-  
-}
+urls<-journal_papers("agronomy")
 
 ```
 
-## Data cleaning
-
-The extracted data (table `paper_data`) is a little bit dirty: Dates are contained in strings and special issue info is unclear. The next code section focus on cleaning all these issues and doing some house keeping.
+`articles_info()`: Uses the vector, or a sample from the vector obtained via `journal_papers()` to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.
 
 ```{r eval=FALSE}
 
-paper_data<-data.frame() #Empty data frame
-  
-count<-0
-for (i in papers_vector[1:1904]) {
-  
-  paper<-read_html(i)
-  
-  ex_paper<-paper%>% #obtain editorial times
-    html_nodes(".pubhistory")%>%
-    html_text2()
-  
-  ex_paper2<-paper%>% #obtain type of issue
-    html_nodes(".belongsTo")%>%
-    html_text2()
-  
-  if (identical( ex_paper2,character(0))) {
-    ex_paper2<-"no"
-  } else {
-    ex_paper2<- ex_paper2}
-  
-  article_type<-paper%>% # Type of article
-    html_nodes(".articletype")%>%
-    html_text2()
-  
-  temp_df<-data.frame(i,ex_paper,ex_paper2,article_type)
-  
-  paper_data<-bind_rows(paper_data,temp_df)
-  
-  count<-count+1
-  print(count)
-  
-  #Sys.sleep(1.5) #Be polite web scraping. Give the server some time to rest
-  
-}
+#Will scrape all url values leaving 2 seconds between iterations
+data<-articles_info(urls,2) 
 
-#Create output table
-##Disclaimer: Papers accepted straight away (no revision date) removed for simplicity 
-
-final_table<-paper_data%>%
-  mutate(Received=gsub("/.*","",ex_paper), #Extract received data time and transform into date
-         Received=gsub(".*Received:","",Received),
-         Received=as.Date(Received,"%d %B %Y"))%>%
-  mutate(Accepted=gsub(".*Accepted:","",ex_paper), #Extract accepted time data and transform into date
-         Accepted=gsub("/.*","",Accepted),
-         Accepted=as.Date(Accepted,"%d %B %Y"))%>%
-  mutate(tat=Accepted-Received, #Calculate turnaround times and add year of acceptance column
-         year=year(Accepted))%>%
-  mutate(issue_type=case_when(grepl("Section",ex_paper2)~"Section", #Classify articles by issue type
-                              grepl("Special Issue",ex_paper2)~"Special Issue",
-                              grepl("Topic",ex_paper2)~"Topic",
-                              .default = "No"
-                    ))%>%
-  select(-ex_paper,-ex_paper2) #remove unnecesary columns at this stage
-  
-write.csv(final_table, paste0("output/",journal,"_final_table.csv"),row.names = FALSE)
+#Will scrape 1000 random papers from the url vector every 5 seconds
+data<-articles_info(urls,2,1000)
 
 ```
 
-## Graphs
+## Plotting functions
 
-The R scripts in `graphs.R` uses `final_table.csv` to summarize the results and are just a basic example of what can be done with this data. Happy to see your graphs being posted on twitter!
+The plotting functions help to summarize the collected data. They only need a data.frame obtained via `articles_info()` and a string with the name of the journal. Some examples:
 
-![](images/agriculture_summary_graph-01.png)
+```{r eval=FALSE}
+
+summary_graph(data,"Agronomy")
+
+```
+
+![](images/agriculture_summary_graph.png)
+
+```{r eval=FALSE}
+
+average_graph(data,"Agronomy")
+```
 
 ![](images/agriculture_average_graph.png)
 
+```{r eval=FALSE}
+issues_graph(data,"Agronomy")
+
+```
+
 ![](images/agriculture_issues_graph.png)
+
+```{r eval=FALSE}
+
+types_graph(data,"Agronomy")
+```
 
 ![](images/agriculture_types_graph.png)
