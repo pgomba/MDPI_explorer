@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MDPIexploreR - A guide",
+    "section": "",
+    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed to a full R package, with 2 functions to obtain data, 4 to plot this data and a dataset to play with"
+  },
+  {
+    "objectID": "index.html#background",
+    "href": "index.html#background",
+    "title": "MDPIexploreR - A guide",
+    "section": "",
+    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed to a full R package, with 2 functions to obtain data, 4 to plot this data and a dataset to play with"
+  },
+  {
+    "objectID": "index.html#installing-mdpiexplorer",
+    "href": "index.html#installing-mdpiexplorer",
+    "title": "MDPIexploreR - A guide",
+    "section": "Installing MDPIExploreR",
+    "text": "Installing MDPIExploreR\n\ndevtools::install_github(\"pgomba/MDPI_explorer\")\n\n\n\n\n\n\n\nNote\n\n\n\nLast update: December 2023"
+  },
+  {
+    "objectID": "index.html#data-extracting-functions",
+    "href": "index.html#data-extracting-functions",
+    "title": "MDPIexploreR - A guide",
+    "section": "Data extracting functions",
+    "text": "Data extracting functions\njournal_papers(): This function looks into the target journal sitemap and returns a vector containing all journal papers urls. To use it, it only requires a string with the name of the target journal:\n\nurls&lt;-journal_papers(\"agriculture\")\n\narticles_info(): Uses the vector, or a sample from the vector obtained via journal_papers() to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.\n\n#Will scrape all url values leaving 2 seconds between iterations\ndata&lt;-articles_info(urls,2) \n\n#Will scrape 1000 random papers from the url vector every 5 seconds\ndata&lt;-articles_info(urls,2,1000)"
+  },
+  {
+    "objectID": "index.html#plotting-functions",
+    "href": "index.html#plotting-functions",
+    "title": "MDPIexploreR - A guide",
+    "section": "Plotting functions",
+    "text": "Plotting functions\nThe plotting functions help to summarize the collected data. They only need a data.frame obtained via articles_info() and a string with the name of the journal. Some examples:\n\nsummary_graph(data,\"Agriculture\")\n\n\n\naverage_graph(data,\"Agriculture\")\n\n\n\nissues_graph(data,\"Agriculture\")\n\n\n\ntypes_graph(data,\"Agriculture\")"
+  }
+]
