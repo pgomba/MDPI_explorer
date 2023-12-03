@@ -202,7 +202,7 @@ Note
 <h2 class="unnumbered anchored" data-anchor-id="data-extracting-functions">Data extracting functions</h2>
 <p><code>journal_papers()</code>: This function looks into the target journal sitemap and returns a vector containing all journal papers urls. To use it, it only requires a string with the name of the target journal:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urls<span class="ot">&lt;-</span><span class="fu">journal_papers</span>(<span class="st">"agronomy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urls<span class="ot">&lt;-</span><span class="fu">journal_papers</span>(<span class="st">"agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>articles_info()</code>: Uses the vector, or a sample from the vector obtained via <code>journal_papers()</code> to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.</p>
 <div class="cell">
@@ -217,19 +217,19 @@ Note
 <h2 class="anchored" data-anchor-id="plotting-functions">Plotting functions</h2>
 <p>The plotting functions help to summarize the collected data. They only need a data.frame obtained via <code>articles_info()</code> and a string with the name of the journal. Some examples:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary_graph</span>(data,<span class="st">"Agronomy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_summary_graph.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_graph</span>(data,<span class="st">"Agronomy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_average_graph.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issues_graph</span>(data,<span class="st">"Agronomy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issues_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_issues_graph.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agronomy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_types_graph.png" class="img-fluid"></p>
 

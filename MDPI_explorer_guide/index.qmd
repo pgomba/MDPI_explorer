@@ -22,7 +22,7 @@ Last update: December 2023
 
 ```{r eval=FALSE}
 
-urls<-journal_papers("agronomy")
+urls<-journal_papers("agriculture")
 
 ```
 
@@ -44,7 +44,7 @@ The plotting functions help to summarize the collected data. They only need a da
 
 ```{r eval=FALSE}
 
-summary_graph(data,"Agronomy")
+summary_graph(data,"Agriculture")
 
 ```
 
@@ -52,13 +52,13 @@ summary_graph(data,"Agronomy")
 
 ```{r eval=FALSE}
 
-average_graph(data,"Agronomy")
+average_graph(data,"Agriculture")
 ```
 
 ![](images/agriculture_average_graph.png)
 
 ```{r eval=FALSE}
-issues_graph(data,"Agronomy")
+issues_graph(data,"Agriculture")
 
 ```
 
@@ -66,7 +66,7 @@ issues_graph(data,"Agronomy")
 
 ```{r eval=FALSE}
 
-types_graph(data,"Agronomy")
+types_graph(data,"Agriculture")
 ```
 
 ![](images/agriculture_types_graph.png)
