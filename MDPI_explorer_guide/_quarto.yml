@@ -2,25 +2,33 @@ project:
   type: website
   output-dir: docs
 
+
 website:
   title: "MDPIexploreR"
   favicon: images/favicon.ico
-  navbar:
-    left:
-      - href: index.qmd
-        text: Tutorial
-    right:
+  sidebar:
+    logo: "images/mdpiexplorer_logo.png"
+    pinned: true
+    align: center
+    tools:
         - icon: twitter
           href: https://twitter.com/pagomba
         - icon: github
           href: https://github.com/pgomba/MDPI_explorer
+    style: "docked"
+    search: false
+    collapse-level: 0 
+    contents:
+      - href: index.qmd
+        text: Tutorial
+ 
   site-url: 'https://pgomba.github.io/MDPI_explorer/'
   site-path: '/'
   open-graph: true
   twitter-card:
     card-style: summary_large_image
     creator: "@pagomba"
-    image: "images/thumb.png"
+    image: "images/mdpiexplorer_logo.png"
 format:
   html:
     theme: 
