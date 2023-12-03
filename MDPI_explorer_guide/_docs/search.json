@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MDPI_explorer - A guide",
+    "section": "",
+    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. The MDPI_explorer code has since aged, and an update is timely. The Github repository containing all necessary code can be found here (GitHub link), while the original twitter conversation can be found here (Twitter link).\n\n\n\n\n\n\nNote\n\n\n\nLast code update: December 2023\n\n\n\n\n\n\n\n\nImportant\n\n\n\nA previous version of the repository had a basic tutorial and code to explore data from Scientific Reports. On this new version I´v decided to keep it out and, instead, I encourage you to visit some of the blog/tutorials (see below) to build your specific journal/publisher scraping tools."
+  },
+  {
+    "objectID": "index.html#updating-the-original-code",
+    "href": "index.html#updating-the-original-code",
+    "title": "MDPI_explorer - A guide",
+    "section": "",
+    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. The MDPI_explorer code has since aged, and an update is timely. The Github repository containing all necessary code can be found here (GitHub link), while the original twitter conversation can be found here (Twitter link).\n\n\n\n\n\n\nNote\n\n\n\nLast code update: December 2023\n\n\n\n\n\n\n\n\nImportant\n\n\n\nA previous version of the repository had a basic tutorial and code to explore data from Scientific Reports. On this new version I´v decided to keep it out and, instead, I encourage you to visit some of the blog/tutorials (see below) to build your specific journal/publisher scraping tools."
+  },
+  {
+    "objectID": "index.html#extracting-papers-from-journal",
+    "href": "index.html#extracting-papers-from-journal",
+    "title": "MDPI_explorer - A guide",
+    "section": "Extracting papers from journal",
+    "text": "Extracting papers from journal\nThe first step is to choose a MDPI journal. I´m going to build the example around “Agronomy”, but should be easy to adapt the code to a different journal. To obtain all papers from a journal we first target the journal sitemap and then find all “loc” nodes. The result is a mix of papers and other journal websites. A bit of cleaning is required!\n\n\n\n\n\n\n\nNote\n\n\n\nKudos to twitter user @JorritGosens for pointing out that targeting sitemaps makes web scraping less tedious\n\n\nI´m fairly sure the code to do all of this can be improved. Happy to hear suggestions.\n\nlibrary(tidyverse)\nlibrary(rvest)\n\njournal&lt;-\"agriculture\" # Replace with name of your target journal\n\nsitemap&lt;-read_html(paste0(\"https://www.mdpi.com/sitemap/sitemap.\",journal,\".xml\"))\n\nlinks&lt;-sitemap%&gt;% #Here we obtain all links from the sitemap, but needs some cleaning\n  html_nodes(\"loc\")%&gt;%\n  html_text2()%&gt;%\n  as.data.frame()%&gt;%\n  mutate(slash_number=str_count(., \"/\"))%&gt;% #count number of slashes in url for further cleaning\n  filter(!grepl(journal,.))%&gt;% #removing all links that include the name of the journal - these are not papers\n  filter(!grepl(\"issue\", .)) %&gt;% #remove links for special issues - still not papers    \n  filter(slash_number&gt;4) # paper url have more than 4 slashes\n\npapers_vector&lt;-links$. #Creating a vector to be later used in the loop"
+  },
+  {
+    "objectID": "index.html#the-loop",
+    "href": "index.html#the-loop",
+    "title": "MDPI_explorer - A guide",
+    "section": "The loop",
+    "text": "The loop\nOnce we have a vector with paper urls (papers_vector) is just a matter of scraping them individually and obtaining our data of interest. In this case, we want to obtain editorial times, type (or not) of special issue and type of article (review, editorial, etc). All of this happens within a loop. Is important to be polite and allow some rest time between request or request (or be prepared to be kicked out of the server).\nRecently, I wrote three tutorials explaining the basics of text mining and web scraping scientific literature. I hope these help you if you need extra help:\nText mining PLOS articles using R\nText-mining a Taylor & Francis journal using R\nWeb-scraping a journal (Biology Open) using R\n\npaper_data&lt;-data.frame() #Empty data frame\n  \ncount&lt;-0\nfor (i in papers_vector[1905:7160]) {\n  \n  paper&lt;-read_html(i)\n  \n  ex_paper&lt;-paper%&gt;% #obtain editorial times\n    html_nodes(\".pubhistory\")%&gt;%\n    html_text2()\n  \n  ex_paper2&lt;-paper%&gt;% #obtain type of issue\n    html_nodes(\".belongsTo\")%&gt;%\n    html_text2()\n  \n  if (identical( ex_paper2,character(0))) {\n    ex_paper2&lt;-\"no\"\n  } else {\n    ex_paper2&lt;- ex_paper2}\n  \n  article_type&lt;-paper%&gt;% # Type of article\n    html_nodes(\".articletype\")%&gt;%\n    html_text2()\n  \n  temp_df&lt;-data.frame(i,ex_paper,ex_paper2,article_type)\n  \n  paper_data&lt;-bind_rows(paper_data,temp_df) #add paper info to main table\n  \n  count&lt;-count+1\n  print(count)\n  \n  Sys.sleep(1.5) #Be polite web scraping. Give the server some time to rest\n  \n}"
+  },
+  {
+    "objectID": "index.html#data-cleaning",
+    "href": "index.html#data-cleaning",
+    "title": "MDPI_explorer - A guide",
+    "section": "Data cleaning",
+    "text": "Data cleaning\nThe extracted data (table paper_data) is a little bit dirty: Dates are contained in strings and special issue info is unclear. The next code section focus on cleaning all these issues and doing some house keeping.\n\npaper_data&lt;-data.frame() #Empty data frame\n  \ncount&lt;-0\nfor (i in papers_vector[1:1904]) {\n  \n  paper&lt;-read_html(i)\n  \n  ex_paper&lt;-paper%&gt;% #obtain editorial times\n    html_nodes(\".pubhistory\")%&gt;%\n    html_text2()\n  \n  ex_paper2&lt;-paper%&gt;% #obtain type of issue\n    html_nodes(\".belongsTo\")%&gt;%\n    html_text2()\n  \n  if (identical( ex_paper2,character(0))) {\n    ex_paper2&lt;-\"no\"\n  } else {\n    ex_paper2&lt;- ex_paper2}\n  \n  article_type&lt;-paper%&gt;% # Type of article\n    html_nodes(\".articletype\")%&gt;%\n    html_text2()\n  \n  temp_df&lt;-data.frame(i,ex_paper,ex_paper2,article_type)\n  \n  paper_data&lt;-bind_rows(paper_data,temp_df)\n  \n  count&lt;-count+1\n  print(count)\n  \n  #Sys.sleep(1.5) #Be polite web scraping. Give the server some time to rest\n  \n}\n\n#Create output table\n##Disclaimer: Papers accepted straight away (no revision date) removed for simplicity \n\nfinal_table&lt;-paper_data%&gt;%\n  mutate(Received=gsub(\"/.*\",\"\",ex_paper), #Extract received data time and transform into date\n         Received=gsub(\".*Received:\",\"\",Received),\n         Received=as.Date(Received,\"%d %B %Y\"))%&gt;%\n  mutate(Accepted=gsub(\".*Accepted:\",\"\",ex_paper), #Extract accepted time data and transform into date\n         Accepted=gsub(\"/.*\",\"\",Accepted),\n         Accepted=as.Date(Accepted,\"%d %B %Y\"))%&gt;%\n  mutate(tat=Accepted-Received, #Calculate turnaround times and add year of acceptance column\n         year=year(Accepted))%&gt;%\n  mutate(issue_type=case_when(grepl(\"Section\",ex_paper2)~\"Section\", #Classify articles by issue type\n                              grepl(\"Special Issue\",ex_paper2)~\"Special Issue\",\n                              grepl(\"Topic\",ex_paper2)~\"Topic\",\n                              .default = \"No\"\n                    ))%&gt;%\n  select(-ex_paper,-ex_paper2) #remove unnecesary columns at this stage\n  \nwrite.csv(final_table, paste0(\"output/\",journal,\"_final_table.csv\"),row.names = FALSE)"
+  },
+  {
+    "objectID": "index.html#graphs",
+    "href": "index.html#graphs",
+    "title": "MDPI_explorer - A guide",
+    "section": "Graphs",
+    "text": "Graphs\nThe R scripts in graphs.R uses final_table.csv to summarize the results and are just a basic example of what can be done with this data. Happy to see your graphs being posted on twitter!"
+  }
+]

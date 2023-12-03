@@ -1,0 +1,18 @@
+Package: MDPIexploreR
+Type: Package
+Title: MDPI_explorer
+Version: 0.1.0
+Author: Pablo Gómez Barreiro
+Maintainer: Pablo Gómez Barreiro <pablogomezbr@hotmail.es>
+Description: Series of functions to explore editorial times, issues and articles types of MDPI journals
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    ggplot2,
+    magrittr,
+    rvest,
+    dplyr,
+    lubridate,
+    stringr
+RoxygenNote: 7.2.3

@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: _docs
+
+website:
+  title: "MDPI_explorer_guide"
+  favicon: images/favicon.ico
+  navbar:
+    left:
+      - href: index.qmd
+        text: Tutorial
+    right:
+        - icon: twitter
+          href: https://twitter.com/pagomba
+        - icon: github
+          href: https://github.com/pgomba/MDPI_explorer
+  site-url: 'https://pgomba.github.io/MDPI_explorer_guide'
+  site-path: '/'
+  open-graph: true
+  twitter-card:
+    card-style: summary_large_image
+    creator: "@pagomba"
+    image: "images/thumb.png"
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    css: styles.css
+
+editor: visual
+      
+
+
