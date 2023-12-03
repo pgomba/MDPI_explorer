@@ -14,7 +14,7 @@ website:
           href: https://twitter.com/pagomba
         - icon: github
           href: https://github.com/pgomba/MDPI_explorer
-  site-url: 'https://pgomba.github.io/MDPI_explorer_guide'
+  site-url: 'https://pgomba.github.io/MDPI_explorer/'
   site-path: '/'
   open-graph: true
   twitter-card:
