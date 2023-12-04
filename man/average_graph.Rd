@@ -18,5 +18,5 @@ A plot
 Creates a plot with monthly turnaround times using the obtained via articles_info()
 }
 \examples{
-average_graph(agriculture,"Agiculture")
+average_graph(agriculture,"Agriculture")
 }

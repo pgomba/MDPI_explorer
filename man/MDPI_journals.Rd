@@ -5,12 +5,14 @@
 \alias{MDPI_journals}
 \title{List of 430 MDPI journals and sitemap reference code}
 \format{
-## `MDPI_journals`
+\subsection{\code{MDPI_journals}}{
+
 A data frame with 430 rows and 2 columns:
 \describe{
-  \item{name}{Journal name}
-  \item{code}{Journal code used in the sitemap}
-  ...
+\item{name}{Journal name}
+\item{code}{Journal code used in the sitemap}
+...
+}
 }
 }
 \usage{

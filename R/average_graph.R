@@ -1,7 +1,8 @@
 #' Creates a plot with monthly turnaround times using the obtained via articles_info()
 #' @param articles_info Output dataframe from function articles_info.
 #' @param journal A string with the name of the journal for graph title purposes
-#' @import magrittr ggplot2 dplyr lubridate stringr scales tidyr
+#' @import magrittr ggplot2 dplyr lubridate stringr scales 
+#' @importFrom tidyr drop_na
 #' @export average_graph
 #' @return A plot
 #' @examples

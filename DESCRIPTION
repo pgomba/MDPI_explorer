@@ -1,20 +1,21 @@
 Package: MDPIexploreR
-Type: Package
-Title: MDPI_explorer
-Version: 0.1.0
-Author: Pablo Gómez Barreiro
-Maintainer: Pablo Gómez Barreiro <pablogomezbr@hotmail.es>
-Description: Series of functions to explore editorial times, issues and articles types of MDPI journals
-License: What license is it under?
+Title: MDPIexploreR. A series of functions to explore MDPI journals data 
+Version: 0.0.0.1
+Authors@R: 
+    person("Pablo", "Gómez Barreiro", , "pablogomezbr@hotmail.es", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3140-3326"))
+Description: Provides a series of functions to explore editorial data, issues and articles type from MDPI journals.
+License: MIT + file LICENSE
 Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
 LazyData: true
 Imports: 
+    dplyr,
     ggplot2,
+    lubridate,
     magrittr,
     rvest,
-    dplyr,
-    lubridate,
-    stringr,
     scales,
+    stringr,
     tidyr
-RoxygenNote: 7.2.3

@@ -1,7 +1,7 @@
 #' Creates a plot showing types of issues were articles where published
 #' @param articles_info Output dataframe from function articles_info.
 #' @param journal A string with the name of the journal for graph title purposes
-#' @import magrittr ggplot2 dplyr lubridate stringr scales tidyr
+#' @import magrittr ggplot2 dplyr lubridate stringr scales
 #' @export issues_graph
 #' @return A plot
 #' @examples
