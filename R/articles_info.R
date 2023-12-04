@@ -26,27 +26,38 @@ articles_info <- function(vector,sleep,sample_size) {
   
   for (i in papers) {
     
-    paper<-read_html(i)
     
-    ex_paper<-paper%>% #obtain editorial times
-      html_nodes(".pubhistory")%>%
-      html_text2()
-    
-    ex_paper2<-paper%>% #obtain type of issue
-      html_nodes(".belongsTo")%>%
-      html_text2()
-    
-    if (identical( ex_paper2,character(0))) {
-      ex_paper2<-"no"
-    } else {
-      ex_paper2<- ex_paper2}
-    
-    article_type<-paper%>% # Type of article
-      html_nodes(".articletype")%>%
-      html_text2()
+    tryCatch(expr={
+      paper<-read_html(i)
+      
+      ex_paper<-paper%>% #obtain editorial times
+        html_nodes(".pubhistory")%>%
+        html_text2()
+      
+      ex_paper2<-paper%>% #obtain type of issue
+        html_nodes(".belongsTo")%>%
+        html_text2()
+      
+      if (identical( ex_paper2,character(0))) {
+        ex_paper2<-"no"
+      } else {
+        ex_paper2<- ex_paper2}
+      
+      article_type<-paper%>% # Type of article
+        html_nodes(".articletype")%>%
+        html_text2()
+      
+     
+      
+    },
+    error=function(e){
+      ex_paper<<-"error"
+      ex_paper2<<-"error"
+      article_type<<-"error"
+      
+    })
     
     temp_df<-data.frame(i,ex_paper,ex_paper2,article_type)
-    
     paper_data<-bind_rows(paper_data,temp_df)
     
     count<-count+1
