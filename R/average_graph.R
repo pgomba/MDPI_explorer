@@ -5,7 +5,7 @@
 #' @export average_graph
 #' @return A plot
 #' @examples
-#' average_graph(agriculture,"Agiculture")
+#' average_graph(agriculture,"Agriculture")
 
 
 average_graph<-function(articles_info,journal){
