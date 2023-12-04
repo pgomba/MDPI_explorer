@@ -1,0 +1,19 @@
+---
+title: "Datasets"
+---
+
+## MDPI_journals
+
+A dataframe with 430 journal titles and their respective sitemap codes
+
+## Agriculture
+
+A dataframe with information of papers of the journal MDPI Agriculture
+
+## Horticulturae
+
+A dataframe with information of papers of the journal MDPI Horticulturae
+
+## Submit your dataset
+
+\[instructions here\]

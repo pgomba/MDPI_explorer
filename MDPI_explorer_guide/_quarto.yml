@@ -21,6 +21,8 @@ website:
     contents:
       - href: index.qmd
         text: Tutorial
+      - href: datasets.qmd
+        text: Datasets
  
   site-url: 'https://pgomba.github.io/MDPI_explorer/'
   site-path: '/'

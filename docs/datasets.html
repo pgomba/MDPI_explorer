@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MDPIexploreR - MDPIexploreR - A guide</title>
+<title>MDPIexploreR - Datasets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -97,13 +63,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="MDPIexploreR - MDPIexploreR - A guide">
+<meta property="og:title" content="MDPIexploreR - Datasets">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://pgomba.github.io/MDPI_explorer/images/agriculture_summary_graph.png">
 <meta property="og:site-name" content="MDPIexploreR">
-<meta property="og:image:height" content="1690">
-<meta property="og:image:width" content="3003">
-<meta name="twitter:title" content="MDPIexploreR - MDPIexploreR - A guide">
+<meta name="twitter:title" content="MDPIexploreR - Datasets">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_logo.png">
 <meta name="twitter:creator" content="@pagomba">
@@ -121,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Tutorial</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datasets.html">Datasets</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -145,13 +108,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorial</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Datasets</span></a>
   </div>
 </li>
@@ -166,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MDPIexploreR - A guide</h1>
+<h1 class="title">Datasets</h1>
 </div>
 
 
@@ -181,95 +144,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="background" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="background">Background</h2>
-<p>Inspired by 2021 <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a>’s blog (<a href="https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/">Is MDPI a predatory publisher?</a>), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with <a href="https://fediscience.org/@MarkHanson">Mark Hanson</a>, <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a> and <a href="https://twitter.com/danbrockington">Dan Brockington</a> exploring the current Strain on Scientific Publishing [<a href="https://the-strain-on-scientific-publishing.github.io/website/">Link to project</a>] [<a href="https://arxiv.org/abs/2309.15884">Link to preprint</a>]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 to plot this data and several datasets to play with.</p>
+<section id="mdpi_journals" class="level2">
+<h2 class="anchored" data-anchor-id="mdpi_journals">MDPI_journals</h2>
+<p>A dataframe with 430 journal titles and their respective sitemap codes</p>
 </section>
-<section id="installing-mdpiexplorer" class="level2">
-<h2 class="anchored" data-anchor-id="installing-mdpiexplorer">Installing MDPIexploreR</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"pgomba/MDPI_explorer"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MDPIexploreR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Last update: December 2023</p>
-</div>
-</div>
+<section id="agriculture" class="level2">
+<h2 class="anchored" data-anchor-id="agriculture">Agriculture</h2>
+<p>A dataframe with information of papers of the journal MDPI Agriculture</p>
 </section>
-<section id="data-extracting-functions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="data-extracting-functions">Data extracting functions</h2>
-<p><code>journal_papers()</code>: This function looks into the target journal sitemap and returns a vector containing all journal papers URLs. To use it, it requires a string with the code name of the target journal:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urls<span class="ot">&lt;-</span><span class="fu">journal_papers</span>(<span class="st">"agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The journal code name usually coincides with the journal title, but this is not always the case. To find the code name for your journal of interest check the dataset <code>MDPI_journals</code>, included in the package:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MDPI_journals<span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                               name            code
-1                         Acoustics       acoustics
-2                         Actuators       actuators
-3           Administrative Sciences          admsci
-4                       Adolescents     adolescents
-5  Advances in Respiratory Medicine             arm
-6                       Aerobiology     aerobiology
-7                         Aerospace       aerospace
-8                       Agriculture     agriculture
-9                   AgriEngineering agriengineering
-10                    Agrochemicals   agrochemicals</code></pre>
-</div>
-</div>
-<p><code>articles_info()</code>: Uses the vector, or a sample from the vector obtained via <code>journal_papers()</code> to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape all url values leaving 2 seconds between iterations</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>) </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape 1000 random papers from the url vector every 5 seconds</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>,<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A stable internet connection is recommended, specially for web scraping large numbers of papers</p>
-</div>
-</div>
+<section id="horticulturae" class="level2">
+<h2 class="anchored" data-anchor-id="horticulturae">Horticulturae</h2>
+<p>A dataframe with information of papers of the journal MDPI Horticulturae</p>
 </section>
-<section id="plotting-functions" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-functions">Plotting functions</h2>
-<p>The plotting functions help to summarize the collected data. They only need a data.frame obtained via <code>articles_info()</code> and a string with the name of the journal. Some examples:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_summary_graph.png" class="img-fluid"></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_average_graph.png" class="img-fluid"></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issues_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_issues_graph.png" class="img-fluid"></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_types_graph.png" class="img-fluid"></p>
+<section id="submit-your-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="submit-your-dataset">Submit your dataset</h2>
+<p>[instructions here]</p>
 
 
 </section>
