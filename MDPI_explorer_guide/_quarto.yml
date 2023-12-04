@@ -4,6 +4,8 @@ project:
 
 
 website:
+  navbar: true
+  page-navigation: true
   title: "MDPIexploreR"
   favicon: images/favicon.ico
   sidebar:
@@ -17,7 +19,6 @@ website:
           href: https://github.com/pgomba/MDPI_explorer
     style: "docked"
     search: false
-    collapse-level: 0 
     contents:
       - href: index.qmd
         text: Tutorial
@@ -37,6 +38,7 @@ format:
       light: cosmo
       dark: darkly
     css: styles.css
+    toc: true
 
 editor: visual
       
