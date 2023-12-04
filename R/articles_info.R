@@ -38,15 +38,26 @@ articles_info <- function(vector,sleep,sample_size) {
         html_nodes(".belongsTo")%>%
         html_text2()
       
+      if (identical( ex_paper,character(0))) {
+        ex_paper<-"no"
+      } else {
+        ex_paper<- ex_paper}
+      
       if (identical( ex_paper2,character(0))) {
         ex_paper2<-"no"
       } else {
         ex_paper2<- ex_paper2}
       
+      
+      
       article_type<-paper%>% # Type of article
         html_nodes(".articletype")%>%
         html_text2()
       
+      if (identical( article_type,character(0))) {
+        article_type<-"no"
+      } else {
+        article_type<- article_type}
      
       
     },
@@ -55,12 +66,16 @@ articles_info <- function(vector,sleep,sample_size) {
       ex_paper2<<-"error"
       article_type<<-"error"
       
+      count<-count+1
+      setTxtProgressBar(pb, count)
+      
     })
     
     temp_df<-data.frame(i,ex_paper,ex_paper2,article_type)
     paper_data<-bind_rows(paper_data,temp_df)
     
     count<-count+1
+    Sys.sleep(sleep)
     setTxtProgressBar(pb, count)
     
   }
