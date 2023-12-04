@@ -29,7 +29,7 @@ website:
   site-path: '/'
   open-graph: true
   twitter-card:
-    card-style: summary_large_image
+    card-style: summary
     creator: "@pagomba"
     image: "images/mdpiexplorer_logo.png"
 format:
