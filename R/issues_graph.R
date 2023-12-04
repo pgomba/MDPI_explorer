@@ -5,11 +5,11 @@
 #' @export issues_graph
 #' @return A plot
 #' @examples
-#' issues_graph(agronomy,"Agronomy")
+#' issues_graph(agriculture,"Agriculture")
 
-issues_graph<-function(article_info,journal){
+issues_graph<-function(articles_info,journal){
   
-  data<-article_info
+  data<-articles_info
   
   issues_table<-data%>%
     group_by(year = floor_date(Accepted,"year"),issue_type)%>%

@@ -16,5 +16,5 @@ A vector
 Extracts all urls on journal sitemap but keeps only papers. Outputs a vector with urls
 }
 \examples{
-journal_papers("agronomy")
+journal_papers("agriculture")
 }

@@ -5,7 +5,7 @@
 #' @export summary_graph
 #' @return A plot
 #' @examples
-#' summary_graph(agronomy,"Agronomy")
+#' summary_graph(agriculture,"Agriculture")
 
 
 summary_graph <- function(articles_info,journal) {

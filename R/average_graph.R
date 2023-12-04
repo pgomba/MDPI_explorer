@@ -5,13 +5,13 @@
 #' @export average_graph
 #' @return A plot
 #' @examples
-#' average_graph(agronomy,"Agronomy")
+#' average_graph(agriculture,"Agiculture")
 
 
-average_graph<-function(article_info,journal){
+average_graph<-function(articles_info,journal){
   
   
-  data<-article_info
+  data<-articles_info
   
   average_time_month<-data%>%
     group_by(month = floor_date(Accepted, unit = "month"))%>%

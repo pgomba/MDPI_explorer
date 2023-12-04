@@ -18,5 +18,5 @@ A plot
 Creates a summary of the dataframe obtained via articles_info()
 }
 \examples{
-summary_graph(agronomy,"Agronomy")
+summary_graph(agriculture,"Agriculture")
 }

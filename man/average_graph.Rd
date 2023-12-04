@@ -4,12 +4,12 @@
 \alias{average_graph}
 \title{Creates a plot with monthly turnaround times using the obtained via articles_info()}
 \usage{
-average_graph(article_info, journal)
+average_graph(articles_info, journal)
 }
 \arguments{
-\item{journal}{A string with the name of the journal for graph title purposes}
-
 \item{articles_info}{Output dataframe from function articles_info.}
+
+\item{journal}{A string with the name of the journal for graph title purposes}
 }
 \value{
 A plot
@@ -18,5 +18,5 @@ A plot
 Creates a plot with monthly turnaround times using the obtained via articles_info()
 }
 \examples{
-average_graph(agronomy,"Agronomy")
+average_graph(agriculture,"Agiculture")
 }

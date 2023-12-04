@@ -4,7 +4,7 @@
 #' @return A vector
 #' @export journal_papers
 #' @examples
-#' journal_papers("agronomy")
+#' journal_papers("agriculture")
 
 journal_papers <- function(journal) {
 

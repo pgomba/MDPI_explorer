@@ -5,11 +5,11 @@
 #' @export types_graph
 #' @return A plot
 #' @examples
-#' types_graph(agronomy,"Agronomy")
+#' types_graph(agriculture,"Agriculture")
 
-types_graph<-function(article_info,journal){
+types_graph<-function(articles_info,journal){
   
-  data<-article_info
+  data<-articles_info
   
   article_type<-data%>%
     group_by(year = floor_date(Accepted,"year"),article_type)%>%

@@ -4,12 +4,12 @@
 \alias{issues_graph}
 \title{Creates a plot showing types of issues were articles where published}
 \usage{
-issues_graph(article_info, journal)
+issues_graph(articles_info, journal)
 }
 \arguments{
-\item{journal}{A string with the name of the journal for graph title purposes}
-
 \item{articles_info}{Output dataframe from function articles_info.}
+
+\item{journal}{A string with the name of the journal for graph title purposes}
 }
 \value{
 A plot
@@ -18,5 +18,5 @@ A plot
 Creates a plot showing types of issues were articles where published
 }
 \examples{
-issues_graph(agronomy,"Agronomy")
+issues_graph(agriculture,"Agriculture")
 }
