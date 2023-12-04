@@ -4,16 +4,47 @@ title: "Datasets"
 
 ## MDPI_journals
 
-A dataframe with 430 journal titles and their respective sitemap codes
+A dataframe with 430 journal titles and their respective sitemap codes.
+
+::: callout-note
+Last update: December 2023
+:::
+
+```{r echo=FALSE}
+library(MDPIexploreR)
+```
+
+```{r}
+MDPI_journals|>
+  head(10)
+```
 
 ## Agriculture
 
 A dataframe with information of papers of the journal MDPI Agriculture
 
+::: callout-note
+Last update: December 2023
+:::
+
+```{r}
+agriculture|>
+  head(5)
+```
+
 ## Horticulturae
 
 A dataframe with information of papers of the journal MDPI Horticulturae
 
-## Submit your dataset
+::: callout-note
+Last update: December 2023
+:::
 
-\[instructions here\]
+```{r}
+horticulturae|>
+  head(5)
+```
+
+## Submit your data set
+
+If you wish to submit your own MDPI journal data set for it to be part of the `MDPIexploreR` package, the best way is to send/push your `articles_info()` output via GitHub in `.rda` format.

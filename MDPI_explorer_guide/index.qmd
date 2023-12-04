@@ -4,7 +4,7 @@ title: "MDPIexploreR - A guide"
 
 ## Background {.unnumbered}
 
-Inspired by 2021 [Paolo Crosetto](https://twitter.com/PaoloCrosetto)'s blog ([Is MDPI a predatory publisher?](https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/)), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with [Mark Hanson](https://fediscience.org/@MarkHanson), [Paolo Crosetto](https://twitter.com/PaoloCrosetto) and [Dan Brockington](https://twitter.com/danbrockington) exploring the current Strain on Scientific Publishing \[[Link to project](https://the-strain-on-scientific-publishing.github.io/website/)\] \[[Link to preprint](https://arxiv.org/abs/2309.15884)\]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 to plot this data and several datasets to play with.
+Inspired by 2021 [Paolo Crosetto](https://twitter.com/PaoloCrosetto)'s blog ([Is MDPI a predatory publisher?](https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/)), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was first published, including an awesome collaboration with [Mark Hanson](https://fediscience.org/@MarkHanson), [Paolo Crosetto](https://twitter.com/PaoloCrosetto) and [Dan Brockington](https://twitter.com/danbrockington) exploring the current Strain on Scientific Publishing \[[Link to project](https://the-strain-on-scientific-publishing.github.io/website/)\] \[[Link to preprint](https://arxiv.org/abs/2309.15884)\]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 plotting functions and several datasets to play with.
 
 ## Installing MDPIexploreR
 
@@ -19,7 +19,7 @@ Last update: December 2023
 
 ## Data extracting functions {.unnumbered}
 
-`journal_papers()`: This function looks into the target journal sitemap and returns a vector containing all journal papers URLs. To use it, it requires a string with the code name of the target journal:
+`journal_papers()`: This function looks into the target journal sitemap and returns a vector with the URLs of all papers within. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but `journal_papers()` is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:
 
 ```{r eval=FALSE}
 
@@ -38,7 +38,7 @@ MDPI_journals|>
   head(10)
 ```
 
-`articles_info()`: Uses the vector, or a sample from the vector obtained via `journal_papers()` to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.
+`articles_info()`: Uses the vector produced by `journal_papers()` to, by web scraping each URL, obtain a data frame with information on editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (I recommend using 2 seconds to avoid having much impact in their servers) and, the possibility of only scraping a sample of all URLs
 
 ```{r eval=FALSE}
 
@@ -86,3 +86,9 @@ types_graph(data,"Agriculture")
 ```
 
 ![](images/agriculture_types_graph.png)
+
+## Tips & Tricks
+
+::: callout-tip
+Web scraping large amounts of URLs can be time consuming (2 seconds per paper, depending on delay) and many things can go wrong during the process (problematic URLs, being kicked out of the server...). My advice is to split large URL vectors in smaller ones
+:::

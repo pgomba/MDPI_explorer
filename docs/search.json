@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "MDPIexploreR - A guide",
     "section": "",
-    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 to plot this data and several datasets to play with."
+    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was first published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 plotting functions and several datasets to play with."
   },
   {
     "objectID": "index.html#background",
     "href": "index.html#background",
     "title": "MDPIexploreR - A guide",
     "section": "",
-    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 to plot this data and several datasets to play with."
+    "text": "Inspired by 2021 Paolo Crosetto’s blog (Is MDPI a predatory publisher?), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was first published, including an awesome collaboration with Mark Hanson, Paolo Crosetto and Dan Brockington exploring the current Strain on Scientific Publishing [Link to project] [Link to preprint]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 plotting functions and several datasets to play with."
   },
   {
     "objectID": "index.html#installing-mdpiexplorer",
@@ -25,7 +25,7 @@
     "href": "index.html#data-extracting-functions",
     "title": "MDPIexploreR - A guide",
     "section": "Data extracting functions",
-    "text": "Data extracting functions\njournal_papers(): This function looks into the target journal sitemap and returns a vector containing all journal papers URLs. To use it, it requires a string with the code name of the target journal:\n\nurls&lt;-journal_papers(\"agriculture\")\n\nThe journal code name usually coincides with the journal title, but this is not always the case. To find the code name for your journal of interest check the dataset MDPI_journals, included in the package:\n\nMDPI_journals|&gt;\n  head(10)\n\n                               name            code\n1                         Acoustics       acoustics\n2                         Actuators       actuators\n3           Administrative Sciences          admsci\n4                       Adolescents     adolescents\n5  Advances in Respiratory Medicine             arm\n6                       Aerobiology     aerobiology\n7                         Aerospace       aerospace\n8                       Agriculture     agriculture\n9                   AgriEngineering agriengineering\n10                    Agrochemicals   agrochemicals\n\n\narticles_info(): Uses the vector, or a sample from the vector obtained via journal_papers() to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.\n\n#Will scrape all url values leaving 2 seconds between iterations\ndata&lt;-articles_info(urls,2) \n\n#Will scrape 1000 random papers from the url vector every 5 seconds\ndata&lt;-articles_info(urls,2,1000)\n\n\n\n\n\n\n\nImportant\n\n\n\nA stable internet connection is recommended, specially for web scraping large numbers of papers"
+    "text": "Data extracting functions\njournal_papers(): This function looks into the target journal sitemap and returns a vector with the URLs of all papers within. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but journal_papers() is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:\n\nurls&lt;-journal_papers(\"agriculture\")\n\nThe journal code name usually coincides with the journal title, but this is not always the case. To find the code name for your journal of interest check the dataset MDPI_journals, included in the package:\n\nMDPI_journals|&gt;\n  head(10)\n\n                               name            code\n1                         Acoustics       acoustics\n2                         Actuators       actuators\n3           Administrative Sciences          admsci\n4                       Adolescents     adolescents\n5  Advances in Respiratory Medicine             arm\n6                       Aerobiology     aerobiology\n7                         Aerospace       aerospace\n8                       Agriculture     agriculture\n9                   AgriEngineering agriengineering\n10                    Agrochemicals   agrochemicals\n\n\narticles_info(): Uses the vector produced by journal_papers() to, by web scraping each URL, obtain a data frame with information on editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (I recommend using 2 seconds to avoid having much impact in their servers) and, the possibility of only scraping a sample of all URLs\n\n#Will scrape all url values leaving 2 seconds between iterations\ndata&lt;-articles_info(urls,2) \n\n#Will scrape 1000 random papers from the url vector every 5 seconds\ndata&lt;-articles_info(urls,2,1000)\n\n\n\n\n\n\n\nImportant\n\n\n\nA stable internet connection is recommended, specially for web scraping large numbers of papers"
   },
   {
     "objectID": "index.html#plotting-functions",
@@ -35,38 +35,52 @@
     "text": "Plotting functions\nThe plotting functions help to summarize the collected data. They only need a data.frame obtained via articles_info() and a string with the name of the journal. Some examples:\n\nsummary_graph(data,\"Agriculture\")\n\n\n\naverage_graph(data,\"Agriculture\")\n\n\n\nissues_graph(data,\"Agriculture\")\n\n\n\ntypes_graph(data,\"Agriculture\")"
   },
   {
+    "objectID": "index.html#tips-tricks",
+    "href": "index.html#tips-tricks",
+    "title": "MDPIexploreR - A guide",
+    "section": "Tips & Tricks",
+    "text": "Tips & Tricks\n\n\n\n\n\n\nTip\n\n\n\nWeb scraping large amounts of URLs can be time consuming (2 seconds per paper, depending on delay) and many things can go wrong during the process (problematic URLs, being kicked out of the server…). My advice is to split large URL vectors in smaller ones"
+  },
+  {
     "objectID": "datasets.html",
     "href": "datasets.html",
     "title": "Datasets",
     "section": "",
-    "text": "A dataframe with 430 journal titles and their respective sitemap codes"
+    "text": "A dataframe with 430 journal titles and their respective sitemap codes.\n\n\n\n\n\n\nNote\n\n\n\nLast update: December 2023\n\n\n\nMDPI_journals|&gt;\n  head(10)\n\n                               name            code\n1                         Acoustics       acoustics\n2                         Actuators       actuators\n3           Administrative Sciences          admsci\n4                       Adolescents     adolescents\n5  Advances in Respiratory Medicine             arm\n6                       Aerobiology     aerobiology\n7                         Aerospace       aerospace\n8                       Agriculture     agriculture\n9                   AgriEngineering agriengineering\n10                    Agrochemicals   agrochemicals"
   },
   {
     "objectID": "datasets.html#mdpi_journals",
     "href": "datasets.html#mdpi_journals",
     "title": "Datasets",
     "section": "",
-    "text": "A dataframe with 430 journal titles and their respective sitemap codes"
+    "text": "A dataframe with 430 journal titles and their respective sitemap codes.\n\n\n\n\n\n\nNote\n\n\n\nLast update: December 2023\n\n\n\nMDPI_journals|&gt;\n  head(10)\n\n                               name            code\n1                         Acoustics       acoustics\n2                         Actuators       actuators\n3           Administrative Sciences          admsci\n4                       Adolescents     adolescents\n5  Advances in Respiratory Medicine             arm\n6                       Aerobiology     aerobiology\n7                         Aerospace       aerospace\n8                       Agriculture     agriculture\n9                   AgriEngineering agriengineering\n10                    Agrochemicals   agrochemicals"
   },
   {
     "objectID": "datasets.html#agriculture",
     "href": "datasets.html#agriculture",
     "title": "Datasets",
     "section": "Agriculture",
-    "text": "Agriculture\nA dataframe with information of papers of the journal MDPI Agriculture"
+    "text": "Agriculture\nA dataframe with information of papers of the journal MDPI Agriculture\n\n\n\n\n\n\nNote\n\n\n\nLast update: December 2023\n\n\n\nagriculture|&gt;\n  head(5)\n\n                                        i article_type   Received   Accepted\n1 https://www.mdpi.com/2077-0472/11/5/452      Article 2021-04-01 2021-05-13\n2 https://www.mdpi.com/2077-0472/11/5/453       Review 2021-04-30 2021-05-14\n3 https://www.mdpi.com/2077-0472/11/5/454      Article 2021-04-08 2021-05-16\n4 https://www.mdpi.com/2077-0472/11/5/455      Article 2021-04-08 2021-05-15\n5 https://www.mdpi.com/2077-0472/11/5/456      Article 2021-03-31 2021-05-14\n      tat year    issue_type\n1 42 days 2021            No\n2 14 days 2021 Special Issue\n3 38 days 2021 Special Issue\n4 37 days 2021 Special Issue\n5 44 days 2021 Special Issue"
   },
   {
     "objectID": "datasets.html#horticulturae",
     "href": "datasets.html#horticulturae",
     "title": "Datasets",
     "section": "Horticulturae",
-    "text": "Horticulturae\nA dataframe with information of papers of the journal MDPI Horticulturae"
+    "text": "Horticulturae\nA dataframe with information of papers of the journal MDPI Horticulturae\n\n\n\n\n\n\nNote\n\n\n\nLast update: December 2023\n\n\n\nhorticulturae|&gt;\n  head(5)\n\n                                         i article_type   Received   Accepted\n1 https://www.mdpi.com/2311-7524/9/12/1295      Article 2023-11-04 2023-11-29\n2   https://www.mdpi.com/2311-7524/7/8/226      Article 2021-07-15 2021-08-02\n3    https://www.mdpi.com/2311-7524/5/1/16      Article 2018-12-26 2019-01-28\n4   https://www.mdpi.com/2311-7524/9/6/706      Article 2023-05-09 2023-06-13\n5    https://www.mdpi.com/2311-7524/8/1/74      Article 2021-11-29 2022-01-07\n      tat year    issue_type\n1 25 days 2023       Section\n2 18 days 2021 Special Issue\n3 33 days 2019 Special Issue\n4 35 days 2023       Section\n5 39 days 2022 Special Issue"
   },
   {
     "objectID": "datasets.html#submit-your-dataset",
     "href": "datasets.html#submit-your-dataset",
     "title": "Datasets",
     "section": "Submit your dataset",
-    "text": "Submit your dataset\n[instructions here]"
+    "text": "Submit your dataset\nIf you wish to submit your own MDPI journal dataset for it to be part of the MDPIexploreR package, the best way is to send/push your articles_info() output via GitHub in .rda format."
+  },
+  {
+    "objectID": "datasets.html#submit-your-data-set",
+    "href": "datasets.html#submit-your-data-set",
+    "title": "Datasets",
+    "section": "Submit your data set",
+    "text": "Submit your data set\nIf you wish to submit your own MDPI journal data set for it to be part of the MDPIexploreR package, the best way is to send/push your articles_info() output via GitHub in .rda format."
   }
 ]

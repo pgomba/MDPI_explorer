@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="background" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="background">Background</h2>
-<p>Inspired by 2021 <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a>’s blog (<a href="https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/">Is MDPI a predatory publisher?</a>), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was published, including an awesome collaboration with <a href="https://fediscience.org/@MarkHanson">Mark Hanson</a>, <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a> and <a href="https://twitter.com/danbrockington">Dan Brockington</a> exploring the current Strain on Scientific Publishing [<a href="https://the-strain-on-scientific-publishing.github.io/website/">Link to project</a>] [<a href="https://arxiv.org/abs/2309.15884">Link to preprint</a>]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 to plot this data and several datasets to play with.</p>
+<p>Inspired by 2021 <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a>’s blog (<a href="https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/">Is MDPI a predatory publisher?</a>), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was first published, including an awesome collaboration with <a href="https://fediscience.org/@MarkHanson">Mark Hanson</a>, <a href="https://twitter.com/PaoloCrosetto">Paolo Crosetto</a> and <a href="https://twitter.com/danbrockington">Dan Brockington</a> exploring the current Strain on Scientific Publishing [<a href="https://the-strain-on-scientific-publishing.github.io/website/">Link to project</a>] [<a href="https://arxiv.org/abs/2309.15884">Link to preprint</a>]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 plotting functions and several datasets to play with.</p>
 </section>
 <section id="installing-mdpiexplorer" class="level2">
 <h2 class="anchored" data-anchor-id="installing-mdpiexplorer">Installing MDPIexploreR</h2>
@@ -207,7 +207,7 @@ Note
 </section>
 <section id="data-extracting-functions" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="data-extracting-functions">Data extracting functions</h2>
-<p><code>journal_papers()</code>: This function looks into the target journal sitemap and returns a vector containing all journal papers URLs. To use it, it requires a string with the code name of the target journal:</p>
+<p><code>journal_papers()</code>: This function looks into the target journal sitemap and returns a vector with the URLs of all papers within. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but <code>journal_papers()</code> is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urls<span class="ot">&lt;-</span><span class="fu">journal_papers</span>(<span class="st">"agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -229,7 +229,7 @@ Note
 10                    Agrochemicals   agrochemicals</code></pre>
 </div>
 </div>
-<p><code>articles_info()</code>: Uses the vector, or a sample from the vector obtained via <code>journal_papers()</code> to web scrap article data, outputting a data frame. The function requires the user to enter a delay (in seconds) between scraping instances. This is useful to not get blocked by the scraped server (suggested time = 2 seconds). Additionally, it is possible to scrap a random sample of the total of papers.</p>
+<p><code>articles_info()</code>: Uses the vector produced by <code>journal_papers()</code> to, by web scraping each URL, obtain a data frame with information on editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (I recommend using 2 seconds to avoid having much impact in their servers) and, the possibility of only scraping a sample of all URLs</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape all url values leaving 2 seconds between iterations</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>) </span>
@@ -270,6 +270,22 @@ Important
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_types_graph.png" class="img-fluid"></p>
+</section>
+<section id="tips-tricks" class="level2">
+<h2 class="anchored" data-anchor-id="tips-tricks">Tips &amp; Tricks</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Web scraping large amounts of URLs can be time consuming (2 seconds per paper, depending on delay) and many things can go wrong during the process (problematic URLs, being kicked out of the server…). My advice is to split large URL vectors in smaller ones</p>
+</div>
+</div>
 
 
 </section>

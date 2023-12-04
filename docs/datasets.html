@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -146,19 +180,111 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="mdpi_journals" class="level2">
 <h2 class="anchored" data-anchor-id="mdpi_journals">MDPI_journals</h2>
-<p>A dataframe with 430 journal titles and their respective sitemap codes</p>
+<p>A dataframe with 430 journal titles and their respective sitemap codes.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Last update: December 2023</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>MDPI_journals<span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               name            code
+1                         Acoustics       acoustics
+2                         Actuators       actuators
+3           Administrative Sciences          admsci
+4                       Adolescents     adolescents
+5  Advances in Respiratory Medicine             arm
+6                       Aerobiology     aerobiology
+7                         Aerospace       aerospace
+8                       Agriculture     agriculture
+9                   AgriEngineering agriengineering
+10                    Agrochemicals   agrochemicals</code></pre>
+</div>
+</div>
 </section>
 <section id="agriculture" class="level2">
 <h2 class="anchored" data-anchor-id="agriculture">Agriculture</h2>
 <p>A dataframe with information of papers of the journal MDPI Agriculture</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Last update: December 2023</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>agriculture<span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                        i article_type   Received   Accepted
+1 https://www.mdpi.com/2077-0472/11/5/452      Article 2021-04-01 2021-05-13
+2 https://www.mdpi.com/2077-0472/11/5/453       Review 2021-04-30 2021-05-14
+3 https://www.mdpi.com/2077-0472/11/5/454      Article 2021-04-08 2021-05-16
+4 https://www.mdpi.com/2077-0472/11/5/455      Article 2021-04-08 2021-05-15
+5 https://www.mdpi.com/2077-0472/11/5/456      Article 2021-03-31 2021-05-14
+      tat year    issue_type
+1 42 days 2021            No
+2 14 days 2021 Special Issue
+3 38 days 2021 Special Issue
+4 37 days 2021 Special Issue
+5 44 days 2021 Special Issue</code></pre>
+</div>
+</div>
 </section>
 <section id="horticulturae" class="level2">
 <h2 class="anchored" data-anchor-id="horticulturae">Horticulturae</h2>
 <p>A dataframe with information of papers of the journal MDPI Horticulturae</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Last update: December 2023</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>horticulturae<span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         i article_type   Received   Accepted
+1 https://www.mdpi.com/2311-7524/9/12/1295      Article 2023-11-04 2023-11-29
+2   https://www.mdpi.com/2311-7524/7/8/226      Article 2021-07-15 2021-08-02
+3    https://www.mdpi.com/2311-7524/5/1/16      Article 2018-12-26 2019-01-28
+4   https://www.mdpi.com/2311-7524/9/6/706      Article 2023-05-09 2023-06-13
+5    https://www.mdpi.com/2311-7524/8/1/74      Article 2021-11-29 2022-01-07
+      tat year    issue_type
+1 25 days 2023       Section
+2 18 days 2021 Special Issue
+3 33 days 2019 Special Issue
+4 35 days 2023       Section
+5 39 days 2022 Special Issue</code></pre>
+</div>
+</div>
 </section>
-<section id="submit-your-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="submit-your-dataset">Submit your dataset</h2>
-<p>[instructions here]</p>
+<section id="submit-your-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="submit-your-data-set">Submit your data set</h2>
+<p>If you wish to submit your own MDPI journal data set for it to be part of the <code>MDPIexploreR</code> package, the best way is to send/push your <code>articles_info()</code> output via GitHub in <code>.rda</code> format.</p>
 
 
 </section>
