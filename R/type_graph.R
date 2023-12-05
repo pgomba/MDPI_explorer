@@ -21,12 +21,12 @@ types_graph<-function(articles_info,journal){
     theme_classic()+
     theme(text=element_text(size=20),
           plot.title = element_text(size=14))+
-    theme(axis.line = element_line(color="white",size = 2),
+    theme(axis.line = element_line(color="white",linewidth = 2),
           axis.text = element_text(color="white"),
           text=element_text(size=16,color = "white"),
           panel.background = element_rect(fill = "#272822"),
           plot.background = element_rect(fill = "#272822"),
-          legend.position = c(0.25, 0.60),
+          legend.position = "bottom",
           legend.background = element_rect(fill = "#272822"))+
     labs(fill="Type",x="Accepted", y="Number of publications", title = paste0("MDPI ",str_to_title(journal),". Article types"))
   

@@ -27,9 +27,9 @@ issues_graph<-function(articles_info,journal){
           text=element_text(size=16,color = "white"),
           panel.background = element_rect(fill = "#272822"),
           plot.background = element_rect(fill = "#272822"),
-          legend.position = c(0.2, 0.8),
+          legend.position = "bottom",
           legend.background = element_rect(fill = "#272822"))+
-    labs(fill="Is part of a special issue?",x="Published", y="Number of publications", title = paste0("MDPI ",str_to_title(journal),". Issues"))
+    labs(fill="Is part of a special issue?",x="Accepted", y="Number of publications", title = paste0("MDPI ",str_to_title(journal),". Issues"))
   
   graph
   
