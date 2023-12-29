@@ -1,5 +1,5 @@
 Package: MDPIexploreR
-Title: MDPIexploreR. A series of functions to explore MDPI journals data 
+Title: MDPIexploreR. Functions to explore MDPI journals. 
 Version: 0.0.0.1
 Authors@R: 
     person("Pablo", "Gómez Barreiro", , "pablogomezbr@hotmail.es", role = c("aut", "cre"),
