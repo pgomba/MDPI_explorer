@@ -2,11 +2,11 @@
 #' @import magrittr rvest
 #' @param journal A string containing the name of a MDPI journal
 #' @return A vector
-#' @export journal_papers
+#' @export article_find
 #' @examples
-#' journal_papers("agriculture")
+#' article_find("agriculture")
 
-journal_papers <- function(journal) {
+article_find <- function(journal) {
 
   sitemap<-read_html(paste0("https://www.mdpi.com/sitemap/sitemap.",journal,".xml"))%>% #Here we obtain all links from the sitemap, but needs some cleaning
     html_nodes("loc")%>%
