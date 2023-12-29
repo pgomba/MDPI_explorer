@@ -4,7 +4,11 @@ title: "MDPIexploreR - A guide"
 
 ## Background {.unnumbered}
 
-Inspired by 2021 [Paolo Crosetto](https://twitter.com/PaoloCrosetto)'s blog ([Is MDPI a predatory publisher?](https://paolocrosetto.wordpress.com/2021/04/12/is-mdpi-a-predatory-publisher/)), I wanted to see for myself some of MDPI´s journal metrics, obtain factual data and, help others to do the same. A lot has happened since this repository/guide was first published, including an awesome collaboration with [Mark Hanson](https://fediscience.org/@MarkHanson), [Paolo Crosetto](https://twitter.com/PaoloCrosetto) and [Dan Brockington](https://twitter.com/danbrockington) exploring the current Strain on Scientific Publishing \[[Link to project](https://the-strain-on-scientific-publishing.github.io/website/)\] \[[Link to preprint](https://arxiv.org/abs/2309.15884)\]. Initially, the repository was a collection of scripts to explore MDPI journals. Now, is been transformed into a full R package, with 2 functions to obtain data, 4 plotting functions and several datasets to play with.
+Ever changing scientific publishing strategies shape academic communications.
+
+To date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). "[The Strain on Scientific Publishing](https://arxiv.org/abs/2309.15884)" highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.
+
+This R package intends to help users to obtain factual data from MDPI's journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues.
 
 ## Installing MDPIexploreR
 
@@ -19,7 +23,7 @@ Last update: December 2023
 
 ## Data extracting functions {.unnumbered}
 
-`journal_papers()`: This function looks into the target journal sitemap and returns a vector with the URLs of all papers within. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but `journal_papers()` is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:
+`article_find()`: The sole purpose of this function is to compile a vector with URLs for the papers of the target journal. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but `article_find()` is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:
 
 ```{r eval=FALSE}
 
@@ -27,7 +31,7 @@ urls<-journal_papers("agriculture")
 
 ```
 
-The journal code name usually coincides with the journal title, but this is not always the case. To find the code name for your journal of interest check the dataset `MDPI_journals`, included in the package:
+The journal code name usually coincides with the journal title, but this is not always the case if the journal name is too long. To find the code name for your journal of interest check the dataset `MDPI_journals`, included in the package:
 
 ```{r message=FALSE, echo=FALSE }
 library(MDPIexploreR)
@@ -53,6 +57,19 @@ data<-articles_info(urls,2,1000)
 ::: callout-important
 A stable internet connection is recommended, specially for web scraping large numbers of papers
 :::
+
+## Special issues & guest editors.
+
+As per MDPI Special Issues policy, these "may publish contributions from the Guest Editor(s), but the number of such contributions should be limited to 25%". The function `guest_editor()` finds all closed special issues and calculate the proportion of articles with guest editors (`prop_flag` column) in then, including an option to delay special issues iterations. Additionally, calculates the difference between when the special issue was closed and the publication time of the last accepted article.
+
+```{r eval=FALSE}
+guest_editor("sustainability",2)
+
+```
+
+![](images/special_issue.PNG){fig-align="center"}
+
+This function is inspired by [MA Oviedo-García](https://twitter.com/maoviedogarcia) work on MDPI's special issues.
 
 ## Plotting functions
 

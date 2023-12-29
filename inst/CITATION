@@ -1,7 +1,8 @@
 bibentry(
   bibtype  = "misc",
   title    = "MDPIexploreR. Functions to explore MDPI journals.",
-  author   = "Pablo Gómez Barreiro",
+  author   = "Gómez Barreiro, Pablo",
   year     = "2024",
   url      = "https://pgomba.github.io/MDPI_explorer/" 
+  
 )
