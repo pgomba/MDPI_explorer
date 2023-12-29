@@ -29,9 +29,9 @@ website:
   site-path: '/'
   open-graph: true
   twitter-card:
-    card-style: summary
+    card-style: summary_large_image
     creator: "@pagomba"
-    image: "images/mdpiexplorer_logo.png"
+    image: "images/mdpiexplorer_tc.png"
 format:
   html:
     theme: 
