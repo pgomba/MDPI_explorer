@@ -27,7 +27,9 @@ website:
  
   site-url: 'https://pgomba.github.io/MDPI_explorer/'
   site-path: '/'
-  open-graph: true
+  open-graph: 
+    image: "images/mdpiexplorer_tc.png"
+    site-name: "MDPIexploreR"
   twitter-card:
     card-style: summary_large_image
     creator: "@pagomba"
