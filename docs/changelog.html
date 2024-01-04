@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MDPIexploreR - MDPIexploreR - A guide</title>
+<title>MDPIexploreR - Changelog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -63,7 +29,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./datasets.html" rel="next">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -98,13 +63,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="MDPIexploreR - MDPIexploreR - A guide">
+<meta property="og:title" content="MDPIexploreR - Changelog">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_tc.png">
 <meta property="og:site-name" content="MDPIexploreR">
 <meta property="og:image:height" content="364">
 <meta property="og:image:width" content="600">
-<meta name="twitter:title" content="MDPIexploreR - MDPIexploreR - A guide">
+<meta name="twitter:title" content="MDPIexploreR - Changelog">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_tc.png">
 <meta name="twitter:creator" content="@pagomba">
@@ -135,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Tutorial</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Changelog</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -158,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorial</span></a>
   </div>
 </li>
@@ -184,12 +149,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
-  <li><a href="#installing-mdpiexplorer" id="toc-installing-mdpiexplorer" class="nav-link" data-scroll-target="#installing-mdpiexplorer">Installing MDPIexploreR</a></li>
-  <li><a href="#data-extracting-functions" id="toc-data-extracting-functions" class="nav-link" data-scroll-target="#data-extracting-functions">Data extracting functions</a></li>
-  <li><a href="#special-issues-guest-editors." id="toc-special-issues-guest-editors." class="nav-link" data-scroll-target="#special-issues-guest-editors.">Special issues &amp; guest editors.</a></li>
-  <li><a href="#plotting-functions" id="toc-plotting-functions" class="nav-link" data-scroll-target="#plotting-functions">Plotting functions</a></li>
-  <li><a href="#tips-tricks" id="toc-tips-tricks" class="nav-link" data-scroll-target="#tips-tricks">Tips &amp; Tricks</a></li>
+  <li><a href="#v.-0.0.1.1-4-jan_23" id="toc-v.-0.0.1.1-4-jan_23" class="nav-link active" data-scroll-target="#v.-0.0.1.1-4-jan_23">v. 0.0.1.1 (4-Jan_23)</a></li>
+  <li><a href="#v.-0.0.0.1-initial" id="toc-v.-0.0.0.1-initial" class="nav-link" data-scroll-target="#v.-0.0.0.1-initial">v. 0.0.0.1 (Initial)</a></li>
   </ul>
 </nav>
     </div>
@@ -198,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MDPIexploreR - A guide</h1>
+<h1 class="title">Changelog</h1>
 </div>
 
 
@@ -213,126 +174,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="background" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="background">Background</h2>
-<p>Ever changing scientific publishing strategies shape academic communications.</p>
-<p>To date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). “<a href="https://arxiv.org/abs/2309.15884">The Strain on Scientific Publishing</a>” highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.</p>
-<p>This R package intends to help users to obtain factual data from MDPI’s journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues.</p>
+<section id="v.-0.0.1.1-4-jan_23" class="level2">
+<h2 class="anchored" data-anchor-id="v.-0.0.1.1-4-jan_23">v. 0.0.1.1 (4-Jan_23)</h2>
+<p><code>guest_editor()</code> now selects two first words of guest editors and authors names for comparison to account for discrepancies in number of surnames between guest editors and paper authors. (e.g.&nbsp;guest editor name = <em>Dr.&nbsp;Perico Palotes Fernández</em>, but author name is just <em>Perico Palotes</em>. ).</p>
+<p><code>guest_editor()</code> <em>d_over_deadline</em> output column now considers latest article submission date to a special issue instead of latest acceptance time.</p>
 </section>
-<section id="installing-mdpiexplorer" class="level2">
-<h2 class="anchored" data-anchor-id="installing-mdpiexplorer">Installing MDPIexploreR</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"pgomba/MDPI_explorer"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MDPIexploreR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Last update: December 2023</p>
-</div>
-</div>
-</section>
-<section id="data-extracting-functions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="data-extracting-functions">Data extracting functions</h2>
-<p><code>article_find()</code>: The sole purpose of this function is to compile a vector with URLs for the papers of the target journal. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but <code>article_find()</code> is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urls<span class="ot">&lt;-</span><span class="fu">journal_papers</span>(<span class="st">"agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The journal code name usually coincides with the journal title, but this is not always the case if the journal name is too long. To find the code name for your journal of interest check the dataset <code>MDPI_journals</code>, included in the package:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MDPI_journals<span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                               name            code
-1                         Acoustics       acoustics
-2                         Actuators       actuators
-3           Administrative Sciences          admsci
-4                       Adolescents     adolescents
-5  Advances in Respiratory Medicine             arm
-6                       Aerobiology     aerobiology
-7                         Aerospace       aerospace
-8                       Agriculture     agriculture
-9                   AgriEngineering agriengineering
-10                    Agrochemicals   agrochemicals</code></pre>
-</div>
-</div>
-<p><code>articles_info()</code>: Uses the vector produced by <code>journal_papers()</code> to, by web scraping each URL, obtain a data frame with information on editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (I recommend using 2 seconds to avoid having much impact in their servers) and, the possibility of only scraping a sample of all URLs</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape all url values leaving 2 seconds between iterations</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>) </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape 1000 random papers from the url vector every 5 seconds</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>,<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A stable internet connection is recommended, specially for web scraping large numbers of papers</p>
-</div>
-</div>
-</section>
-<section id="special-issues-guest-editors." class="level2">
-<h2 class="anchored" data-anchor-id="special-issues-guest-editors.">Special issues &amp; guest editors.</h2>
-<p>As per MDPI Special Issues policy, these “may publish contributions from the Guest Editor(s), but the number of such contributions should be limited to 25%”. The function <code>guest_editor()</code> finds all closed special issues and calculate the proportion of articles with guest editors (<code>prop_flag</code> column) in then, including an option to delay special issues iterations. Additionally, calculates the difference between when the special issue was closed and the publication time of the last accepted article.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">guest_editor</span>(<span class="st">"sustainability"</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/special_issue.PNG" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>This function is inspired by <a href="https://twitter.com/maoviedogarcia">MA Oviedo-García</a> work on MDPI’s special issues.</p>
-</section>
-<section id="plotting-functions" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-functions">Plotting functions</h2>
-<p>The plotting functions help to summarize the collected data. They only need a data.frame obtained via <code>articles_info()</code> and a string with the name of the journal. Some examples:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_summary_graph.png" class="img-fluid"></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_average_graph.png" class="img-fluid"></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issues_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_issues_graph.png" class="img-fluid"></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/agriculture_types_graph.png" class="img-fluid"></p>
-</section>
-<section id="tips-tricks" class="level2">
-<h2 class="anchored" data-anchor-id="tips-tricks">Tips &amp; Tricks</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Web scraping large amounts of URLs can be time consuming (2 seconds per paper, depending on delay) and many things can go wrong during the process (problematic URLs, being kicked out of the server…). My advice is to split large URL vectors in smaller ones</p>
-</div>
-</div>
+<section id="v.-0.0.0.1-initial" class="level2">
+<h2 class="anchored" data-anchor-id="v.-0.0.0.1-initial">v. 0.0.0.1 (Initial)</h2>
 
 
 </section>
@@ -686,15 +534,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./datasets.html" class="pagination-link">
-        <span class="nav-page-text">Datasets</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

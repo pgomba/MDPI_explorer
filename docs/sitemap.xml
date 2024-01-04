@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://pgomba.github.io/MDPI_explorer/changelog.html</loc>
+    <lastmod>2024-01-04T17:15:03.513Z</lastmod>
+  </url>
+  <url>
     <loc>https://pgomba.github.io/MDPI_explorer/datasets.html</loc>
-    <lastmod>2023-12-29T20:03:08.544Z</lastmod>
+    <lastmod>2024-01-04T17:15:05.360Z</lastmod>
   </url>
   <url>
     <loc>https://pgomba.github.io/MDPI_explorer/index.html</loc>
-    <lastmod>2023-12-29T20:03:10.382Z</lastmod>
+    <lastmod>2024-01-04T17:15:07.227Z</lastmod>
   </url>
 </urlset>

@@ -55,7 +55,8 @@ guest_editor <- function(journal, sleep) {
       html_nodes(".smaller-pictures .sciprofiles-link__name")%>%
       html_text2()
     
-    editors<-gsub("Dr. |Prof. |Prof. Dr. ","",editors)
+    editors<-gsub("Dr. |Prof. |Prof. Dr. ","",editors)%>%
+      word(start = 1,end = 2) #Keep two first items of names (see ch v 0.0.1.1)
     
     si_papers<-data%>%
       html_nodes(".article-content")%>%
@@ -67,13 +68,6 @@ guest_editor <- function(journal, sleep) {
       html_text2()
     deadline<-gsub("closed |\\(|\\)","",deadline)
     
-    last_published<-data%>%
-      html_nodes(".color-grey-dark")%>%
-      html_text2()
-    last_published<-word(last_published,start = -3,end = -1)
-    last_published<-as.Date(last_published,"%d %B %Y")
-    last_published<-max(last_published)
-    
     
     if (identical(si_papers,character(0))) { 
       temp_df<-data.frame(special_issue=i,num_papers=as.double("empty SI"),prop_flag=as.double("empty SI"))
@@ -84,10 +78,7 @@ guest_editor <- function(journal, sleep) {
       
     } else {
       
-      table<-data.frame(special_issue=character(),
-                        num_papers=double(),
-                        flags=numeric(),
-                        prop_flag=double(),
+      table<-data.frame(submitted=as.Date(character()), #ch v 0.0.1.1
                         stringsAsFactors=FALSE)
       
       for (j in si_papers) {
@@ -98,7 +89,14 @@ guest_editor <- function(journal, sleep) {
           html_nodes(".art-authors")%>%
           html_nodes(".sciprofiles-link__name")%>%
           html_text2()%>%
-          unique()
+          unique()%>%
+          word(start = 1,end = 2) #ch v 0.0.1.1
+        
+        submitted<-article%>% #ch v 0.0.1.1
+          html_nodes(".pubhistory span:nth-child(1)")%>%
+          html_text2()%>%
+          word(start = -3,end = -1)%>% 
+          as.Date("%d %B %Y")
         
         flag<-intersect(authors,editors) #outputs 1 when an editor is an author, 0 if not
         
@@ -109,15 +107,15 @@ guest_editor <- function(journal, sleep) {
         }
         
         MDPI_url<-j
-        temp_df<-data.frame(MDPI_url,flag)
+        temp_df<-data.frame(MDPI_url,flag,submitted)
         
         table<-bind_rows(table,temp_df)
         
       }
       
-      si_summary<-round(sum(table$flag)/length(table$MDPI_url),2)
-      temp_df<-data.frame(special_issue=i,num_papers=length(table$MDPI_url),flags=sum(table$flag),prop_flag=si_summary,deadline=as.Date(deadline,"%d %B %Y"), last_published)%>%
-        mutate(d_over_deadline=last_published-deadline)
+      si_summary<-round(sum(table$flag)/length(table$MDPI_url),3)
+      temp_df<-data.frame(special_issue=i,num_papers=length(table$MDPI_url),flags=sum(table$flag),prop_flag=si_summary,deadline=as.Date(deadline,"%d %B %Y"), latest_sub=max(table$submitted))%>%
+        mutate(d_over_deadline=deadline-submitted)
       special_issues_table<-bind_rows(special_issues_table,temp_df)
       Sys.sleep(sleep)
       count<-count+1
@@ -128,3 +126,5 @@ guest_editor <- function(journal, sleep) {
   }
   special_issues_table
 }
+
+test<-guest_editor("covid",1.5)
