@@ -85,6 +85,14 @@ guest_editor <- function(journal, sleep) {
         
         article<-read_html(paste0("https://www.mdpi.com",j))
         
+        artictype<-article%>%  # To jump over editorial type papers
+          html_nodes(".articletype")%>% # To jump over editorial type papers
+          html_text2() # To jump over editorial type papers
+        
+        if (artictype=="Editorial") { # To jump over editorial type papers
+          
+        } else {# To jump over editorial type papers
+        
         authors<-article%>%
           html_nodes(".art-authors")%>%
           html_nodes(".sciprofiles-link__name")%>%
@@ -110,6 +118,8 @@ guest_editor <- function(journal, sleep) {
         temp_df<-data.frame(MDPI_url,flag,submitted)
         
         table<-bind_rows(table,temp_df)
+        
+        }
         
       }
       
