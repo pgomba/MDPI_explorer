@@ -55,7 +55,7 @@ guest_editor <- function(journal, sleep) {
       html_nodes(".smaller-pictures .sciprofiles-link__name")%>%
       html_text2()
     
-    editors<-gsub("Dr. |Prof. |Prof. Dr. ","",editors)%>%
+    editors<-gsub("Dr. |Prof. |Prof. Dr. |Assoc. Prof. ","",editors)%>%
       word(start = 1,end = 2) #Keep two first items of names (see ch v 0.0.1.1)
     
     si_papers<-data%>%

@@ -8,4 +8,6 @@ title: "Changelog"
 
 `guest_editor()` *d_over_deadline* output column now considers latest article submission date to a special issue instead of latest acceptance time.
 
+`guest_editor()` Assoc. Prof. guest editors are now picked by the function too
+
 ## v. 0.0.0.1 (Initial)
