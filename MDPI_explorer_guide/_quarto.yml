@@ -24,7 +24,7 @@ website:
         text: Tutorial
       - href: datasets.qmd
         text: Datasets
-      - href: changelog.gmd
+      - href: changelog.qmd
         text: Changelog
  
   site-url: 'https://pgomba.github.io/MDPI_explorer/'
