@@ -19,7 +19,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
     sample_size=sample_size
   }
   
-  data<-sample(journals_urls,sample_size)
+  data<-sample(journal_urls,sample_size)
   
   special_issues_table<-data.frame(special_issue=character(),
                                    num_papers=double(),
