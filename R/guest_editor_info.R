@@ -14,7 +14,7 @@
 guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
   
   if (missing(sample_size)) {
-    sample_size=length(vector)
+    sample_size=length(journal_urls)
   }else{
     sample_size=sample_size
   }
@@ -28,7 +28,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
                                    stringsAsFactors=FALSE)
   
   
-  pb <- txtProgressBar(min = 0, max = length(special_issues), initial = 0,style=3) #Build progress bar
+  pb <- txtProgressBar(min = 0, max = length(urls), initial = 0,style=3) #Build progress bar
   count<-0
   
   for (i in urls) {
