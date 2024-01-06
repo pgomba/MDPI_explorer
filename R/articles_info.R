@@ -1,16 +1,18 @@
 #' Extracts data for each individual paper
 #' @param vector A vector with urls.
-#' @param sleep Number of seconds between scraping iterations
+#' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @param sample_size A number. How many papers do you want to explore from the main vector. Leave blank for all
 #' @import magrittr rvest dplyr lubridate stringr
 #' @export articles_info
 #' @return A data frame.
 #' @examples
 #' url<-c("https://www.mdpi.com/2073-4336/8/4/45","https://www.mdpi.com/2073-4336/11/3/39")
+#' \dont run{
 #' articles_info(url, 1.5)
+#' }
 
 
-articles_info <- function(vector,sleep,sample_size) {
+articles_info <- function(vector,sleep=2,sample_size) {
 
   if (missing(sample_size)) {
     sample_size=length(vector)

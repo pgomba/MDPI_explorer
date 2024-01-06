@@ -2,7 +2,8 @@
 % Please edit documentation in R/guest_editor.R
 \name{guest_editor}
 \alias{guest_editor}
-\title{Finds data on papers published by guest editors in their own special issues}
+\title{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+Function was deprecated and split in special_issue_finder and guest_editor_info()}
 \usage{
 guest_editor(journal, sleep)
 }
@@ -15,7 +16,8 @@ guest_editor(journal, sleep)
 A data frame.
 }
 \description{
-Finds data on papers published by guest editors in their own special issues
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+Function was deprecated and split in special_issue_finder and guest_editor_info()
 }
 \examples{
 \dontrun{

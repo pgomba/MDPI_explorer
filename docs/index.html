@@ -186,8 +186,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
   <li><a href="#installing-mdpiexplorer" id="toc-installing-mdpiexplorer" class="nav-link" data-scroll-target="#installing-mdpiexplorer">Installing MDPIexploreR</a></li>
-  <li><a href="#data-extracting-functions" id="toc-data-extracting-functions" class="nav-link" data-scroll-target="#data-extracting-functions">Data extracting functions</a></li>
-  <li><a href="#special-issues-guest-editors." id="toc-special-issues-guest-editors." class="nav-link" data-scroll-target="#special-issues-guest-editors.">Special issues &amp; guest editors.</a></li>
+  <li><a href="#data-collecting-functions" id="toc-data-collecting-functions" class="nav-link" data-scroll-target="#data-collecting-functions">Data collecting functions</a>
+  <ul class="collapse">
+  <li><a href="#article_find" id="toc-article_find" class="nav-link" data-scroll-target="#article_find">article_find()</a></li>
+  <li><a href="#articles_info" id="toc-articles_info" class="nav-link" data-scroll-target="#articles_info">articles_info()</a></li>
+  <li><a href="#special_issue_find" id="toc-special_issue_find" class="nav-link" data-scroll-target="#special_issue_find">special_issue_find()</a></li>
+  <li><a href="#guest_editor_info" id="toc-guest_editor_info" class="nav-link" data-scroll-target="#guest_editor_info">guest_editor_info()</a></li>
+  </ul></li>
   <li><a href="#plotting-functions" id="toc-plotting-functions" class="nav-link" data-scroll-target="#plotting-functions">Plotting functions</a></li>
   <li><a href="#tips-tricks" id="toc-tips-tricks" class="nav-link" data-scroll-target="#tips-tricks">Tips &amp; Tricks</a></li>
   </ul>
@@ -239,9 +244,11 @@ Note
 </div>
 </div>
 </section>
-<section id="data-extracting-functions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="data-extracting-functions">Data extracting functions</h2>
-<p><code>article_find()</code>: The sole purpose of this function is to compile a vector with URLs for the papers of the target journal. Some journals might have more than one sitemap (sitemaps are limited to 50,000 urls), but <code>article_find()</code> is able to solve dual sitemaps. To use the function is only necessary to input a string with the code name of the target journal:</p>
+<section id="data-collecting-functions" class="level2">
+<h2 class="anchored" data-anchor-id="data-collecting-functions">Data collecting functions</h2>
+<section id="article_find" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="article_find">article_find()</h3>
+<p>The sole purpose of <code>article_find()</code> is to output a vector with URLs from all available papers from the target journal. To do so, the function navigate the sitemap/s containing journal links and filter out those not belonging to scientific articles. The function requires as input the code of the target journal.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urls<span class="ot">&lt;-</span><span class="fu">journal_papers</span>(<span class="st">"agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -263,13 +270,16 @@ Note
 10                    Agrochemicals   agrochemicals</code></pre>
 </div>
 </div>
-<p><code>articles_info()</code>: Uses the vector produced by <code>journal_papers()</code> to, by web scraping each URL, obtain a data frame with information on editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (I recommend using 2 seconds to avoid having much impact in their servers) and, the possibility of only scraping a sample of all URLs</p>
+</section>
+<section id="articles_info" class="level3">
+<h3 class="anchored" data-anchor-id="articles_info">articles_info()</h3>
+<p>Banking on the results from <code>article_find()</code> or any vector with scientific papers URLs, <code>article_info()</code> web scrapes each URL to compile a data frame with information on each paper editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (2 seconds, by default) and, the possibility of only scraping a sample of all URLs.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape all url values leaving 2 seconds between iterations</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls) </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape 1000 random papers from the url vector every 5 seconds</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">2</span>,<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Will scrape 1000 random papers from the url vector every 1 seconds</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">articles_info</span>(urls,<span class="dv">1</span>,<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -285,36 +295,49 @@ Important
 </div>
 </div>
 </section>
-<section id="special-issues-guest-editors." class="level2">
-<h2 class="anchored" data-anchor-id="special-issues-guest-editors.">Special issues &amp; guest editors.</h2>
-<p>As per MDPI Special Issues policy, these “may publish contributions from the Guest Editor(s), but the number of such contributions should be limited to 25%”. The function <code>guest_editor()</code> finds all closed special issues and calculate the proportion of articles with guest editors (<code>prop_flag</code> column) in then, including an option to delay special issues iterations. Additionally, calculates the difference between when the special issue was closed and the publication time of the last accepted article.</p>
+<section id="special_issue_find" class="level3">
+<h3 class="anchored" data-anchor-id="special_issue_find">special_issue_find()</h3>
+<p>This function compiles all special issues available in the target journal and returns a vector with URLs. By default, finds only CLOSED special issues, but this behaviour can be changed by altering the type parameter to “open” or “all”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">guest_editor</span>(<span class="st">"sustainability"</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a vector with all CLOSED special issues from the journal Covid</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">&lt;-</span><span class="fu">special_issue_find</span>(<span class="st">"covid"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a vector with all special issues from the journal Covid</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">&lt;-</span><span class="fu">special_issue_find</span>(<span class="st">"covid"</span>, <span class="at">type=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/special_issue.PNG" class="img-fluid figure-img"></p>
-</figure>
+</section>
+<section id="guest_editor_info" class="level3">
+<h3 class="anchored" data-anchor-id="guest_editor_info">guest_editor_info()</h3>
+<p>Using a vector with special issues URLs, <code>guest_editor_info()</code> outputs a data frame containing information on number of non-editorial papers, the amount of papers on which guest editors have participated and a comparison between special issue closing date and when was the last article really submitted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">&lt;-</span><span class="fu">special_issue_find</span>(<span class="st">"covid"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data from all URLs, iterating every 3 seconds</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">guest_editor_info</span> (URLs, <span class="at">sleep=</span><span class="dv">3</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data from 2 URLs, iterating every 2 seconds (default)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">guest_editor_info</span> (URLs, <span class="at">sample_size=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function is inspired by <a href="https://twitter.com/maoviedogarcia">MA Oviedo-García</a> work on MDPI’s special issues.</p>
+</section>
 </section>
 <section id="plotting-functions" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-functions">Plotting functions</h2>
 <p>The plotting functions help to summarize the collected data. They only need a data.frame obtained via <code>articles_info()</code> and a string with the name of the journal. Some examples:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_summary_graph.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_average_graph.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issues_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issues_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_issues_graph.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">types_graph</span>(data,<span class="st">"Agriculture"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/agriculture_types_graph.png" class="img-fluid"></p>
 </section>

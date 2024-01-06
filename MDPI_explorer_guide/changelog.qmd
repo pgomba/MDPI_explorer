@@ -2,7 +2,11 @@
 title: "Changelog"
 ---
 
-## v. 0.0.1.1 (4-Jan_23)
+## v. 0.0.1.2 (6-Jan-23)
+
+Adding functions `special_issue_find()` & `guest_editor_info()` to deprecate `guest_editor()` and make the workflow more flexible.
+
+## v. 0.0.1.1 (4-Jan-23)
 
 `guest_editor()` now selects two first words of guest editors and authors names for comparison to account for discrepancies in number of surnames between guest editors and paper authors. (e.g. guest editor name = *Dr. Perico Palotes Fernández*, but author name is just *Perico Palotes*. ).
 

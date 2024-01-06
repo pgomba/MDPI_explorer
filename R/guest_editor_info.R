@@ -1,44 +1,25 @@
-#' `r lifecycle::badge("deprecated")`
-#' Function was deprecated and split in special_issue_finder and guest_editor_info()
-#' @param journal MDPI journal code
-#' @param sleep Number of seconds between scraping iterations
-#' @import magrittr rvest dplyr lifecycle
-#' @export guest_editor
+#' Finds data on papers published by guest editors in their own special issues
+#' @param journal_urls MDPI journal code
+#' @param sample_size A number. How many special issues do you want to explore from the main vector. Leave blank for all
+#' @param sleep Number of seconds between scraping iterations. 2 sec. by default
+#' @import magrittr rvest dplyr 
+#' @export guest_editor_info
 #' @return A data frame.
 #' @examples
 #' \dontrun{
-#' guest_editor("covid", 1.5)
+#' guest_editor_info("covid", 1.5)
 #' }
 
 
-guest_editor <- function(journal, sleep) {
+guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
   
-  lifecycle::deprecate_warn(when="0.0.1.2",what= "MDPIExploreR::guest_editor()",with = "guest_editor_info()",always = TRUE)
-  
-  si_url<-data.frame()
-  for (i in 1:100) {
-    
-    data<-read_html(paste0("https://www.mdpi.com/journal/",journal,"/special_issues?page_count=100&page_no=",i,"&search=&section_id=&sort=deadline&view=closed"))
-    
-    links<-data%>%
-      html_nodes(".article-content")%>%
-      html_nodes(".title-link")%>%
-      html_attr("href")%>%
-      as.data.frame()%>%
-      mutate(full_url=paste0("https://www.mdpi.com",.))%>%
-      distinct()
-    
-    si_url<-bind_rows(si_url,links)
-    
-    if (nrow(si_url)!=nrow(distinct(si_url))){
-      si_url<-si_url%>%
-        distinct()
-      break
-    }else{}
-    
+  if (missing(sample_size)) {
+    sample_size=length(vector)
+  }else{
+    sample_size=sample_size
   }
   
-  special_issues<-si_url$full_url
+  data<-sample(journals_urls,sample_size)
   
   special_issues_table<-data.frame(special_issue=character(),
                                    num_papers=double(),
@@ -50,7 +31,7 @@ guest_editor <- function(journal, sleep) {
   pb <- txtProgressBar(min = 0, max = length(special_issues), initial = 0,style=3) #Build progress bar
   count<-0
   
-  for (i in special_issues) {
+  for (i in data) {
     
     data<-read_html(paste0(i,"#editors"))
     
@@ -140,4 +121,3 @@ guest_editor <- function(journal, sleep) {
   special_issues_table
 }
 
-test<-guest_editor("covid",1.5)

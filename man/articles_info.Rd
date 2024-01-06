@@ -4,12 +4,12 @@
 \alias{articles_info}
 \title{Extracts data for each individual paper}
 \usage{
-articles_info(vector, sleep, sample_size)
+articles_info(vector, sleep = 2, sample_size)
 }
 \arguments{
 \item{vector}{A vector with urls.}
 
-\item{sleep}{Number of seconds between scraping iterations}
+\item{sleep}{Number of seconds between scraping iterations. 2 sec. by default}
 
 \item{sample_size}{A number. How many papers do you want to explore from the main vector. Leave blank for all}
 }
