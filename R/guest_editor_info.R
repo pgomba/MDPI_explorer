@@ -19,7 +19,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
     sample_size=sample_size
   }
   
-  data<-sample(journal_urls,sample_size)
+  urls<-sample(journal_urls,sample_size)
   
   special_issues_table<-data.frame(special_issue=character(),
                                    num_papers=double(),
@@ -31,7 +31,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
   pb <- txtProgressBar(min = 0, max = length(special_issues), initial = 0,style=3) #Build progress bar
   count<-0
   
-  for (i in data) {
+  for (i in urls) {
     
     data<-read_html(paste0(i,"#editors"))
     
