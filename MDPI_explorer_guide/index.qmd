@@ -3,9 +3,7 @@ title: "Get started! A guide to MDPIexploreR"
 ---
 
 <!-- badges: start -->
-
-[![R-CMD-check](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml)
-
+[![](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Background {.unnumbered}
