@@ -1,0 +1,1 @@
+utils::globalVariables(c(".", "slash_number", "txtProgressBar","setTxtProgressBar","Received","Accepted","tat","issue_type"))
