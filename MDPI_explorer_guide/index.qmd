@@ -1,5 +1,5 @@
 ---
-title: "MDPIexploreR - A guide"
+title: "Get started! A guide to MDPIexploreR"
 ---
 
 <!-- badges: start -->
@@ -12,7 +12,10 @@ Ever changing scientific publishing strategies shape academic communications.
 
 To date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). "[The Strain on Scientific Publishing](https://arxiv.org/abs/2309.15884)" highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.
 
-This R package intends to help users to obtain factual data from MDPI's journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues.
+This R package intends to help users to obtain factual data from MDPI's journals, special issues and articles directly from their website (via web-scraping). Detailed information on functions and datasets can be found in the [Reference](reference.html) section. 
+
+The following section aims to provide a brief and approachable tutorial introducing users to the functionalities of the R package MDPIexploreR. 
+
 
 ## Installing MDPIexploreR
 
@@ -21,9 +24,6 @@ devtools::install_github("pgomba/MDPI_explorer")
 library(MDPIexploreR)
 ```
 
-::: callout-note
-Last update: December 2023
-:::
 
 ## Data collecting functions
 

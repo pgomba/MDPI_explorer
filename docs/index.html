@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MDPIexploreR - MDPIexploreR - A guide</title>
+<title>MDPIexploreR v0.0.1.3 - Get started! A guide to MDPIexploreR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./datasets.html" rel="next">
+<link href="./reference.html" rel="next">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -98,13 +98,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="MDPIexploreR - MDPIexploreR - A guide">
+<meta property="og:title" content="MDPIexploreR v0.0.1.3 - Get started! A guide to MDPIexploreR">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_tc.png">
 <meta property="og:site-name" content="MDPIexploreR">
 <meta property="og:image:height" content="364">
 <meta property="og:image:width" content="600">
-<meta name="twitter:title" content="MDPIexploreR - MDPIexploreR - A guide">
+<meta name="twitter:title" content="MDPIexploreR v0.0.1.3 - Get started! A guide to MDPIexploreR">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_tc.png">
 <meta name="twitter:creator" content="@pagomba">
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">MDPIexploreR</span>
+    <span class="navbar-title">MDPIexploreR v0.0.1.3</span>
     </a>
   </div>
         <div class="quarto-navbar-tools ms-auto">
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Tutorial</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Get started!</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -159,13 +159,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tutorial</span></a>
+ <span class="menu-text">Get started!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Datasets</span></a>
+  <a href="./reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reference</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MDPIexploreR - A guide</h1>
+<h1 class="title">Get started! A guide to MDPIexploreR</h1>
 </div>
 
 
@@ -224,26 +224,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="background">Background</h2>
 <p>Ever changing scientific publishing strategies shape academic communications.</p>
 <p>To date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). “<a href="https://arxiv.org/abs/2309.15884">The Strain on Scientific Publishing</a>” highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.</p>
-<p>This R package intends to help users to obtain factual data from MDPI’s journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues.</p>
+<p>This R package intends to help users to obtain factual data from MDPI’s journals, special issues and articles directly from their website (via web-scraping). Detailed information on functions and datasets can be found in the <a href="reference.html">Reference</a> section.</p>
+<p>The following section aims to provide a brief and approachable tutorial introducing users to the functionalities of the R package MDPIexploreR.</p>
 </section>
 <section id="installing-mdpiexplorer" class="level2">
 <h2 class="anchored" data-anchor-id="installing-mdpiexplorer">Installing MDPIexploreR</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"pgomba/MDPI_explorer"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MDPIexploreR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Last update: December 2023</p>
-</div>
 </div>
 </section>
 <section id="data-collecting-functions" class="level2">
@@ -715,8 +703,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./datasets.html" class="pagination-link">
-        <span class="nav-page-text">Datasets</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./reference.html" class="pagination-link">
+        <span class="nav-page-text">Reference</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

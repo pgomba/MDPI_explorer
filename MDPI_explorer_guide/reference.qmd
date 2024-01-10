@@ -1,0 +1,29 @@
+---
+title: "Reference (wip)"
+---
+
+## Functions
+
+`article_find()`: Returns a vector containing URLs for all scientific articles in a journal. **Input:** A text string with journal title or code. See dataset `MDPI_journals` for reference.
+
+`article_info()`: Returns a data frame with editorial times, type and presence in special issue for each submitted article. **Input:** A vector with articles URLS. see `article_find()`. **Optional:** sleep (Number of seconds between scraping iterations. Default is 2 seconds) and sample_size (Size of the sample of articles to take from the vector. Leave blank to select all).
+
+`average_graph()`
+
+`guest_editor_info()`
+
+`issues_graph()`
+
+`special_issue_find()`
+
+`summary_graph()`
+
+`type_graph()`
+
+### Datasets
+
+`agriculture`
+
+`horticulturae`
+
+`MDPI_journals`
