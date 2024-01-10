@@ -3,7 +3,9 @@ title: "Get started! A guide to MDPIexploreR"
 ---
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 ## Background {.unnumbered}
@@ -12,10 +14,9 @@ Ever changing scientific publishing strategies shape academic communications.
 
 To date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). "[The Strain on Scientific Publishing](https://arxiv.org/abs/2309.15884)" highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.
 
-This R package intends to help users to obtain factual data from MDPI's journals, special issues and articles directly from their website (via web-scraping). Detailed information on functions and datasets can be found in the [Reference](reference.html) section. 
+This R package intends to help users to obtain factual data from MDPI's journals, special issues and articles directly from their website (via web-scraping). Detailed information on functions and datasets can be found in the [Reference](reference.html) section.
 
-The following section aims to provide a brief and approachable tutorial introducing users to the functionalities of the R package MDPIexploreR. 
-
+The following section aims to provide a brief and approachable tutorial introducing users to the functionalities of the R package MDPIexploreR.
 
 ## Installing MDPIexploreR
 
@@ -24,65 +25,123 @@ devtools::install_github("pgomba/MDPI_explorer")
 library(MDPIexploreR)
 ```
 
+```{r include=FALSE}
+library(MDPIexploreR)
+```
 
-## Data collecting functions
+## Exploring journal articles
 
-### article_find() {.unnumbered}
+Obtaining a list of articles from a journal is easy thanks to the function `article_find()`. This function returns a vector of articles URLs. To do so, we just need to submit the journal code as a text string.
 
-The sole purpose of `article_find()` is to output a vector with URLs from all available papers from the target journal. To do so, the function navigate the sitemap/s containing journal links and filter out those not belonging to scientific articles. The function requires as input the code of the target journal.
+```{r cache=TRUE}
 
-```{r eval=FALSE}
+urls<-article_find("agriculture")
 
-urls<-journal_papers("agriculture")
+print(paste("Articles found:", length(urls)))
 
 ```
 
 The journal code name usually coincides with the journal title, but this is not always the case if the journal name is too long. To find the code name for your journal of interest check the dataset `MDPI_journals`, included in the package:
 
-```{r message=FALSE, echo=FALSE }
-library(MDPIexploreR)
-```
-
-```{r}
-MDPI_journals|>
+```{r cache=TRUE}
+MDPIexploreR::MDPI_journals|>
   head(10)
 ```
 
-### articles_info()
+::: callout-note
+Note the code for the journal "*Acoustics*" matches the title of the journal, but the code for "*Advances in Respiratory Medicine*" is just the text string "*arm*".
+:::
 
-Banking on the results from `article_find()` or any vector with scientific papers URLs, `article_info()` web scrapes each URL to compile a data frame with information on each paper editorial times (when article was received and accepted), turnaround times (time differential between acceptance and submission), data on type of issue where the article was published and type of article. The function allows to include a delay between web scraping instances (2 seconds, by default) and, the possibility of only scraping a sample of all URLs.
+The resulting vector from using `article_find()` (or any vector with scientific papers URLs), can then be combined with the function `article_info()`. This function will, for every article in the list, obtain receiving and accepting dates (to calculate turnaround times), obtain article type (e.g. editorial, review) and find out if it belongs to a special issue. Lets find information on 10 random articles from the journal "Covid", leaving 2 seconds between scraping iterations.
 
-```{r eval=FALSE}
+```{r cache=TRUE, include=FALSE}
 
-#Will scrape all url values leaving 2 seconds between iterations
-data<-articles_info(urls) 
-
-#Will scrape 1000 random papers from the url vector every 1 seconds
-data<-articles_info(urls,1,1000)
+info<-article_find("covid") |>
+  articles_info(sample_size=10,sleep=2)
 
 ```
 
+```{r}
+# Show article type, turnaround time and if article is included in special issue
+info|>
+  dplyr::select(i,article_type,tat,issue_type)
+```
+
+By default, sleep is two seconds. Reducing this number might cause the server to kick you out, specially when scraping large numbers of articles. sample_size, if blank, will iterate through the whole vector of articles.
+
 ::: callout-important
-A stable internet connection is recommended, specially for web scraping large numbers of papers
+A stable internet connexion is recommended, specially for web scraping large numbers of papers
 :::
 
-### special_issue_find()
+::: callout-tip
+Web scraping large amounts of URLs can be time consuming (2 seconds per paper, depending on delay) and many things can go wrong during the process (problematic URLs, being kicked out of the server...). My advice is to split large URL vectors in smaller ones.
+:::
 
-This function compiles all special issues available in the target journal and returns a vector with URLs. By default, finds only CLOSED special issues, but this behaviour can be changed by altering the type parameter to "open" or "all".
+## Plotting article_info()
+
+`MDPIexploreR` provides with three functions to plot the results from `article_info()`. Lets load one of the data frames provided by the package first:
+
+```{r}
+agriculture_info<-MDPIexploreR::agriculture
+
+nrow(agriculture_info)
+```
+
+`summary_graph()` plots publications over time. The title of the journal must be provided:
 
 ```{r eval=FALSE}
+summary_graph(agriculture_info, journal="Agriculture")
+```
+
+![](images/agriculture_summary_graph.png)
+
+average_graph() plots average monthly turnaround times for the time period included in the dataset:
+
+```{r eval=FALSE}
+average_graph(agriculture_info, journal="Agriculture")
+```
+
+![](images/agriculture_average_graph.png)
+
+`issues_graph()` classifies articles depending on where they were published, including special issues
+
+```{r eval=FALSE}
+issues_graph(agriculture_info, journal="Agriculture")
+```
+
+![](images/agriculture_issues_graph.png)
+
+Lastly, types_graphs() plots a classification of articles depending on their type (editorial, review, etc)
+
+```{r eval=FALSE}
+types_graph(agriculture_info, journal="Agriculture")
+```
+
+![](images/agriculture_types_graph.png)
+
+All plots can be saved via `ggsave()`
+
+## Exploring special issues and guest editors
+
+Similar to `article_find()`, the function `special_issue_find()` outputs a vector with all special issues available in the target journal. By default, it retrieves all CLOSED special issues, but this can be adjusted with the parameter type.
+
+```{r message=FALSE}
 
 # Creates a vector with all CLOSED special issues from the journal Covid
 URLs<-special_issue_find("covid")
+print(paste("Closed Special Issues:",length(URLs)))
 
 # Creates a vector with all special issues from the journal Covid
 URLs<-special_issue_find("covid", type="all")
+print(paste("All Special Issues:",length(URLs)))
+
+# Creates a vector with all special issues from the journal Covid
+URLs<-special_issue_find("covid", type="open")
+print(paste("Open Special Issues:",length(URLs)))
 
 ```
 
-### guest_editor_info()
-
-Using a vector with special issues URLs, `guest_editor_info()` outputs a data frame containing information on number of non-editorial papers, the amount of papers on which guest editors have participated and a comparison between special issue closing date and when was the last article really submitted.
+`guest_editor_info()` uses then the vector produced by special_issue_find() to look for proportion of articles in special issues where the guest editors were involved and differences between special issue closing time and last article submitted. This function is inspired by [MA Oviedo-García](https://twitter.com/maoviedogarcia) work on MDPI's special issues. Similar to article_info(), it allows to select only a sample of special issues and set up a delay between scraping iterations.
 
 ```{r eval=FALSE}
 
@@ -95,44 +154,3 @@ guest_editor_info (URLs, sleep=3)
 guest_editor_info (URLs, sample_size=2)
 
 ```
-
-This function is inspired by [MA Oviedo-García](https://twitter.com/maoviedogarcia) work on MDPI's special issues.
-
-## Plotting functions
-
-The plotting functions help to summarize the collected data. They only need a data.frame obtained via `articles_info()` and a string with the name of the journal. Some examples:
-
-```{r eval=FALSE}
-
-summary_graph(data,"Agriculture")
-
-```
-
-![](images/agriculture_summary_graph.png)
-
-```{r eval=FALSE}
-
-average_graph(data,"Agriculture")
-```
-
-![](images/agriculture_average_graph.png)
-
-```{r eval=FALSE}
-issues_graph(data,"Agriculture")
-
-```
-
-![](images/agriculture_issues_graph.png)
-
-```{r eval=FALSE}
-
-types_graph(data,"Agriculture")
-```
-
-![](images/agriculture_types_graph.png)
-
-## Tips & Tricks
-
-::: callout-tip
-Web scraping large amounts of URLs can be time consuming (2 seconds per paper, depending on delay) and many things can go wrong during the process (problematic URLs, being kicked out of the server...). My advice is to split large URL vectors in smaller ones
-:::

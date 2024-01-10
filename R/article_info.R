@@ -3,7 +3,7 @@
 #' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @param sample_size A number. How many papers do you want to explore from the main vector. Leave blank for all
 #' @import magrittr rvest dplyr lubridate stringr
-#' @export articles_info
+#' @export article_info
 #' @return A data frame.
 #' @examples
 #' url<-c("https://www.mdpi.com/2073-4336/8/4/45","https://www.mdpi.com/2073-4336/11/3/39")
@@ -12,7 +12,7 @@
 #' }
 
 
-articles_info <- function(vector,sleep=2,sample_size) {
+article_info <- function(vector,sleep=2,sample_size) {
 
   if (missing(sample_size)) {
     sample_size=length(vector)
@@ -82,10 +82,10 @@ articles_info <- function(vector,sleep=2,sample_size) {
     
   }
   final_table<-paper_data%>%
-    mutate(Received=gsub("/.*","",ex_paper), #Extract received data time and transform into date
-           Received=gsub(".*Received:","",Received),
+    mutate(Received=gsub("/.*","",tolower(ex_paper)), #Extract received data time and transform into date
+           Received=gsub(".*received:","",Received),
            Received=as.Date(Received,"%d %B %Y"))%>%
-    mutate(Accepted=gsub(".*Accepted:","",ex_paper), #Extract accepted time data and transform into date
+    mutate(Accepted=gsub(".*accepted:","",tolower(ex_paper)), #Extract accepted time data and transform into date
            Accepted=gsub("/.*","",Accepted),
            Accepted=as.Date(Accepted,"%d %B %Y"))%>%
     mutate(tat=Accepted-Received, #Calculate turnaround times and add year of acceptance column

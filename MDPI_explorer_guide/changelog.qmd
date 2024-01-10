@@ -6,7 +6,11 @@ title: "Changelog"
 
 `guest_editor()` no longer part of `MDPIexploreR`.
 
-Clered errors and warnings for R CMD check
+Cleared errors and warnings for R CMD check
+
+`articles_info()` replaced by `article_info()`.
+
+`article_info()` transform editorial data to lowercase to facilitate the use of `gsub()`
 
 ## v. 0.0.1.2 (6-Jan-23)
 
