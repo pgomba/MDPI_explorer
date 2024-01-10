@@ -4,14 +4,21 @@
     "href": "changelog.html",
     "title": "Changelog",
     "section": "",
-    "text": "Adding functions special_issue_find() & guest_editor_info() to deprecate guest_editor() and make the workflow more flexible."
+    "text": "guest_editor() no longer part of MDPIexploreR.\nClered errors and warnings for R CMD check"
+  },
+  {
+    "objectID": "changelog.html#v.-0.0.1.3-10-jan-23",
+    "href": "changelog.html#v.-0.0.1.3-10-jan-23",
+    "title": "Changelog",
+    "section": "",
+    "text": "guest_editor() no longer part of MDPIexploreR.\nClered errors and warnings for R CMD check"
   },
   {
     "objectID": "changelog.html#v.-0.0.1.2-6-jan-23",
     "href": "changelog.html#v.-0.0.1.2-6-jan-23",
     "title": "Changelog",
-    "section": "",
-    "text": "Adding functions special_issue_find() & guest_editor_info() to deprecate guest_editor() and make the workflow more flexible."
+    "section": "v. 0.0.1.2 (6-Jan-23)",
+    "text": "v. 0.0.1.2 (6-Jan-23)\nAdding functions special_issue_find() & guest_editor_info() to deprecate guest_editor() and make the workflow more flexible."
   },
   {
     "objectID": "changelog.html#v.-0.0.1.1-4-jan-23",
@@ -63,18 +70,11 @@
     "text": "Submit your data set\nIf you wish to submit your own MDPI journal data set for it to be part of the MDPIexploreR package, the best way is to send/push your articles_info() output via GitHub in .rda format."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MDPIexploreR - A guide",
-    "section": "",
-    "text": "Ever changing scientific publishing strategies shape academic communications.\nTo date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). “The Strain on Scientific Publishing” highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.\nThis R package intends to help users to obtain factual data from MDPI’s journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues."
-  },
-  {
     "objectID": "index.html#background",
     "href": "index.html#background",
     "title": "MDPIexploreR - A guide",
-    "section": "",
-    "text": "Ever changing scientific publishing strategies shape academic communications.\nTo date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). “The Strain on Scientific Publishing” highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.\nThis R package intends to help users to obtain factual data from MDPI’s journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues."
+    "section": "Background",
+    "text": "Background\nEver changing scientific publishing strategies shape academic communications.\nTo date, MDPI is the largest publisher of Open Access articles in the world and top-3 overall publisher (Right after Elsevier and SpringerNature). “The Strain on Scientific Publishing” highlights them as a frequent outlier for several metrics, but also as one of the most transparent major publishers out there.\nThis R package intends to help users to obtain factual data from MDPI’s journals, directly from their website (via web-scraping) and nothing else. A compilation of several functions to explore articles metrics across all MDPI journals and special issues."
   },
   {
     "objectID": "index.html#installing-mdpiexplorer",

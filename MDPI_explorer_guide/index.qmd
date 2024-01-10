@@ -2,6 +2,10 @@
 title: "MDPIexploreR - A guide"
 ---
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 ## Background {.unnumbered}
 
 Ever changing scientific publishing strategies shape academic communications.
@@ -76,7 +80,7 @@ URLs<-special_issue_find("covid", type="all")
 
 ```
 
-### guest_editor_info() 
+### guest_editor_info()
 
 Using a vector with special issues URLs, `guest_editor_info()` outputs a data frame containing information on number of non-editorial papers, the amount of papers on which guest editors have participated and a comparison between special issue closing date and when was the last article really submitted.
 
