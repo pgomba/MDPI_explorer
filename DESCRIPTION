@@ -19,8 +19,7 @@ Imports:
     rvest,
     scales,
     stringr,
-    tidyr,
-    lifecycle
+    tidyr
 Suggests: 
     knitr,
     rmarkdown
