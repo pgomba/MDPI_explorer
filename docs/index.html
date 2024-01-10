@@ -280,30 +280,20 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show article type, turnaround time and if article is included in special issue</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>info<span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(i,article_type,tat,issue_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">doi=</span><span class="fu">gsub</span>(<span class="st">"https://www.mdpi.com/"</span>,<span class="st">""</span>,i))<span class="sc">|&gt;</span> <span class="co">#To reduce output width</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(doi,article_type,tat,issue_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                         i      article_type     tat
-1    https://www.mdpi.com/2673-8112/1/1/11           Article NA days
-2    https://www.mdpi.com/2673-8112/2/2/13           Article NA days
-3    https://www.mdpi.com/2673-8112/3/4/43           Article NA days
-4    https://www.mdpi.com/2673-8112/3/9/92           Article NA days
-5  https://www.mdpi.com/2673-8112/2/10/106           Article NA days
-6     https://www.mdpi.com/2673-8112/2/2/7           Article NA days
-7    https://www.mdpi.com/2673-8112/2/9/94 Systematic Review NA days
-8    https://www.mdpi.com/2673-8112/3/9/99       Case Report NA days
-9    https://www.mdpi.com/2673-8112/2/5/43           Article NA days
-10   https://www.mdpi.com/2673-8112/3/4/34           Article NA days
-      issue_type
-1             No
-2          Topic
-3             No
-4  Special Issue
-5             No
-6             No
-7  Special Issue
-8  Special Issue
-9             No
-10 Special Issue</code></pre>
+<pre><code>                  doi      article_type      tat    issue_type
+1  2673-8112/3/12/121            Review  40 days            No
+2    2673-8112/1/3/52      Brief Report 122 days            No
+3  2673-8112/2/12/120           Article  73 days            No
+4    2673-8112/2/9/94 Systematic Review  46 days Special Issue
+5  2673-8112/3/11/112      Brief Report  78 days            No
+6    2673-8112/3/6/63      Brief Report  52 days            No
+7  2673-8112/3/11/115           Article  10 days            No
+8    2673-8112/2/2/15           Article 125 days            No
+9    2673-8112/3/9/95      Brief Report  35 days         Topic
+10   2673-8112/2/7/63           Article  42 days            No</code></pre>
 </div>
 </div>
 <p>By default, sleep is two seconds. Reducing this number might cause the server to kick you out, specially when scraping large numbers of articles. sample_size, if blank, will iterate through the whole vector of articles.</p>

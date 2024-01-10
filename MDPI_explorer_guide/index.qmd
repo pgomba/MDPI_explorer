@@ -57,14 +57,15 @@ The resulting vector from using `article_find()` (or any vector with scientific 
 ```{r cache=TRUE, include=FALSE}
 
 info<-article_find("covid") |>
-  articles_info(sample_size=10,sleep=2)
+  article_info(sample_size=10,sleep=2)
 
 ```
 
 ```{r}
 # Show article type, turnaround time and if article is included in special issue
 info|>
-  dplyr::select(i,article_type,tat,issue_type)
+  dplyr::mutate(doi=gsub("https://www.mdpi.com/","",i))|> #To reduce output width
+  dplyr::select(doi,article_type,tat,issue_type)
 ```
 
 By default, sleep is two seconds. Reducing this number might cause the server to kick you out, specially when scraping large numbers of articles. sample_size, if blank, will iterate through the whole vector of articles.
