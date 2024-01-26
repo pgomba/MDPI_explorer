@@ -2,9 +2,19 @@
 title: "Changelog"
 ---
 
+## v. 0.0.1.4 ()
+
+Added internal function `clean_names()` to homogenize editors and authors names to the same standard for comparison reason. `clean_names()` incorporated to `guest_editor_info()` for name cleaning purposes, replacing previous code with similar purpose on `guest_editor_info()`
+
+Fixed bug ignoring guest editor without profile link on `guest_editor_info()`\
+\
+Fixed code interpreting time of last submission on `guest_editor_info()`
+
+`guest_editor_info()` now outputs a guest editor paper count for each special issue
+
 ## v. 0.0.1.3 (10-Jan-23)
 
-`guest_editor()` no longer part of `MDPIexploreR`.
+`guest_editor()` no longer part of `MDPIexploreR`. Use `special_issue_find()` and `guest_editor_info()` instead
 
 Cleared errors and warnings for R CMD check
 

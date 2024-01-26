@@ -150,7 +150,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#v.-0.0.1.3-10-jan-23" id="toc-v.-0.0.1.3-10-jan-23" class="nav-link active" data-scroll-target="#v.-0.0.1.3-10-jan-23">v. 0.0.1.3 (10-Jan-23)</a></li>
+  <li><a href="#v.-0.0.1.4" id="toc-v.-0.0.1.4" class="nav-link active" data-scroll-target="#v.-0.0.1.4">v. 0.0.1.4 ()</a></li>
+  <li><a href="#v.-0.0.1.3-10-jan-23" id="toc-v.-0.0.1.3-10-jan-23" class="nav-link" data-scroll-target="#v.-0.0.1.3-10-jan-23">v. 0.0.1.3 (10-Jan-23)</a></li>
   <li><a href="#v.-0.0.1.2-6-jan-23" id="toc-v.-0.0.1.2-6-jan-23" class="nav-link" data-scroll-target="#v.-0.0.1.2-6-jan-23">v. 0.0.1.2 (6-Jan-23)</a></li>
   <li><a href="#v.-0.0.1.1-4-jan-23" id="toc-v.-0.0.1.1-4-jan-23" class="nav-link" data-scroll-target="#v.-0.0.1.1-4-jan-23">v. 0.0.1.1 (4-Jan-23)</a></li>
   <li><a href="#v.-0.0.0.1-initial" id="toc-v.-0.0.0.1-initial" class="nav-link" data-scroll-target="#v.-0.0.0.1-initial">v. 0.0.0.1 (Initial)</a></li>
@@ -177,9 +178,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="v.-0.0.1.4" class="level2">
+<h2 class="anchored" data-anchor-id="v.-0.0.1.4">v. 0.0.1.4 ()</h2>
+<p>Added internal function <code>clean_names()</code> to homogenize editors and authors names to the same standard for comparison reason. <code>clean_names()</code> incorporated to <code>guest_editor_info()</code> for name cleaning purposes, replacing previous code with similar purpose on <code>guest_editor_info()</code></p>
+<p>Fixed bug ignoring guest editor without profile link on <code>guest_editor_info()</code><br>
+<br>
+Fixed code interpreting time of last submission on <code>guest_editor_info()</code></p>
+<p><code>guest_editor_info()</code> now outputs a guest editor paper count for each special issue</p>
+</section>
 <section id="v.-0.0.1.3-10-jan-23" class="level2">
 <h2 class="anchored" data-anchor-id="v.-0.0.1.3-10-jan-23">v. 0.0.1.3 (10-Jan-23)</h2>
-<p><code>guest_editor()</code> no longer part of <code>MDPIexploreR</code>.</p>
+<p><code>guest_editor()</code> no longer part of <code>MDPIexploreR</code>. Use <code>special_issue_find()</code> and <code>guest_editor_info()</code> instead</p>
 <p>Cleared errors and warnings for R CMD check</p>
 <p><code>articles_info()</code> replaced by <code>article_info()</code>.</p>
 <p><code>article_info()</code> transform editorial data to lowercase to facilitate the use of <code>gsub()</code></p>

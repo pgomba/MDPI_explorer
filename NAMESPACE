@@ -3,6 +3,7 @@
 export(article_find)
 export(article_info)
 export(average_graph)
+export(clean_names)
 export(guest_editor_info)
 export(issues_graph)
 export(special_issue_find)

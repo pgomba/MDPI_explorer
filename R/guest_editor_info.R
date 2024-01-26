@@ -35,12 +35,16 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
     
     data<-read_html(paste0(i,"#editors"))
     
-    editors<-data%>%
+    editors_part1<-data%>% 
       html_nodes(".smaller-pictures .sciprofiles-link__name")%>%
       html_text2()
     
-    editors<-gsub("Dr. |Prof. |Prof. Dr. |Assoc. Prof. ","",editors)%>%
-      word(start = 1,end = 2) #Keep two first items of names (see ch v 0.0.1.1)
+    editors_part2<-data%>%
+        html_nodes(".smaller-pictures strong")%>%
+        html_text2()
+    
+    editors<-append(editors_part1,editors_part2)%>%
+      clean_names()
     
     si_papers<-data%>%
       html_nodes(".article-content")%>%
@@ -81,8 +85,13 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
           html_nodes(".art-authors")%>%
           html_nodes(".sciprofiles-link__name")%>%
           html_text2()%>%
-          unique()%>%
-          word(start = 1,end = 2) #ch v 0.0.1.1
+          unique()
+        
+        authors<-clean_names(authors)
+        
+        guest_editor<-length(editors)
+        result <- as.numeric(editors %in% authors)%>%
+          paste(., collapse = ", ")
         
         submitted<-article%>% #ch v 0.0.1.1
           html_nodes(".pubhistory span:nth-child(1)")%>%
@@ -99,7 +108,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         }
         
         MDPI_url<-j
-        temp_df<-data.frame(MDPI_url,flag,submitted)
+        temp_df<-data.frame(MDPI_url,flag,result,submitted)
         
         table<-bind_rows(table,temp_df)
         
@@ -108,8 +117,24 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       }
       
       si_summary<-round(sum(table$flag)/length(table$MDPI_url),3)
-      temp_df<-data.frame(special_issue=i,num_papers=length(table$MDPI_url),flags=sum(table$flag),prop_flag=si_summary,deadline=as.Date(deadline,"%d %B %Y"), latest_sub=max(table$submitted))%>%
-        mutate(d_over_deadline=deadline-submitted)
+      
+      rt_sum_vector<-rep(0,guest_editor)
+      
+      for (j in 1:nrow(table)) {
+        
+        line<-table$result[j]%>%
+          str_split(",")%>%
+          unlist()%>%
+          as.numeric()
+        
+        rt_sum_vector<-rt_sum_vector+line
+      }
+      
+      rt_sum_vector2<-rt_sum_vector%>%
+        paste(collapse = ",")
+      
+      temp_df<-data.frame(special_issue=i,num_papers=length(table$MDPI_url),flags=sum(table$flag),prop_flag=si_summary,deadline=as.Date(deadline,"%d %B %Y"), latest_sub=max(table$submitted),rt_sum_vector2)%>%
+        mutate(d_over_deadline=deadline-latest_sub)
       special_issues_table<-bind_rows(special_issues_table,temp_df)
       Sys.sleep(sleep)
       count<-count+1
