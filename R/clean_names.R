@@ -14,6 +14,7 @@ clean_names <- function(name_vector) {
     
     cleaned_names<-name_vector%>%
       tolower()%>% #all letter to lower case
+      gsub("-"," ",.) %>% #replace hyphens with space
       gsub("dr. |prof. |prof. dr. |assoc. prof. | \\u2020","",.) %>% #remove titles and symbols, including ASCII code for †
       gsub("\\b\\w\\.\\s*", "", .)%>%  #remove abbreviated middle names
       word(start = 1,end = 2)%>% #Keep two first items of names to avoid problems with second surname
