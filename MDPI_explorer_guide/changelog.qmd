@@ -2,7 +2,7 @@
 title: "Changelog"
 ---
 
-## v. 0.0.1.4 ()
+## v. 0.0.1.4 (17-Aug-24)
 
 Added internal function `clean_names()` to homogenize editors and authors names to the same standard for comparison reason. `clean_names()` incorporated to `guest_editor_info()` for name cleaning purposes, replacing previous code with similar purpose on `guest_editor_info()`
 
