@@ -1,6 +1,7 @@
 #' Returns a vector of URLs with special issues from target journal
 #' @param journal MDPI journal code
 #' @param type "closed", "open" or "all" special issues. "closed" by default.
+#' @param years A vector containing special issues closure dates to limit the search to certain years
 #' @import magrittr rvest dplyr 
 #' @export special_issue_find
 #' @return A vector.
@@ -10,7 +11,7 @@
 #' }
 
 
-special_issue_find <- function(journal,type="closed") {
+special_issue_find <- function(journal,type="closed",years=NULL) {
   
   si_url<-data.frame()
   
@@ -30,6 +31,15 @@ special_issue_find <- function(journal,type="closed") {
       mutate(full_url=paste0("https://www.mdpi.com",.))%>%
       distinct()
     
+    year<-data%>%
+      html_nodes("strong:nth-child(3)")%>%
+      html_text2()%>%
+      gsub(".* ","",.)%>%
+      as.data.frame()%>%
+      rename(year=1)
+    
+    links<-cbind(links,year)
+    
     si_url<-bind_rows(si_url,links)
     
     if (nrow(si_url)!=nrow(distinct(si_url))){
@@ -40,7 +50,16 @@ special_issue_find <- function(journal,type="closed") {
     
   }
   
-  special_issues<-si_url$full_url
+  if (is.null(years)) {
+    
+    special_issues<-si_url$full_url
+    
+  }else{
+    special_issues<-si_url%>%
+      filter(year %in% years)
+    
+    special_issues<-special_issues$full_url
+  }
   
   special_issues
   
