@@ -4,12 +4,14 @@
 \alias{special_issue_find}
 \title{Returns a vector of URLs with special issues from target journal}
 \usage{
-special_issue_find(journal, type = "closed")
+special_issue_find(journal, type = "closed", years = NULL)
 }
 \arguments{
 \item{journal}{MDPI journal code}
 
 \item{type}{"closed", "open" or "all" special issues. "closed" by default.}
+
+\item{years}{A vector containing special issues closure dates to limit the search to certain years}
 }
 \value{
 A vector.

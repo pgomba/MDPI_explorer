@@ -134,8 +134,16 @@ print(paste("Closed Special Issues:",length(URLs)))
 URLs<-special_issue_find("covid", type="all")
 print(paste("All Special Issues:",length(URLs)))
 
-# Creates a vector with all special issues from the journal Covid
+# Creates a vector with all open issues from the journal Covid
 URLs<-special_issue_find("covid", type="open")
+print(paste("Open Special Issues:",length(URLs)))
+
+# Creates a vector with all closed special issues from the journal Covid for the year 2023
+URLs<-special_issue_find("covid", type="closed",years=2024)
+print(paste("Open Special Issues:",length(URLs)))
+
+# Creates a vector with all closed special issues from the journal Covid for the year 2023 and 2024
+URLs<-special_issue_find("covid", type="closed",years=c(2023,2024))
 print(paste("Open Special Issues:",length(URLs)))
 
 ```

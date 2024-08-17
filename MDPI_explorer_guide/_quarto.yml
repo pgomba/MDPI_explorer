@@ -6,7 +6,7 @@ project:
 website:
   navbar: true
   page-navigation: true
-  title: "MDPIexploreR v0.0.1.3"
+  title: "MDPIexploreR v0.0.1.4"
   favicon: images/favicon.ico
   sidebar:
     logo: "images/mdpiexplorer_logo.png"
