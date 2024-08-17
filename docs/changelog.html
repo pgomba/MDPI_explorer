@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MDPIexploreR v0.0.1.3 - Changelog</title>
+<title>MDPIexploreR v0.0.1.4 - Changelog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,13 +64,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="MDPIexploreR v0.0.1.3 - Changelog">
+<meta property="og:title" content="MDPIexploreR v0.0.1.4 - Changelog">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_tc.png">
 <meta property="og:site-name" content="MDPIexploreR">
 <meta property="og:image:height" content="364">
 <meta property="og:image:width" content="600">
-<meta name="twitter:title" content="MDPIexploreR v0.0.1.3 - Changelog">
+<meta name="twitter:title" content="MDPIexploreR v0.0.1.4 - Changelog">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://pgomba.github.io/MDPI_explorer/images/mdpiexplorer_tc.png">
 <meta name="twitter:creator" content="@pagomba">
@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">MDPIexploreR v0.0.1.3</span>
+    <span class="navbar-title">MDPIexploreR v0.0.1.4</span>
     </a>
   </div>
         <div class="quarto-navbar-tools ms-auto">
@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#v.-0.0.1.4" id="toc-v.-0.0.1.4" class="nav-link active" data-scroll-target="#v.-0.0.1.4">v. 0.0.1.4 ()</a></li>
+  <li><a href="#v.-0.0.1.4-17-aug-24" id="toc-v.-0.0.1.4-17-aug-24" class="nav-link active" data-scroll-target="#v.-0.0.1.4-17-aug-24">v. 0.0.1.4 (17-Aug-24)</a></li>
   <li><a href="#v.-0.0.1.3-10-jan-23" id="toc-v.-0.0.1.3-10-jan-23" class="nav-link" data-scroll-target="#v.-0.0.1.3-10-jan-23">v. 0.0.1.3 (10-Jan-23)</a></li>
   <li><a href="#v.-0.0.1.2-6-jan-23" id="toc-v.-0.0.1.2-6-jan-23" class="nav-link" data-scroll-target="#v.-0.0.1.2-6-jan-23">v. 0.0.1.2 (6-Jan-23)</a></li>
   <li><a href="#v.-0.0.1.1-4-jan-23" id="toc-v.-0.0.1.1-4-jan-23" class="nav-link" data-scroll-target="#v.-0.0.1.1-4-jan-23">v. 0.0.1.1 (4-Jan-23)</a></li>
@@ -178,13 +178,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="v.-0.0.1.4" class="level2">
-<h2 class="anchored" data-anchor-id="v.-0.0.1.4">v. 0.0.1.4 ()</h2>
+<section id="v.-0.0.1.4-17-aug-24" class="level2">
+<h2 class="anchored" data-anchor-id="v.-0.0.1.4-17-aug-24">v. 0.0.1.4 (17-Aug-24)</h2>
 <p>Added internal function <code>clean_names()</code> to homogenize editors and authors names to the same standard for comparison reason. <code>clean_names()</code> incorporated to <code>guest_editor_info()</code> for name cleaning purposes, replacing previous code with similar purpose on <code>guest_editor_info()</code></p>
 <p>Fixed bug ignoring guest editor without profile link on <code>guest_editor_info()</code><br>
 <br>
 Fixed code interpreting time of last submission on <code>guest_editor_info()</code></p>
 <p><code>guest_editor_info()</code> now outputs a guest editor paper count for each special issue</p>
+<p><code>clean_names()</code> no longer replaces “dr” string inside names<br>
+<br>
+<code>special_issue_info()</code> allows now to target years of interest via <code>year=c(…)</code></p>
 </section>
 <section id="v.-0.0.1.3-10-jan-23" class="level2">
 <h2 class="anchored" data-anchor-id="v.-0.0.1.3-10-jan-23">v. 0.0.1.3 (10-Jan-23)</h2>
