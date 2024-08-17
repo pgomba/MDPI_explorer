@@ -44,7 +44,8 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         html_text2()
     
     editors<-append(editors_part1,editors_part2)%>%
-      clean_names()
+      clean_names()%>%
+      unique()
     
     si_papers<-data%>%
       html_nodes(".article-content")%>%
