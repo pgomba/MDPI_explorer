@@ -1,0 +1,25 @@
+url: https://pgomba.github.io/seedTools
+home:
+  title: Simple functions to explore MDPI corpus
+  description: 
+template:
+  bootstrap: 5
+  opengraph:
+    image:
+      src: man/figures/logo.png
+      alt: "An R package with a collection of functions to simplify seed biology related tasks"
+    twitter:
+      creator: "@pagomba"
+      card: summary_large_image
+navbar:
+  structure:
+    right: [twitter, github]
+  components:
+    twitter:
+      icon: fa-twitter
+      href: http://twitter.com/pagomba
+      aria-label: Twitter
+    github:
+      icon: fa-github
+      href: https://github.com/pgomba/MDPI_explorer
+      aria-label: Github

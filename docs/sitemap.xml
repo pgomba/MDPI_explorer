@@ -1,15 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pgomba.github.io/MDPI_explorer/changelog.html</loc>
-    <lastmod>2024-08-17T18:31:48.337Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pgomba.github.io/MDPI_explorer/index.html</loc>
-    <lastmod>2024-08-17T18:31:58.970Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pgomba.github.io/MDPI_explorer/reference.html</loc>
-    <lastmod>2024-08-17T18:31:59.634Z</lastmod>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://pgomba.github.io/seedTools/404.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/authors.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/index.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/LICENSE.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/news/index.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/agriculture.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/article_find.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/article_info.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/average_graph.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/clean_names.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/guest_editor_info.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/horticulturae.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/index.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/issues_graph.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/MDPI_journals.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/special_issue_find.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/summary_graph.html</loc></url>
+<url><loc>https://pgomba.github.io/seedTools/reference/types_graph.html</loc></url>
 </urlset>
+

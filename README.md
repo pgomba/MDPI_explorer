@@ -1,10 +1,17 @@
-## MDPIexploreR
+# MDPIexploreR <img src="man/figures/logo.png" align="right" height="125" alt="" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pgomba/MDPI_explorer/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 
-A simple package to explore MDPI´s articles by journal. A series of functions help to obtain lists of papers, obtain data from them (turnaround times, special issues and articles types) and create summary graphs.
+`MDPIexploreR` is an R package designed to facilitate sustainable web scraping of data from MDPI journals and articles, as well as assist in their analysis.
 
-![](MDPI_explorer_guide/images/mdpiexplorer_logo.png)
+## Installation
+
+You can install the current version from [GitHub](https://github.com/) with:
+
+``` r
+devtools::install_github("pgomba/MDPI_explorer")
+library(MDPIexploreR)
+```

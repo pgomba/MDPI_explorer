@@ -4,3 +4,5 @@
 ^\.github$
 ^MDPI_explorer_guide$
 ^docs$
+^_pkgdown\.yml$
+^pkgdown$

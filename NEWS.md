@@ -1,8 +1,14 @@
 ---
-title: "Changelog"
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
 ---
 
-## v. 0.0.1.4 (17-Aug-24)
+# MDPIexploreR 0.1.4 
 
 Added internal function `clean_names()` to homogenize editors and authors names to the same standard for comparison reason. `clean_names()` incorporated to `guest_editor_info()` for name cleaning purposes, replacing previous code with similar purpose on `guest_editor_info()`
 
@@ -18,7 +24,7 @@ Fixed and error generating duplicated guest editors in column rt_sum_vector2 gen
 \
 `special_issue_info()` allows now to target years of interest via `year=c(…)`
 
-## v. 0.0.1.3 (10-Jan-23)
+# MDPIexploreR 0.1.3 
 
 `guest_editor()` no longer part of `MDPIexploreR`. Use `special_issue_find()` and `guest_editor_info()` instead
 
@@ -28,11 +34,11 @@ Cleared errors and warnings for R CMD check
 
 `article_info()` transform editorial data to lowercase to facilitate the use of `gsub()`
 
-## v. 0.0.1.2 (6-Jan-23)
+# MDPIexploreR 0.1.2
 
 Adding functions `special_issue_find()` & `guest_editor_info()` to deprecate `guest_editor()` and make the workflow more flexible.
 
-## v. 0.0.1.1 (4-Jan-23)
+# MDPIexploreR 0.1.1 
 
 `guest_editor()` now selects two first words of guest editors and authors names for comparison to account for discrepancies in number of surnames between guest editors and paper authors. (e.g. guest editor name = *Dr. Perico Palotes Fernández*, but author name is just *Perico Palotes*. ).
 
@@ -42,4 +48,6 @@ Adding functions `special_issue_find()` & `guest_editor_info()` to deprecate `gu
 
 `guest_editor()` Ignores papers of type "Editorial"
 
-## v. 0.0.0.1 (Initial)
+# MDPIexploreR 0.0.1
+
+Repurposed R scripts into first version of 'MDPIexploreR' as a package

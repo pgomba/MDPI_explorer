@@ -1,12 +1,13 @@
 Package: MDPIexploreR
 Title: MDPIexploreR. Functions to explore MDPI journals 
-Version: 0.0.1.4
+Version: 0.1.4
+URL: https://pgomba.github.io/seedTools
 Authors@R: 
-    person("Pablo", "Gómez Barreiro", , "pablogomezbr@hotmail.es", role = c("aut", "cre"),
+    person("Pablo Gómez Barreiro", email="pablogomezbr@hotmail.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3140-3326"))
 Description: Provides a series of functions to explore editorial data, issues and articles type from MDPI journals.
 VignetteBuilder: knitr
-License: MIT + file LICENSE
+License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
