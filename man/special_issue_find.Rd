@@ -2,7 +2,7 @@
 % Please edit documentation in R/special_issue_find.R
 \name{special_issue_find}
 \alias{special_issue_find}
-\title{Returns a vector of URLs with special issues from target journal}
+\title{Retrieves all special issues of a specified journal with URLs. Filters results by issue status (open, closed, or all) and optional year range.}
 \usage{
 special_issue_find(journal, type = "closed", years = NULL)
 }
@@ -17,7 +17,7 @@ special_issue_find(journal, type = "closed", years = NULL)
 A vector.
 }
 \description{
-Returns a vector of URLs with special issues from target journal
+Retrieves all special issues of a specified journal with URLs. Filters results by issue status (open, closed, or all) and optional year range.
 }
 \examples{
 \dontrun{

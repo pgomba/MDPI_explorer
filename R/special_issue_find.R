@@ -1,4 +1,4 @@
-#' Returns a vector of URLs with special issues from target journal
+#' Retrieves all special issues of a specified journal with URLs. Filters results by issue status (open, closed, or all) and optional year range.
 #' @param journal MDPI journal code
 #' @param type "closed", "open" or "all" special issues. "closed" by default.
 #' @param years A vector containing special issues closure dates to limit the search to certain years
