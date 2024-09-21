@@ -67,7 +67,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       
     } else {
       
-      table<-data.frame(submitted=as.Date(character(),aca_flag=as.double()), 
+      table<-data.frame(submitted=as.Date(character()), 
                         stringsAsFactors=FALSE)
       
       for (j in si_papers) {
@@ -133,6 +133,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         
         MDPI_url<-j
         temp_df<-data.frame(MDPI_url,flag,result,submitted,aca_flag) ##beta
+        temp_df$aca_flag<-as.character(aca_flag)
         
         table<-bind_rows(table,temp_df)
         
@@ -162,7 +163,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         # Do something if "No info" is found
         aca_flag<-"No info"
       } else {
-        aca_flag<-as.character(sum(table$aca_flag))
+        aca_flag<-as.character(sum(as.numeric(table$aca_flag)))
       }
       
       
@@ -175,7 +176,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       
     }
     
-  }
+  i}
   special_issues_table
 }
 
