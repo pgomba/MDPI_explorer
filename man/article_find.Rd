@@ -2,7 +2,7 @@
 % Please edit documentation in R/article_find.R
 \name{article_find}
 \alias{article_find}
-\title{Extracts all urls on journal sitemap but keeps only papers. Outputs a vector with urls}
+\title{This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.}
 \usage{
 article_find(journal)
 }
@@ -13,7 +13,7 @@ article_find(journal)
 A vector
 }
 \description{
-Extracts all urls on journal sitemap but keeps only papers. Outputs a vector with urls
+This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.
 }
 \examples{
 article_find("agriculture")

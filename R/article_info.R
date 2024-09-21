@@ -1,4 +1,4 @@
-#' Extracts data for each individual paper
+#' This function extracts key editorial information from one or more paper URLs. Specifically, it retrieves the submission, revision, and acceptance dates, as well as the article type. The function also calculates the turnaround time (the duration from submission to acceptance) and identifies whether the paper is part of a special issue.
 #' @param vector A vector with urls.
 #' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @param sample_size A number. How many papers do you want to explore from the main vector. Leave blank for all

@@ -7,6 +7,15 @@ format:
     css: styles.css
     toc: true
 ---
+#MDPIexploreR 0.1.5 
+
+Updated functions documentation
+
+Fixed `clean_names()` bug missing single name authors after removing title. 
+
+`guest_editor_info()` now allows to limit the targeted years
+
+`guest_editor_info()` now outputs number of papers where the guest editor has also a role as academic editor
 
 # MDPIexploreR 0.1.4 
 

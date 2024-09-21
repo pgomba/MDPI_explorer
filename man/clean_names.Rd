@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_names.R
 \name{clean_names}
 \alias{clean_names}
-\title{Homogenize editors and authors names}
+\title{This function will standardize the editors and authors names to facilitate matching them to one another.}
 \usage{
 clean_names(name_vector)
 }

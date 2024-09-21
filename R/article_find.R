@@ -1,4 +1,4 @@
-#' Extracts all urls on journal sitemap but keeps only papers. Outputs a vector with urls
+#' This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.
 #' @import magrittr rvest
 #' @param journal A string containing the name of a MDPI journal
 #' @return A vector
