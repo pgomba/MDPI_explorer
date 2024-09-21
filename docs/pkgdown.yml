@@ -1,8 +1,9 @@
 pandoc: 3.1.1
 pkgdown: 2.1.0
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-09-20T22:23Z
+articles:
+  my-vignette: my-vignette.html
+last_built: 2024-09-21T14:50Z
 urls:
   reference: https://pgomba.github.io/seedTools/reference
   article: https://pgomba.github.io/seedTools/articles

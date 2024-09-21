@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">MDPIexploreR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,6 +16,10 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/my-vignette.html">my-vignette</a></li>
+  </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/pagomba" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/pgomba/MDPI_explorer" aria-label="Github"><span class="fa fa-github"></span></a></li>
@@ -51,13 +55,13 @@
           <code><a href="article_find.html">article_find()</a></code>
 
         </dt>
-        <dd>Extracts all urls on journal sitemap but keeps only papers. Outputs a vector with urls</dd>
+        <dd>This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.</dd>
       </dl><dl><dt>
 
           <code><a href="article_info.html">article_info()</a></code>
 
         </dt>
-        <dd>Extracts data for each individual paper</dd>
+        <dd>This function extracts key editorial information from one or more paper URLs. Specifically, it retrieves the submission, revision, and acceptance dates, as well as the article type. The function also calculates the turnaround time (the duration from submission to acceptance) and identifies whether the paper is part of a special issue.</dd>
       </dl><dl><dt>
 
           <code><a href="average_graph.html">average_graph()</a></code>
@@ -69,13 +73,13 @@
           <code><a href="clean_names.html">clean_names()</a></code>
 
         </dt>
-        <dd>Homogenize editors and authors names</dd>
+        <dd>This function will standardize the editors and authors names to facilitate matching them to one another.</dd>
       </dl><dl><dt>
 
           <code><a href="guest_editor_info.html">guest_editor_info()</a></code>
 
         </dt>
-        <dd>Finds data on papers published by guest editors in their own special issues</dd>
+        <dd>Extracts data from special issues, including guest editors' paper counts excluding editorials, time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.</dd>
       </dl><dl><dt>
 
           <code><a href="horticulturae.html">horticulturae</a></code>
@@ -99,7 +103,7 @@
           <code><a href="special_issue_find.html">special_issue_find()</a></code>
 
         </dt>
-        <dd>Returns a vector of URLs with special issues from target journal</dd>
+        <dd>Retrieves all special issues of a specified journal with URLs. Filters results by issue status (open, closed, or all) and optional year range.</dd>
       </dl><dl><dt>
 
           <code><a href="summary_graph.html">summary_graph()</a></code>
