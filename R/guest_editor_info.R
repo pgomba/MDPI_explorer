@@ -91,8 +91,6 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         
         authors<-clean_names(authors)
         
-        ############################# beta
-        
         academic_editor<-article%>%
           html_nodes(".academic-editor-container")%>%
           html_nodes(".sciprofiles-link__name")%>%
@@ -110,10 +108,8 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
             aca_flag<-0
           } else {
             aca_flag<-1}}
-  
         
-        ############################ beta end
-        
+      
         guest_editor<-length(editors)
         result <- as.numeric(editors %in% authors)%>%
           paste(., collapse = ", ")
@@ -177,7 +173,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       
     }
     
-  i}
+  }
   special_issues_table
 }
 
