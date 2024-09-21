@@ -1,6 +1,6 @@
-#' Extracts data from special issues, including guest editors' paper counts (excluding editorials), time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.
+#' Extracts data from special issues, including guest editors' paper counts excluding editorials, time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.
 #' 
-#' @param journal_urls A list of MDPI special issues urls
+#' @param journal_urls A list of MDPI special issues URLs
 #' @param sample_size A number. How many special issues do you want to explore from the main vector. Leave blank for all
 #' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @import magrittr rvest dplyr 
