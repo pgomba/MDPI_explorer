@@ -2,7 +2,7 @@
 % Please edit documentation in R/guest_editor_info.R, R/selfcite_find.R
 \name{guest_editor_info}
 \alias{guest_editor_info}
-\title{Finds data on papers published by guest editors in their own special issues}
+\title{Extracts data from special issues, including guest editors' paper counts (excluding editorials), time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.}
 \usage{
 guest_editor_info(journal_urls, sample_size, sleep = 2)
 
@@ -21,7 +21,7 @@ A data frame.
 A data frame.
 }
 \description{
-Finds data on papers published by guest editors in their own special issues
+Extracts data from special issues, including guest editors' paper counts (excluding editorials), time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.
 
 Finds data on papers published by guest editors in their own special issues
 }
