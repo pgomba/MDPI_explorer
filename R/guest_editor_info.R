@@ -67,7 +67,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       
     } else {
       
-      table<-data.frame(submitted=as.Date(character()), #ch v 0.0.1.1
+      table<-data.frame(submitted=as.Date(character(),aca_flag=as.double()), 
                         stringsAsFactors=FALSE)
       
       for (j in si_papers) {
@@ -90,6 +90,29 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         
         authors<-clean_names(authors)
         
+        ############################# beta
+        
+        academic_editor<-article%>%
+          html_nodes(".academic-editor-container")%>%
+          html_nodes(".sciprofiles-link__name")%>%
+          html_text2()%>%
+          unique()%>%
+          clean_names()
+        
+        if (identical(academic_editor,character(0))) {
+          aca_flag<-"No info"
+        } else {
+          
+          aca_flag<-intersect(editors,academic_editor)
+          
+          if (identical(aca_flag,character(0))) {
+            aca_flag<-0
+          } else {
+            aca_flag<-1}}
+  
+        
+        ############################ beta end
+        
         guest_editor<-length(editors)
         result <- as.numeric(editors %in% authors)%>%
           paste(., collapse = ", ")
@@ -109,7 +132,7 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
         }
         
         MDPI_url<-j
-        temp_df<-data.frame(MDPI_url,flag,result,submitted)
+        temp_df<-data.frame(MDPI_url,flag,result,submitted,aca_flag) ##beta
         
         table<-bind_rows(table,temp_df)
         
@@ -134,7 +157,16 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       rt_sum_vector2<-rt_sum_vector%>%
         paste(collapse = ",")
       
-      temp_df<-data.frame(special_issue=i,num_papers=length(table$MDPI_url),flags=sum(table$flag),prop_flag=si_summary,deadline=as.Date(deadline,"%d %B %Y"), latest_sub=max(table$submitted),rt_sum_vector2)%>%
+      
+      if (any(table$aca_flag == "No info")) {
+        # Do something if "No info" is found
+        aca_flag<-"No info"
+      } else {
+        aca_flag<-as.character(sum(table$aca_flag))
+      }
+      
+      
+      temp_df<-data.frame(special_issue=i,num_papers=length(table$MDPI_url),flags=sum(table$flag),prop_flag=si_summary,deadline=as.Date(deadline,"%d %B %Y"), latest_sub=max(table$submitted),rt_sum_vector2,aca_flag)%>%
         mutate(d_over_deadline=deadline-latest_sub)
       special_issues_table<-bind_rows(special_issues_table,temp_df)
       Sys.sleep(sleep)
