@@ -1,3 +1,6 @@
+#' #' Obtain information from guest edited special issues
+#'
+#'@description#' 
 #' Extracts data from special issues, including guest editors' paper counts excluding editorials, time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.
 #' 
 #' @param journal_urls A list of MDPI special issues URLs
