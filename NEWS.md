@@ -7,6 +7,13 @@ format:
     css: styles.css
     toc: true
 ---
+# MDPIexploreR 0.1.6 
+
+New function `plot_articles()` replaces functions `average_graph()`, `summary_graph()` and `type_graph()`
+
+New function `selfcite_check` returns number of articles in referenced published by authors vs total number of references
+
+
 # MDPIexploreR 0.1.5 
 
 Updated functions documentation

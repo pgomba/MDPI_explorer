@@ -4,7 +4,9 @@
 #' @return A vector
 #' @export article_find
 #' @examples
+#' \dontrun{
 #' article_find("agriculture")
+#' }
 
 article_find <- function(journal) {
 

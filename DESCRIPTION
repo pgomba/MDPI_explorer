@@ -1,6 +1,6 @@
 Package: MDPIexploreR
 Title: Functions to explore MDPI journals 
-Version: 0.1.5
+Version: 0.1.6
 URL: https://pgomba.github.io/seedTools
 Authors@R: 
     person("Pablo","Gómez Barreiro", ,"pablogomezbr@hotmail.es", role = c("aut", "cre"),

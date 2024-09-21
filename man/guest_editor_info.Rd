@@ -2,7 +2,7 @@
 % Please edit documentation in R/guest_editor_info.R
 \name{guest_editor_info}
 \alias{guest_editor_info}
-\title{#' Obtain information from guest edited special issues}
+\title{Obtain information from guest edited special issues}
 \usage{
 guest_editor_info(journal_urls, sample_size, sleep = 2)
 }
