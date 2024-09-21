@@ -7,7 +7,7 @@ format:
     css: styles.css
     toc: true
 ---
-#MDPIexploreR 0.1.5 
+# MDPIexploreR 0.1.5 
 
 Updated functions documentation
 
