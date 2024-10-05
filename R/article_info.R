@@ -4,12 +4,20 @@
 #' @param sample_size A number. How many papers do you want to explore from the main vector. Leave blank for all
 #' @import magrittr rvest dplyr lubridate stringr
 #' @export article_info
-#' @return A data frame.
+#' @return A data frame (class: \code{data.frame}) with the following columns:
+#' \describe{
+#'   \item{i}{The URL of the article from which the information is retrieved.}
+#'   \item{article_type}{The classification of the article (e.g., editorial, review).}
+#'   \item{Received}{The date the article was received by the publisher.}
+#'   \item{Accepted}{The date the article was accepted for publication.}
+#'   \item{tat}{The turnaround time, calculated as the number of days between the received and accepted dates.}
+#'   \item{year}{The year in which the article was accepted for publication.}
+#'   \item{issue_type}{Indicates whether the article is part of a special issue.}
+#' }
 #' @examples
 #' url<-c("https://www.mdpi.com/2073-4336/8/4/45","https://www.mdpi.com/2073-4336/11/3/39")
-#' \dontrun{
-#' articles_info(url, 1.5)
-#' }
+#' info<-article_info(url, 1.5)
+#' 
 
 
 article_info <- function(vector,sleep=2,sample_size) {

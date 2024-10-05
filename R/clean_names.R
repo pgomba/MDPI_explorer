@@ -5,7 +5,7 @@
 #' @param name_vector A string with names separated by commas
 #' @import magrittr dplyr stringr
 #' @export clean_names
-#' @return A vector
+#' @return A vector (class: \code{character}) containing names
 #' @examples
 #' clean_names(c("Matthias M. Bauer","Thomas Garca Morrison","Wolfgang Nitsche", "Elias Biobaca L." ))
 

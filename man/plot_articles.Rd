@@ -14,7 +14,7 @@ plot_articles(articles_info, journal, type)
 \item{type}{select "summary","issues" or "type" depending on desired graph}
 }
 \value{
-A plot
+A plot (class: \code{ggplot}) depicting the desired information obtained from \code{article_info}
 }
 \description{
 Plots informaton obtained from article_info

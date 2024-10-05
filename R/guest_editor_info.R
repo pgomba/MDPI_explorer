@@ -8,10 +8,22 @@
 #' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @import magrittr rvest dplyr 
 #' @export guest_editor_info
-#' @return A data frame.
+#' @return A data frame (class: \code{data.frame}) with the following columns:
+#' \describe{
+#'   \item{special_issue}{The URL of the special issue from which the information is retrieved.}
+#'   \item{num_papers}{Number of special issues contained in the special issue, not considering editorial type articles}
+#'   \item{flags}{Number of articles in the special issue with guest editorial pressence}
+#'   \item{prop_flag}{Proportion of articles in the special issue in which a guest editor is present}
+#'   \item{deadline}{Time at which the special issue was or will be closed}
+#'   \item{latest_sub}{Time at which last article present in the special issue was submitted}
+#'   \item{rt_sum_vector2}{Numeric vector showing number of articles in which each individual guest editor is present}
+#'   \item{aca_flag}{Number of articles in the special issue where the academic editor is a guest editor too}
+#'   \item{d_over_deadline}{Day differential between special issue closure and latest article submission}
+#' }
 #' @examples
-#' \dontrun{
-#' guest_editor_info("covid", 1.5)
+#' \donttest{
+#' ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/5F5L5569XN"
+#' ge_info<-guest_editor_info(ge_issue)
 #' }
 
 

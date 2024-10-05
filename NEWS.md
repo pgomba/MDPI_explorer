@@ -7,6 +7,10 @@ format:
     css: styles.css
     toc: true
 ---
+# MDPIexploreR 0.1.7 
+
+Preparations for CRAN
+
 # MDPIexploreR 0.1.6 
 
 New function `plot_articles()` replaces functions `average_graph()`, `summary_graph()` and `type_graph()`

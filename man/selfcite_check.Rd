@@ -10,13 +10,13 @@ selfcite_check(article_url)
 \item{article_url}{A valid MDPI article url}
 }
 \value{
-A string.
+A string (class: \code{character}) containg the values of possible self citations vs total number of references in the paper
 }
 \description{
 Calculates number of authors selfcitations against all references
 }
 \examples{
-\dontrun{
-selfcite_check(paper_url)
-}
+paper_url<-"https://www.mdpi.com/2223-7747/13/19/2785"
+sc<-selfcite_check(paper_url)
+
 }

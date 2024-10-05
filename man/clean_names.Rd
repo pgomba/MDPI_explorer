@@ -10,7 +10,7 @@ clean_names(name_vector)
 \item{name_vector}{A string with names separated by commas}
 }
 \value{
-A vector
+A vector (class: \code{character}) containing names
 }
 \description{
 Takes a vector of names to return the names without abbreviated middle names, academic titles and hyphens.

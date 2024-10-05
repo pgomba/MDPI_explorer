@@ -1,12 +1,11 @@
 #' This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.
 #' @import magrittr rvest
 #' @param journal A string containing the name of a MDPI journal
-#' @return A vector
+#' @return A vector (class: \code{character}) containing a list of articles URLs from target journal
 #' @export article_find
 #' @examples
-#' \dontrun{
-#' article_find("agriculture")
-#' }
+#' agr_articles<-article_find("agriculture")
+#' 
 
 article_find <- function(journal) {
 

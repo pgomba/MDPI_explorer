@@ -20,7 +20,7 @@ A vector.
 Retrieves all special issues of a specified journal with URLs. Filters results by issue status (open, closed, or all) and optional year range.
 }
 \examples{
-\dontrun{
+\donttest{
 special_issue_find("covid")
 }
 }

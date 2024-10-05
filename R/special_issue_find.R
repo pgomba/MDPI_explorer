@@ -6,7 +6,7 @@
 #' @export special_issue_find
 #' @return A vector.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' special_issue_find("covid")
 #' }
 

@@ -1,11 +1,11 @@
 Package: MDPIexploreR
-Title: Functions to explore MDPI journals 
-Version: 0.1.6
-URL: https://pgomba.github.io/seedTools
+Title: Web Scraping and Bibliometric Analysis of MDPI Journals
+Version: 0.1.7
+URL: https://pgomba.github.io/MDPI_explorer/
 Authors@R: 
     person("Pablo","Gómez Barreiro", ,"pablogomezbr@hotmail.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3140-3326"))
-Description: Provides a series of functions to explore editorial data, issues and articles type from MDPI journals.
+Description: MDPIexploreR provides comprehensive tools to scrape and analyze data from the MDPI journals. It allows users to extract metrics such as submission-to-acceptance times, article types, and whether articles are part of special issues. The package can also visualize this information through plots. Additionally, MDPIexploreR offers tools to explore patterns of self-citations within articles and provides insights into guest-edited special issues.
 VignetteBuilder: knitr
 License: CC BY 4.0
 Encoding: UTF-8
@@ -19,8 +19,7 @@ Imports:
     magrittr,
     rvest,
     scales,
-    stringr,
-    tidyr
+    stringr
 Suggests: 
     knitr,
     rmarkdown

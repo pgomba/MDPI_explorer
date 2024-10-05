@@ -5,7 +5,7 @@
 #' @param type select "summary","issues" or "type" depending on desired graph
 #' @import magrittr ggplot2 dplyr lubridate stringr scales
 #' @export plot_articles
-#' @return A plot
+#' @return A plot (class: \code{ggplot}) depicting the desired information obtained from \code{article_info}
 #' @examples
 #' plot_articles(agriculture,"Agriculture",type="summary")
 #' 

@@ -10,13 +10,12 @@ article_find(journal)
 \item{journal}{A string containing the name of a MDPI journal}
 }
 \value{
-A vector
+A vector (class: \code{character}) containing a list of articles URLs from target journal
 }
 \description{
 This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.
 }
 \examples{
-\dontrun{
-article_find("agriculture")
-}
+agr_articles<-article_find("agriculture")
+
 }
