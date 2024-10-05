@@ -2,8 +2,8 @@ pandoc: 3.1.1
 pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
-  my-vignette: my-vignette.html
-last_built: 2024-09-21T20:25Z
+  introduction_MDPIexploreR: introduction_MDPIexploreR.html
+last_built: 2024-10-05T10:59Z
 urls:
   reference: https://pgomba.github.io/seedTools/reference
   article: https://pgomba.github.io/seedTools/articles
