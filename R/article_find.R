@@ -4,8 +4,9 @@
 #' @return A vector (class: \code{character}) containing a list of articles URLs from target journal
 #' @export article_find
 #' @examples
+#' \donttest{
 #' agr_articles<-article_find("agriculture")
-#' 
+#' }
 
 article_find <- function(journal) {
 

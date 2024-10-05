@@ -5,7 +5,7 @@ URL: https://pgomba.github.io/MDPI_explorer/
 Authors@R: 
     person("Pablo","Gómez Barreiro", ,"pablogomezbr@hotmail.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3140-3326"))
-Description: MDPIexploreR provides comprehensive tools to scrape and analyze data from the MDPI journals. It allows users to extract metrics such as submission-to-acceptance times, article types, and whether articles are part of special issues. The package can also visualize this information through plots. Additionally, MDPIexploreR offers tools to explore patterns of self-citations within articles and provides insights into guest-edited special issues.
+Description: Provides comprehensive tools to scrape and analyze data from the MDPI journals. It allows users to extract metrics such as submission-to-acceptance times, article types, and whether articles are part of special issues. The package can also visualize this information through plots. Additionally, MDPIexploreR offers tools to explore patterns of self-citations within articles and provides insights into guest-edited special issues.
 VignetteBuilder: knitr
 License: CC BY 4.0
 Encoding: UTF-8
