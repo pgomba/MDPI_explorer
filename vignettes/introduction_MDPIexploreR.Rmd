@@ -1,8 +1,8 @@
 ---
-title: "Introduction to MDPIexploreR"
+title: "Introduction to `MDPIexploreR`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to MDPIexploreR}
+  %\VignetteIndexEntry{Introduction to `MDPIexploreR`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

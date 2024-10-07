@@ -4,13 +4,19 @@
 \alias{selfcite_check}
 \title{Calculates number of authors selfcitations against all references}
 \usage{
-selfcite_check(article_url)
+selfcite_check(article_url, verbose = TRUE)
 }
 \arguments{
 \item{article_url}{A valid MDPI article url}
+
+\item{verbose}{Logical. If \code{TRUE}, informative messages will be printed during the function execution. Defaults to \code{TRUE}.}
 }
 \value{
-A string (class: \code{character}) containg the values of possible self citations vs total number of references in the paper
+A string (class: \code{data.frame})with the following columns:
+\describe{
+\item{selfcite}{The number of articles in references authored by any of the main article authors}
+\item{total_ref}{Total number of references in the article}
+}
 }
 \description{
 Calculates number of authors selfcitations against all references

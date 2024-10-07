@@ -5,6 +5,7 @@
 #' 
 #' @param journal_urls A list of MDPI special issues URLs
 #' @param sample_size A number. How many special issues do you want to explore from the main vector. Leave blank for all
+#' @param show_progress Logical. If `TRUE`, a progress bar is displayed during the function execution. Defaults to `TRUE`.
 #' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @import magrittr rvest dplyr 
 #' @export guest_editor_info
@@ -27,7 +28,7 @@
 #' }
 
 
-guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
+guest_editor_info <- function(journal_urls, sample_size, sleep=2,show_progress=TRUE) {
   
   if (missing(sample_size)) {
     sample_size=length(journal_urls)
@@ -43,9 +44,10 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
                                    prop_flag=double(),
                                    stringsAsFactors=FALSE)
   
-  
+  if (show_progress) {
   pb <- txtProgressBar(min = 0, max = length(urls), initial = 0,style=3) #Build progress bar
   count<-0
+  }
   
   for (i in urls) {
     
@@ -78,8 +80,12 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       temp_df<-data.frame(special_issue=i,num_papers=as.double("empty SI"),prop_flag=as.double("empty SI"))
       special_issues_table<-bind_rows(special_issues_table,temp_df)
       Sys.sleep(sleep)
-      count=count+1
-      setTxtProgressBar(pb, count)
+      
+      if (show_progress) {
+        count=count+1
+        setTxtProgressBar(pb, count)
+        
+      }
       
     } else {
       
@@ -184,8 +190,10 @@ guest_editor_info <- function(journal_urls, sample_size, sleep=2) {
       special_issues_table<-bind_rows(special_issues_table,temp_df)
       Sys.sleep(sleep)
       count<-count+1
-      setTxtProgressBar(pb, count)
       
+      if (show_progress) {
+      setTxtProgressBar(pb, count)
+      }
     }
     
   }

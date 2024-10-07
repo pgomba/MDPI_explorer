@@ -2,6 +2,7 @@
 #' @param journal MDPI journal code
 #' @param type "closed", "open" or "all" special issues. "closed" by default.
 #' @param years A vector containing special issues closure dates to limit the search to certain years
+#' @param verbose Logical. If `TRUE`, informative messages will be printed during the function execution. Defaults to `TRUE`.
 #' @import magrittr rvest dplyr 
 #' @export special_issue_find
 #' @return A vector.
@@ -11,15 +12,23 @@
 #' }
 
 
-special_issue_find <- function(journal,type="closed",years=NULL) {
+special_issue_find <- function(journal,type="closed",years=NULL,verbose=TRUE) {
   
   si_url<-data.frame()
   
+  if (verbose) {
+  
   message("Compiling all special issues from journal ",journal," with status: ",type)
   
+  }
+    
   for (i in 1:100) {
     
+    if (verbose) {
+    
     message("Extracting page: ",i)
+      
+    }
     
     data<-read_html(paste0("https://www.mdpi.com/journal/",journal,"/special_issues?page_count=100&page_no=",i,"&search=&section_id=&sort=deadline&view=",type))
     

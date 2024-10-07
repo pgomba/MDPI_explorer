@@ -2,6 +2,7 @@
 #' @param vector A vector with urls.
 #' @param sleep Number of seconds between scraping iterations. 2 sec. by default
 #' @param sample_size A number. How many papers do you want to explore from the main vector. Leave blank for all
+#' @param show_progress Logical. If `TRUE`, a progress bar is displayed during the function execution. Defaults to `TRUE`.
 #' @import magrittr rvest dplyr lubridate stringr
 #' @export article_info
 #' @return A data frame (class: \code{data.frame}) with the following columns:
@@ -20,7 +21,7 @@
 #' 
 
 
-article_info <- function(vector,sleep=2,sample_size) {
+article_info <- function(vector,sleep=2,sample_size,show_progress=TRUE) {
 
   if (missing(sample_size)) {
     sample_size=length(vector)
@@ -30,7 +31,10 @@ article_info <- function(vector,sleep=2,sample_size) {
   
   papers<-sample(vector,sample_size)
   
+  if (show_progress) {
   pb <- txtProgressBar(min = 0, max = length(papers), initial = 0,style=3) #Build progress bar
+  }
+  
   count<-0
   paper_data<-data.frame() #Empty data frame
   
@@ -76,8 +80,11 @@ article_info <- function(vector,sleep=2,sample_size) {
       ex_paper2<<-"error"
       article_type<<-"error"
       
+      if (show_progress) {
+      
       count<-count+1
       setTxtProgressBar(pb, count)
+      }
       
     })
     
@@ -86,7 +93,10 @@ article_info <- function(vector,sleep=2,sample_size) {
     
     count<-count+1
     Sys.sleep(sleep)
+    
+    if (show_progress) {
     setTxtProgressBar(pb, count)
+    }
     
   }
   final_table<-paper_data%>%

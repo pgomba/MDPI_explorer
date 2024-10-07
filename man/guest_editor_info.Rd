@@ -4,7 +4,7 @@
 \alias{guest_editor_info}
 \title{Obtain information from guest edited special issues}
 \usage{
-guest_editor_info(journal_urls, sample_size, sleep = 2)
+guest_editor_info(journal_urls, sample_size, sleep = 2, show_progress = TRUE)
 }
 \arguments{
 \item{journal_urls}{A list of MDPI special issues URLs}
@@ -12,6 +12,8 @@ guest_editor_info(journal_urls, sample_size, sleep = 2)
 \item{sample_size}{A number. How many special issues do you want to explore from the main vector. Leave blank for all}
 
 \item{sleep}{Number of seconds between scraping iterations. 2 sec. by default}
+
+\item{show_progress}{Logical. If \code{TRUE}, a progress bar is displayed during the function execution. Defaults to \code{TRUE}.}
 }
 \value{
 A data frame (class: \code{data.frame}) with the following columns:

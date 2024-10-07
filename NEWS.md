@@ -11,6 +11,10 @@ format:
 
 Preparations for CRAN
 
+`self_cite()` now returns a data frame and displays an error message when references cannot be found.
+
+Verbosity options (hide messages and progress bars) included for `article_info()`, `guest_editor_info()` and `special_issue_find()`
+
 # MDPIexploreR 0.1.6 
 
 New function `plot_articles()` replaces functions `average_graph()`, `summary_graph()` and `type_graph()`
