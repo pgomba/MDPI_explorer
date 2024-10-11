@@ -7,7 +7,7 @@ format:
     css: styles.css
     toc: true
 ---
-# MDPIexploreR 0.1.7 
+# MDPIexploreR 0.2.0 
 
 Preparations for CRAN
 
