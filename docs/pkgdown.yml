@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   introduction_MDPIexploreR: introduction_MDPIexploreR.html
-last_built: 2024-10-11T08:37Z
+last_built: 2024-10-11T11:14Z
 urls:
   reference: https://pgomba.github.io/MDPI_explorer/reference
   article: https://pgomba.github.io/MDPI_explorer/articles

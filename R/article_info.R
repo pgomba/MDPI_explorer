@@ -17,7 +17,9 @@
 #' }
 #' @examples
 #' url<-c("https://www.mdpi.com/2073-4336/8/4/45","https://www.mdpi.com/2073-4336/11/3/39")
+#' \donttest{
 #' info<-article_info(url, 1.5)
+#' }
 #' 
 
 
