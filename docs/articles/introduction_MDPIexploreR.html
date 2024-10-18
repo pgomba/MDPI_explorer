@@ -70,13 +70,20 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pgomba.github.io/MDPI_explorer/">MDPIexploreR</a></span><span class="op">)</span></span></code></pre></div>
+<p>Welcome to <code>MDPIexploreR</code>. This article provides a brief
+introduction to the key functionalities of this package. Although all
+functions have been rigorously tested, occasional bugs or unexpected
+issues may arise. Please report any problems via <a href="https://github.com/pgomba/MDPI_explorer/issues" class="external-link">Github</a>.
+Similarly, and feel free to suggest enhancements or new features as
+well.</p>
 <div class="section level2">
 <h2 id="obtaining-list-of-journals">Obtaining list of journals<a class="anchor" aria-label="anchor" href="#obtaining-list-of-journals"></a>
 </h2>
-<p>To retrieve the most current list of MDPI journals, the
-<code>MDPIexploreR</code> package utilizes the
-<code><a href="../reference/MDPI_journals.html">MDPI_journals()</a></code> function. This function fetches data from
-the official MDPI journals page at <a href="https://www.mdpi.com/about/journals" class="external-link">https://www.mdpi.com/about/journals</a>
+<p><code>MDPIexploreR</code> functions rely on journal codes. These are
+usually the same as journal titles (e.g. Plants), but occasionally they
+are abbreviations (e.g., IJERPH). To find the code of the journal you
+plan to explore use the <code><a href="../reference/MDPI_journals.html">MDPI_journals()</a></code> function. This
+function fetches data from the official MDPI journals page at <a href="https://www.mdpi.com/about/journals" class="external-link">https://www.mdpi.com/about/journals</a>
 and generates a table containing the names of the journals along with
 their corresponding codes.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -92,8 +99,6 @@ their corresponding codes.</p>
 <span><span class="co">#&gt; 8                         Aerospace       aerospace</span></span>
 <span><span class="co">#&gt; 9                       Agriculture     agriculture</span></span>
 <span><span class="co">#&gt; 10                  AgriEngineering agriengineering</span></span></code></pre></div>
-<p>These journal codes can then be used across the multiple functions of
-<code>MDPIexploreR</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="article-level-information">Article level information<a class="anchor" aria-label="anchor" href="#article-level-information"></a>
@@ -108,15 +113,152 @@ published in the journal “MDPI Covid” we just need to do:</p>
 <span><span class="co">#&gt; [3] "https://www.mdpi.com/2673-8112/1/1/3"</span></span>
 <span><span class="co">#&gt; [4] "https://www.mdpi.com/2673-8112/1/1/4"</span></span>
 <span><span class="co">#&gt; [5] "https://www.mdpi.com/2673-8112/1/1/5"</span></span></code></pre></div>
-<p>Extracting editorial information from an article can be done
-with:</p>
+<p>You can then use the <code><a href="../reference/article_info.html">article_info()</a></code> function to obtain
+editorial information about these journals. For this example, let’s
+extract information for a sample of ten articles from the journal
+<em>Covid</em>. Note that the more articles a journal has, the longer it
+will take to retrieve the information. A progress bar will display the
+current status. For large requests, I recommend having a stable internet
+connection and dividing the results of <code><a href="../reference/article_find.html">article_find()</a></code> into
+smaller vectors. As a general rule, retrieving information for one
+article takes approximately 1.2 seconds—so plan accordingly!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/article_info.html">article_info</a></span><span class="op">(</span><span class="st">"https://www.mdpi.com/2673-8112/1/1/4"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span></span>
-<span><span class="co">#&gt;                                      i article_type   Received   Accepted</span></span>
-<span><span class="co">#&gt; 1 https://www.mdpi.com/2673-8112/1/1/4       Review 2021-05-01 2021-06-21</span></span>
-<span><span class="co">#&gt;       tat year issue_type</span></span>
-<span><span class="co">#&gt; 1 51 days 2021         No</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">all_covid_articles</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/article_find.html">article_find</a></span><span class="op">(</span><span class="st">"covid"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/article_info.html">article_info</a></span><span class="op">(</span><span class="va">all_covid_articles</span>,sample<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span>
+<span><span class="co">#&gt;                                          i  article_type   Received   Accepted</span></span>
+<span><span class="co">#&gt; 1  https://www.mdpi.com/2673-8112/2/11/110       Article 2022-10-06 2022-10-22</span></span>
+<span><span class="co">#&gt; 2    https://www.mdpi.com/2673-8112/4/8/91        Review 2024-06-22 2024-08-13</span></span>
+<span><span class="co">#&gt; 3    https://www.mdpi.com/2673-8112/1/4/63       Article 2021-11-17 2021-12-14</span></span>
+<span><span class="co">#&gt; 4    https://www.mdpi.com/2673-8112/4/5/42       Article 2024-04-14 2024-05-07</span></span>
+<span><span class="co">#&gt; 5    https://www.mdpi.com/2673-8112/4/6/51   Perspective 2024-05-06 2024-06-05</span></span>
+<span><span class="co">#&gt; 6    https://www.mdpi.com/2673-8112/1/3/47       Article 2021-09-10 2021-11-02</span></span>
+<span><span class="co">#&gt; 7    https://www.mdpi.com/2673-8112/4/9/99 Communication 2024-06-19 2024-07-31</span></span>
+<span><span class="co">#&gt; 8     https://www.mdpi.com/2673-8112/3/2/9  Brief Report 2023-01-03 2023-01-27</span></span>
+<span><span class="co">#&gt; 9     https://www.mdpi.com/2673-8112/3/1/5       Article 2022-11-19 2023-01-04</span></span>
+<span><span class="co">#&gt; 10    https://www.mdpi.com/2673-8112/1/1/5       Article 2021-04-18 2021-06-23</span></span>
+<span><span class="co">#&gt;        tat year issue_type</span></span>
+<span><span class="co">#&gt; 1  16 days 2022         No</span></span>
+<span><span class="co">#&gt; 2  52 days 2024         No</span></span>
+<span><span class="co">#&gt; 3  27 days 2021         No</span></span>
+<span><span class="co">#&gt; 4  23 days 2024         No</span></span>
+<span><span class="co">#&gt; 5  30 days 2024         No</span></span>
+<span><span class="co">#&gt; 6  53 days 2021         No</span></span>
+<span><span class="co">#&gt; 7  42 days 2024         No</span></span>
+<span><span class="co">#&gt; 8  24 days 2023         No</span></span>
+<span><span class="co">#&gt; 9  46 days 2023         No</span></span>
+<span><span class="co">#&gt; 10 66 days 2021         No</span></span></code></pre></div>
+<p>Visualize the output of <code><a href="../reference/article_info.html">article_info()</a></code> using the
+<code><a href="../reference/plot_articles.html">plot_articles()</a></code> function, which comes with three types of
+graphs:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_covid_articles</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/article_find.html">article_find</a></span><span class="op">(</span><span class="st">"covid"</span><span class="op">)</span></span>
+<span><span class="va">articles_data</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/article_info.html">article_info</a></span><span class="op">(</span><span class="va">all_covid_articles</span>,sample<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   1%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   3%  |                                                                              |===                                                                   |   4%  |                                                                              |====                                                                  |   5%  |                                                                              |====                                                                  |   6%  |                                                                              |=====                                                                 |   7%  |                                                                              |======                                                                |   8%  |                                                                              |======                                                                |   9%  |                                                                              |=======                                                               |  10%  |                                                                              |========                                                              |  11%  |                                                                              |========                                                              |  12%  |                                                                              |=========                                                             |  13%  |                                                                              |==========                                                            |  14%  |                                                                              |==========                                                            |  15%  |                                                                              |===========                                                           |  16%  |                                                                              |============                                                          |  17%  |                                                                              |=============                                                         |  18%  |                                                                              |=============                                                         |  19%  |                                                                              |==============                                                        |  20%  |                                                                              |===============                                                       |  21%  |                                                                              |===============                                                       |  22%  |                                                                              |================                                                      |  23%  |                                                                              |=================                                                     |  24%  |                                                                              |==================                                                    |  25%  |                                                                              |==================                                                    |  26%  |                                                                              |===================                                                   |  27%  |                                                                              |====================                                                  |  28%  |                                                                              |====================                                                  |  29%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  31%  |                                                                              |======================                                                |  32%  |                                                                              |=======================                                               |  33%  |                                                                              |========================                                              |  34%  |                                                                              |========================                                              |  35%  |                                                                              |=========================                                             |  36%  |                                                                              |==========================                                            |  37%  |                                                                              |===========================                                           |  38%  |                                                                              |===========================                                           |  39%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  41%  |                                                                              |=============================                                         |  42%  |                                                                              |==============================                                        |  43%  |                                                                              |===============================                                       |  44%  |                                                                              |================================                                      |  45%  |                                                                              |================================                                      |  46%  |                                                                              |=================================                                     |  47%  |                                                                              |==================================                                    |  48%  |                                                                              |==================================                                    |  49%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================                                  |  51%  |                                                                              |====================================                                  |  52%  |                                                                              |=====================================                                 |  53%  |                                                                              |======================================                                |  54%  |                                                                              |======================================                                |  55%  |                                                                              |=======================================                               |  56%  |                                                                              |========================================                              |  57%  |                                                                              |=========================================                             |  58%  |                                                                              |=========================================                             |  59%  |                                                                              |==========================================                            |  60%  |                                                                              |===========================================                           |  61%  |                                                                              |===========================================                           |  62%  |                                                                              |============================================                          |  63%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  65%  |                                                                              |==============================================                        |  66%  |                                                                              |===============================================                       |  67%  |                                                                              |================================================                      |  68%  |                                                                              |================================================                      |  69%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  71%  |                                                                              |==================================================                    |  72%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  77%  |                                                                              |=======================================================               |  78%  |                                                                              |=======================================================               |  79%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  81%  |                                                                              |=========================================================             |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  85%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |==============================================================        |  88%  |                                                                              |==============================================================        |  89%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  91%  |                                                                              |================================================================      |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |==================================================================    |  94%  |                                                                              |==================================================================    |  95%  |                                                                              |===================================================================   |  96%  |                                                                              |====================================================================  |  97%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================| 100%</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/plot_articles.html">plot_articles</a></span><span class="op">(</span><span class="va">articles_data</span>,journal <span class="op">=</span> <span class="st">"Covid"</span>, type <span class="op">=</span> <span class="st">"summary"</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 1 row containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_point()`).</span></span></code></pre></div>
+<p><img src="introduction_MDPIexploreR_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_articles.html">plot_articles</a></span><span class="op">(</span><span class="va">articles_data</span>,journal <span class="op">=</span> <span class="st">"Covid"</span>, type <span class="op">=</span> <span class="st">"type"</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 1 row containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_col()`).</span></span></code></pre></div>
+<p><img src="introduction_MDPIexploreR_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_articles.html">plot_articles</a></span><span class="op">(</span><span class="va">articles_data</span>,journal <span class="op">=</span> <span class="st">"Covid"</span>, type <span class="op">=</span> <span class="st">"issues"</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 1 row containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_col()`).</span></span></code></pre></div>
+<p><img src="introduction_MDPIexploreR_files/figure-html/unnamed-chunk-5-3.png" width="700">
+# Special issues and guest editors</p>
+<p>Similar to the functions in the <code>article()</code> family, we
+will use a journal code to obtain information on special issues and gues
+editors. To compile a list of a journal special issues we use the
+<code><a href="../reference/special_issue_find.html">special_issue_find()</a></code> function. This function allows to
+obtain all special issus from a journal, limit the output to a year to
+year threshold and choose between open or closed articles. Lets find all
+closed special issues in the journal Plants, between the year 2021 and
+2023:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">si</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/special_issue_find.html">special_issue_find</a></span><span class="op">(</span><span class="st">"plants"</span>,type<span class="op">=</span><span class="st">"closed"</span>, years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">2020</span>,<span class="fl">2023</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Compiling all special issues from journal plants with status: closed</span></span>
+<span><span class="co">#&gt; Extracting page: 1</span></span>
+<span><span class="co">#&gt; Extracting page: 2</span></span>
+<span><span class="co">#&gt; Extracting page: 3</span></span>
+<span><span class="co">#&gt; Extracting page: 4</span></span>
+<span><span class="co">#&gt; Extracting page: 5</span></span>
+<span><span class="co">#&gt; Extracting page: 6</span></span>
+<span><span class="co">#&gt; Extracting page: 7</span></span>
+<span><span class="co">#&gt; Extracting page: 8</span></span>
+<span><span class="co">#&gt; Extracting page: 9</span></span>
+<span><span class="co">#&gt; Extracting page: 10</span></span>
+<span><span class="co">#&gt; Extracting page: 11</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">si</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 682</span></span>
+<span><span class="va">si</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "https://www.mdpi.com/journal/plants/special_issues/citrus_research"    </span></span>
+<span><span class="co">#&gt; [2] "https://www.mdpi.com/journal/plants/special_issues/carbon_amino_acid"  </span></span>
+<span><span class="co">#&gt; [3] "https://www.mdpi.com/journal/plants/special_issues/plant_organelle_dna"</span></span>
+<span><span class="co">#&gt; [4] "https://www.mdpi.com/journal/plants/special_issues/chloroplast_RNA"    </span></span>
+<span><span class="co">#&gt; [5] "https://www.mdpi.com/journal/plants/special_issues/DNA_barcode"</span></span></code></pre></div>
+<p>To explore the role of guest editors in these special issues, we can
+use these URLs and the <code><a href="../reference/guest_editor_info.html">guest_editor_info()</a></code> function. In
+this example we use this function on a sample of five articles:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/guest_editor_info.html">guest_editor_info</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">si</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span>
+<span><span class="co">#&gt;                                                                special_issue</span></span>
+<span><span class="co">#&gt; 1 https://www.mdpi.com/journal/plants/special_issues/Cereal_Breeding_Advance</span></span>
+<span><span class="co">#&gt; 2 https://www.mdpi.com/journal/plants/special_issues/botanical_biopesticides</span></span>
+<span><span class="co">#&gt; 3              https://www.mdpi.com/journal/plants/special_issues/SI_Abiotic</span></span>
+<span><span class="co">#&gt; 4          https://www.mdpi.com/journal/plants/special_issues/spectra_plants</span></span>
+<span><span class="co">#&gt; 5  https://www.mdpi.com/journal/plants/special_issues/Phenolics_Biosynthesis</span></span>
+<span><span class="co">#&gt;   num_papers flags prop_flag   deadline latest_sub rt_sum_vector2 aca_flag</span></span>
+<span><span class="co">#&gt; 1          9     1     0.111 2021-02-28 2021-04-15              1  No info</span></span>
+<span><span class="co">#&gt; 2          7     0     0.000 2023-09-20 2023-09-20            0,0        6</span></span>
+<span><span class="co">#&gt; 3          6     1     0.167 2022-12-31 2023-02-06          1,0,0        5</span></span>
+<span><span class="co">#&gt; 4          9     2     0.222 2022-07-20 2023-02-14            1,1  No info</span></span>
+<span><span class="co">#&gt; 5          7     1     0.143 2022-01-31 2022-01-20              1  No info</span></span>
+<span><span class="co">#&gt;   d_over_deadline</span></span>
+<span><span class="co">#&gt; 1        -46 days</span></span>
+<span><span class="co">#&gt; 2          0 days</span></span>
+<span><span class="co">#&gt; 3        -37 days</span></span>
+<span><span class="co">#&gt; 4       -209 days</span></span>
+<span><span class="co">#&gt; 5         11 days</span></span></code></pre></div>
+<p>The function outputs a table with several columns, including: the
+number of papers in the special issue (excluding editorial-type
+articles), the number of articles authored by a guest editor
+(<code>flags</code>), and the ratio of articles to flags
+(<code>prop_flag</code>), which indicates the fraction of articles
+authored by guest editors in the special issue. Additional columns
+include the deadline for the special issue, the date of the last article
+submission, and how much time, if any, the submission exceeded the
+deadline. The <code>rt_sum_vector2</code> column provides a count for
+each guest editor, representing the number of papers they authored in
+the special issue. Finally, the <code>aca_flag</code> column highlights
+the number of papers where the academic editor also served as a guest
+editor.</p>
+</div>
+<div class="section level2">
+<h2 id="self-cites">Self-cites<a class="anchor" aria-label="anchor" href="#self-cites"></a>
+</h2>
+<p>Full disclosure: the <code>rcrossref</code> package can work wonders
+when estimating self-citation rates. While the
+<code><a href="../reference/selfcite_check.html">selfcite_check()</a></code> function in this package does a good job
+as well, it relies on the information provided by MDPI in their
+references, which sometimes truncates author lists using ‘et al.’ As a
+result, I believe this function serves as a good starting point, but for
+more comprehensive analysis, additional tools like
+<code>rcrossref</code> may be needed. <code>selfcite_check</code> won’t
+work if the paper is not directly available online (e.g., is only
+available in a pdf)</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">paper</span><span class="op">&lt;-</span><span class="st">"https://www.mdpi.com/2313-7673/9/10/642"</span></span>
+<span><span class="fu"><a href="../reference/selfcite_check.html">selfcite_check</a></span><span class="op">(</span><span class="va">paper</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   selfcite total_ref</span></span>
+<span><span class="co">#&gt; 1       11        41</span></span></code></pre></div>
+<p>Happy exploring!</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -129,7 +271,7 @@ with:</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
