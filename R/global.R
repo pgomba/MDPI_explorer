@@ -6,4 +6,7 @@ utils::globalVariables(c(".",
                          "Received",
                          "Accepted",
                          "tat",
-                         "issue_type"))
+                         "issue_type",
+                         "year_month",
+                         "mean_tat"
+                         ))

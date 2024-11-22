@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_articles.R
 \name{plot_articles}
 \alias{plot_articles}
-\title{Plots informaton obtained from article_info}
+\title{Plots information obtained from article_info. For analysis purposes, Editorial and Correction type articles are ignored.}
 \usage{
 plot_articles(articles_info, journal, type)
 }
@@ -11,13 +11,13 @@ plot_articles(articles_info, journal, type)
 
 \item{journal}{A string with the name of the journal for graph title purposes}
 
-\item{type}{select "summary","issues" or "type" depending on desired graph}
+\item{type}{select "summary","issues", "tat" or "type" depending on desired graph}
 }
 \value{
 A plot (class: \code{ggplot}) depicting the desired information obtained from \code{article_info}
 }
 \description{
-Plots informaton obtained from article_info
+Plots information obtained from article_info. For analysis purposes, Editorial and Correction type articles are ignored.
 }
 \examples{
 plot_articles(agriculture,"Agriculture",type="summary")

@@ -47,7 +47,7 @@ Visualize the output of `article_info()` using the `plot_articles()` function, w
 
 ```{r cache=TRUE}
 all_covid_articles<-article_find("covid")
-articles_data<-article_info(all_covid_articles,sample=100)
+articles_data<-article_info(all_covid_articles,sample=40)
 
 plot_articles(articles_data,journal = "Covid", type = "summary" )
 plot_articles(articles_data,journal = "Covid", type = "type" )
