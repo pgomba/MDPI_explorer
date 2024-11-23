@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   article_functions: article_functions.html
-last_built: 2024-11-23T16:58Z
+last_built: 2024-11-23T17:09Z
 urls:
   reference: https://pgomba.github.io/MDPI_explorer/reference
   article: https://pgomba.github.io/MDPI_explorer/articles

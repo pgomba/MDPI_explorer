@@ -19,7 +19,8 @@ Imports:
     magrittr,
     rvest,
     scales,
-    stringr
+    stringr,
+    tidyr
 Suggests: 
     knitr,
     rmarkdown
