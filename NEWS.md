@@ -1,18 +1,10 @@
----
-format:
-  html:
-    theme: 
-      light: cosmo
-      dark: darkly
-    css: styles.css
-    toc: true
----
 # MDPIexploreR 0.2.1 
 
 `plot_article()` now includes option "tat" to plot turnaround times
-`plot_article()` of `type="tat"` ignores Editorial and Correction type articles for TAT calculations
-`plot_article()` stops if incorrect type of plot is requested
 
+`plot_article()` of `type="tat"` ignores Editorial and Correction type articles for TAT calculations
+
+`plot_article()` stops if incorrect type of plot is requested
 
 # MDPIexploreR 0.2.0 
 

@@ -1,7 +1,7 @@
 url: https://pgomba.github.io/MDPI_explorer/
 home:
   title: Simple functions to explore MDPI corpus
-  description: 
+  description: Simple functions to explore MDPI corpus
 template:
   bootstrap: 5
   light-switch: true
@@ -29,3 +29,4 @@ navbar:
       icon: fa-github
       href: https://github.com/pgomba/MDPI_explorer
       aria-label: Github
+      
