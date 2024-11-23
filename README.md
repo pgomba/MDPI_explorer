@@ -24,4 +24,13 @@ devtools::install_github("pgomba/MDPI_explorer")
 library(MDPIexploreR)
 ```
 
+## Citation
+
+If you use `MDPIexploreR` in a publication or report, please cite it. Find the correct citation [here](https://pgomba.github.io/MDPI_explorer/authors.html#citation) or running this code:
+
+``` r
+citation("MDPIexploreR")
+
+```
+
 Head to [Introduction to `MDPIexploreR`](https://pgomba.github.io/MDPI_explorer/articles/introduction_MDPIexploreR.html) to get a glimpse of the functionalities of `MDPIexploreR`:
