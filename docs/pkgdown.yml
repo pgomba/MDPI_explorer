@@ -1,9 +1,8 @@
 pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
-articles:
-  introduction_MDPIexploreR: introduction_MDPIexploreR.html
-last_built: 2024-11-23T08:25Z
+articles: {}
+last_built: 2024-11-23T08:48Z
 urls:
   reference: https://pgomba.github.io/MDPI_explorer/reference
   article: https://pgomba.github.io/MDPI_explorer/articles
