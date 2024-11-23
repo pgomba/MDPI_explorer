@@ -3,7 +3,7 @@ Title: Web Scraping and Bibliometric Analysis of MDPI Journals
 Version: 0.2.1
 URL: https://pgomba.github.io/MDPI_explorer/
 Authors@R: 
-    person("Pablo","Gómez Barreiro", ,"pablogomezbr@hotmail.es", role = c("aut", "cre"),
+    person("Pablo","Gomez Barreiro","pablogomezbr@hotmail.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3140-3326"))
 Description: Provides comprehensive tools to scrape and analyze data from the MDPI journals. It allows users to extract metrics such as submission-to-acceptance times, article types, and whether articles are part of special issues. The package can also visualize this information through plots. Additionally, 'MDPIexploreR' offers tools to explore patterns of self-citations within articles and provides insights into guest-edited special issues.
 VignetteBuilder: knitr
