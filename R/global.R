@@ -8,5 +8,7 @@ utils::globalVariables(c(".",
                          "tat",
                          "issue_type",
                          "year_month",
-                         "mean_tat"
+                         "mean_tat",
+                         "Revised",
+                         "open_peer_review"
                          ))

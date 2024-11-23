@@ -6,6 +6,12 @@
 
 `plot_article()` stops if incorrect type of plot is requested
 
+`article_info()` now outputs `Revised` date column
+
+`article_info()` now outputs whether or not an article has open peer review
+
+`plot_article()` includes option to summarize % of available peer review by year 
+
 # MDPIexploreR 0.2.0 
 
 Preparations for CRAN

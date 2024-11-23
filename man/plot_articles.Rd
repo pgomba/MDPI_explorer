@@ -11,7 +11,7 @@ plot_articles(articles_info, journal, type)
 
 \item{journal}{A string with the name of the journal for graph title purposes}
 
-\item{type}{select "summary","issues", "tat" or "type" depending on desired graph}
+\item{type}{select "summary","issues", "tat", "review" or "type" depending on desired graph}
 }
 \value{
 A plot (class: \code{ggplot}) depicting the desired information obtained from \code{article_info}
