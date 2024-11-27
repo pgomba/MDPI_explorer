@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_articles.R
 \name{plot_articles}
 \alias{plot_articles}
-\title{Plots information obtained from article_info. For analysis purposes, Editorial and Correction type articles are ignored.}
+\title{Plots information obtained from article_info(). For analysis purposes, Editorial and Correction type articles are ignored.}
 \usage{
 plot_articles(articles_info, journal, type)
 }
@@ -17,7 +17,7 @@ plot_articles(articles_info, journal, type)
 A plot (class: \code{ggplot}) depicting the desired information obtained from \code{article_info}
 }
 \description{
-Plots information obtained from article_info. For analysis purposes, Editorial and Correction type articles are ignored.
+Plots information obtained from article_info(). For analysis purposes, Editorial and Correction type articles are ignored.
 }
 \examples{
 plot_articles(agriculture,"Agriculture",type="summary")

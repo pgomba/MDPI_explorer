@@ -1,4 +1,4 @@
-#' Plots information obtained from article_info. For analysis purposes, Editorial and Correction type articles are ignored.
+#' Plots information obtained from article_info(). For analysis purposes, Editorial and Correction type articles are ignored.
 #' 
 #' @param articles_info Output dataframe from function articles_info.
 #' @param journal A string with the name of the journal for graph title purposes

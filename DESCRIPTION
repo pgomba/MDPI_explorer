@@ -1,7 +1,7 @@
 Package: MDPIexploreR
 Title: Web Scraping and Bibliometric Analysis of MDPI Journals
 Version: 0.2.1
-URL: https://pgomba.github.io/MDPI_exploreR/
+URL: https://github.com/pgomba/MDPI_exploreR
 Authors@R: 
     person("Pablo","Gómez Barreiro", ,"pablogomezbr@hotmail.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3140-3326"))
