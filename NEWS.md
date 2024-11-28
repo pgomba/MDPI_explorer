@@ -12,6 +12,10 @@
 
 `plot_article()` includes option to summarize % of available peer review by year 
 
+New functions, `topic_find()` and `topic_info()`, mimic `special_issue_find` and `guest_editor_info()` behaviour but for topics. 
+
+`special_issue_info()` will replace `guest_editor_info()` in future versions to keep function naming consistency.
+
 # MDPIexploreR 0.2.0 
 
 Preparations for CRAN
