@@ -23,7 +23,7 @@
 #' }
 #' @examples
 #' \donttest{
-#' ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/5F5L5569XN"
+#' ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/plant-root"
 #' speciali_info<-special_issue_info(ge_issue)
 #' }
 
