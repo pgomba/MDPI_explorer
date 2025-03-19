@@ -10,8 +10,10 @@
 #'   \item{total_ref}{Total number of references in the article}
 #' } 
 #' @examples
+#' \dontrun{
 #' paper_url<-"https://www.mdpi.com/2223-7747/13/19/2785"
 #' sc<-selfcite_check(paper_url)
+#' }
 #' 
 
 

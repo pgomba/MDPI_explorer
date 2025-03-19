@@ -22,7 +22,7 @@
 #'   \item{journals}{List of journals participating in the topic}
 #' }
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' ge_issue<-"https://www.mdpi.com/topics/mechanisms_resistance_plant_diseases_volume"
 #' ge_info<-topic_info(ge_issue)
 #' }

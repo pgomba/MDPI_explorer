@@ -7,7 +7,7 @@
 #' @export topic_find
 #' @return A vector.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' topic_find("covid")
 #' }
 

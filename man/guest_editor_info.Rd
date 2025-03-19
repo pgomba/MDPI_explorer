@@ -36,8 +36,9 @@ Use \code{special_issue_info()} instead. It extracts data from special issues, i
 as academic editors for any published papers.
 }
 \examples{
-\donttest{
+\dontrun{
 ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/5F5L5569XN"
 ge_info<-guest_editor_info(ge_issue)
 }
+
 }

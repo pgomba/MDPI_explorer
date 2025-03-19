@@ -1,4 +1,4 @@
-# MDPIexploreR 0.2.1 
+# MDPIexploreR 0.3.0
 
 `plot_article()` now includes option "tat" to plot turnaround times
 

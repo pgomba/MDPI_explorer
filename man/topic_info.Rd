@@ -34,7 +34,7 @@ A data frame (class: \code{data.frame}) with the following columns:
 Extracts data from topics, including guest editors' paper counts excluding editorials, time between last submission and issue closure, and whether guest editors served as academic editors for any published papers. Includes names of journals participating in topic
 }
 \examples{
-\donttest{
+\dontrun{
 ge_issue<-"https://www.mdpi.com/topics/mechanisms_resistance_plant_diseases_volume"
 ge_info<-topic_info(ge_issue)
 }

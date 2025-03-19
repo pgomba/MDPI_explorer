@@ -10,7 +10,9 @@
 #'   \item{num_papers}{Journal code used for ID and web scraping purposes}
 #' }
 #' @examples
+#' \dontrun{
 #' journal_table<-MDPI_journals()
+#' }
 #' 
 
 MDPI_journals<-function(){
@@ -26,8 +28,3 @@ MDPI_journals<-function(){
   journal_table
   
 }
-
-
-
-  
-  

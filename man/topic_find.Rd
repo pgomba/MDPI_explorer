@@ -22,7 +22,7 @@ A vector.
 Retrieves all topics of a specified journal with URLs. Filters results by issue status (open, closed, or all) and optional year range.
 }
 \examples{
-\donttest{
+\dontrun{
 topic_find("covid")
 }
 }

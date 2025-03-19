@@ -22,7 +22,9 @@ A string (class: \code{data.frame})with the following columns:
 Calculates number of authors selfcitations against all references
 }
 \examples{
+\dontrun{
 paper_url<-"https://www.mdpi.com/2223-7747/13/19/2785"
 sc<-selfcite_check(paper_url)
+}
 
 }

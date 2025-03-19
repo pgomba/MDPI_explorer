@@ -34,8 +34,8 @@ A data frame (class: \code{data.frame}) with the following columns:
 Extracts data from special issues, including guest editors' paper counts excluding editorials, time between last submission and issue closure, and whether guest editors served as academic editors for any published papers.
 }
 \examples{
-\donttest{
-ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/5F5L5569XN"
+\dontrun{
+ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/plant-root"
 speciali_info<-special_issue_info(ge_issue)
 }
 }

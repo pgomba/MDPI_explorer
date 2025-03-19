@@ -4,7 +4,7 @@
 #' @return A vector (class: \code{character}) containing a list of articles URLs from target journal
 #' @export article_find
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' agr_articles<-article_find("agriculture")
 #' }
 

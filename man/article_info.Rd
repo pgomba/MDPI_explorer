@@ -34,7 +34,7 @@ This function extracts key editorial information from one or more paper URLs. Sp
 }
 \examples{
 url<-c("https://www.mdpi.com/2073-4336/8/4/45","https://www.mdpi.com/2073-4336/11/3/39")
-\donttest{
+\dontrun{
 info<-article_info(url, 1.5)
 }
 

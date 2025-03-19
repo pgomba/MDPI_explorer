@@ -17,6 +17,8 @@ A data frame (class: \code{data.frame}) with the following columns:
 Extracts names and codes of current MDPI journals.
 }
 \examples{
+\dontrun{
 journal_table<-MDPI_journals()
+}
 
 }

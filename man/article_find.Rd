@@ -16,7 +16,7 @@ A vector (class: \code{character}) containing a list of articles URLs from targe
 This function retrieves the URLs for all published articles from a specified journal. Users can provide the journal's code 'see MDPI_journals.rda', and the function will return the URLs of all articles available within the journal.
 }
 \examples{
-\donttest{
+\dontrun{
 agr_articles<-article_find("agriculture")
 }
 }

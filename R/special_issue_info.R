@@ -22,7 +22,7 @@
 #'   \item{d_over_deadline}{Day differential between special issue closure and latest article submission}
 #' }
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' ge_issue<-"https://www.mdpi.com/journal/plants/special_issues/plant-root"
 #' speciali_info<-special_issue_info(ge_issue)
 #' }
